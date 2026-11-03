@@ -85,7 +85,7 @@ class Planning:
             "If the story explicitly shrinks or grows a character, scale IS mutable: its initial scale belongs "
             "in initial_attributes even when that same size also appears in its name or biography. "
             "The rule excluding stable big/little names applies ONLY when no size-change event exists. "
-            "quote must be an EXACT substring of the CURRENT shot text after 分镜列表. Character biographies can establish "
+            "quote must be an EXACT substring of the CURRENT shot text after Shot list: or the legacy 分镜列表 marker. Character biographies can establish "
             "initial appearances but cannot trigger later transformations. Every initial design needs literal source_quotes "
             "with segment_id and quote from its source context. No ellipses or paraphrase. "
             "Removing a garment and acquiring another are separate predicates. Return to daily life does not automatically "
@@ -220,7 +220,7 @@ class Planning:
             "changes. Global reference images may show initial costumes: explicitly override them for planned "
             "transformations. Selected history may contain quality defects; use its observation as evidence "
             "of the actual video, but correct accidental drift against global identity anchors. "
-            "Keep prompts under 1800 Chinese characters each. Use the same style and language as the segment."
+            "Keep each prompt concise (at most 1800 characters). Write visual, action, camera and timing directions in English; preserve the segment style and copy all original dialogue/narration verbatim in its original language and punctuation."
         )
         instruction += (
             " Narrative cause is not spatial-temporal continuity: time/location jumps require "
@@ -321,10 +321,8 @@ class Planning:
         # VideoClaw embeds the original character biography before current shots.
         # It may describe an OLD outfit. Mutable requirements must quote this
         # segment's actions, never turn that biography into a new transition.
-        marker = "\n分镜列表：\n"
-        source = (
-            full_source.split(marker, 1)[1] if marker in full_source else full_source
-        )
+        from prompting.language import shot_source
+        source = shot_source(full_source)
         entities = context["known_entities"]
         refs = context["references"]
         payload = {
@@ -526,7 +524,7 @@ class Planning:
             "events, identity, intended transformations, duration and dialogue. Never remove a hard goal to "
             "increase scores. For video with fixed begin/end, respect both endpoints and fit actions between "
             "them. For image edits target the highest-impact defect while retaining correct layout. "
-            "Keep prompt under 1800 Chinese characters. Do not claim a correction already succeeded.",
+            "Keep prompt concise (at most 1800 characters). Use English visual directions and preserve source dialogue/narration verbatim. Do not claim a correction already succeeded.",
             {
                 "kind": kind,
                 "candidate": candidate,

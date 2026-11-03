@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 阶段3: 分镜智能体
 基于剧本JSON，逐场景拆分为带时长标签的分镜（shots），按幕分组输出。
@@ -17,9 +17,9 @@ from .base_agent import AgentInterface
 
 logger = logging.getLogger(__name__)
 
-def _get_storyboard_prompt(name: str, lang: str = "zh") -> str:
+def _get_storyboard_prompt(name: str, lang: str = "en") -> str:
     from prompts.loader import load_prompt_with_fallback
-    return load_prompt_with_fallback("storyboard", name, lang, "zh")
+    return load_prompt_with_fallback("storyboard", name, "en", "en")
 
 class StoryboardAgent(AgentInterface):
     def __init__(self):
@@ -429,10 +429,10 @@ class StoryboardAgent(AgentInterface):
         settings: List[dict],
         retry_error: str = "",
     ) -> str:
-        template = _get_storyboard_prompt("segment_plan", "zh")
+        template = _get_storyboard_prompt("segment_plan", "en")
         retry_feedback = ""
         if retry_error:
-            retry_feedback = f"上一次输出未通过校验，错误原因：{retry_error}\n请根据这个错误修正输出。"
+            retry_feedback = f"Previous output failed validation: {retry_error}\nCorrect the output according to this error."
         from prompts.loader import format_prompt
         return format_prompt(
             template,
@@ -456,10 +456,10 @@ class StoryboardAgent(AgentInterface):
         items_payload = cls._scene_item_payload(plan.get("items", []))
         segment_total = sum(int(item.get("duration") or 0) for item in plan.get("items", []))
         output_total = max(cls.MIN_SEGMENT_DURATION, segment_total)
-        template = _get_storyboard_prompt("segment_design", "zh")
+        template = _get_storyboard_prompt("segment_design", "en")
         retry_feedback = ""
         if retry_error:
-            retry_feedback = f"上一次输出未通过校验，错误原因：{retry_error}\n请根据这个错误修正输出。"
+            retry_feedback = f"Previous output failed validation: {retry_error}\nCorrect the output according to this error."
         from prompts.loader import format_prompt
         return format_prompt(
             template,
@@ -615,8 +615,12 @@ class StoryboardAgent(AgentInterface):
                 "shot_type": shot_type,
                 "duration": durations[idx],
                 "content": content,
+                "visual_prompt": str(raw_shot.get("visual_prompt") or "").strip(),
             })
 
+        for shot in shots:
+            from hashlib import sha256
+            shot["visual_prompt_source_hash"] = sha256(shot["content"].encode()).hexdigest()
         return cls._segment_from_shots(
             ep_n,
             int(plan.get("segment_number") or 1),
@@ -692,10 +696,10 @@ class StoryboardAgent(AgentInterface):
         segments: List[dict],
         retry_error: str = "",
     ) -> str:
-        template = _get_storyboard_prompt("staging_continuity", "zh")
+        template = _get_storyboard_prompt("staging_continuity", "en")
         retry_feedback = ""
         if retry_error:
-            retry_feedback = f"上一次输出未通过校验，错误原因：{retry_error}\n请根据这个错误修正输出。"
+            retry_feedback = f"Previous output failed validation: {retry_error}\nCorrect the output according to this error."
         from prompts.loader import format_prompt
         return format_prompt(
             template,
@@ -742,6 +746,7 @@ class StoryboardAgent(AgentInterface):
 
         for shot, content in updates:
             shot["content"] = content
+            shot.pop("visual_prompt", None)
         return len(updates)
 
     async def _fix_episode_staging_continuity(
@@ -974,6 +979,10 @@ class StoryboardAgent(AgentInterface):
                 max(cls.MIN_SHOT_DURATION, int(shot.get("duration") or cls.MIN_SHOT_DURATION)),
             )
         cls._normalize_first_shot_type(shots)
+        for shot in shots:
+            if shot.get("visual_prompt"):
+                from hashlib import sha256
+                shot["visual_prompt_source_hash"] = sha256(shot["content"].encode()).hexdigest()
         total_duration = cls._ensure_segment_duration(shots)
         segment = {
             "segment_id": f"seg_{ep_n:02d}_{segment_number:02d}",

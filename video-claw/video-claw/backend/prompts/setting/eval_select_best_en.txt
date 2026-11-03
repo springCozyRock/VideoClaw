@@ -1,0 +1,6 @@
+Choose the best of {num_images} environment sheets.
+Name: {setting_name}
+Description: {setting_description}
+Images: {images_list}
+Score each image out of 10 using ten equally weighted checks: location match; layout/furnishings; lighting/day-night/temperature; colors; style; complete details; plausible spatial perspective; balanced composition; clear undistorted image; no unrelated text, watermark or labels. Choose the highest score, breaking ties by the first image.
+Return only JSON: {{"scores":[{{"image_index":0,"score":8,"reasons":["English reason"]}}],"best_index":0,"best_reason":"English reason"}}.

@@ -46,16 +46,16 @@ Optional storyboard fields: `start_state`, `end_state`, `elements` (or `props`, 
 Offline tests mock all image, VLM and video calls:
 
 ```bash
-baselines/videoclaw/video-claw/video-claw/backend/.venv/bin/python -m unittest discover -s tests -p test_videoclaw_paradigms.py -v
+video-claw/video-claw/backend/.venv/bin/python -m unittest discover -s tests -p test_videoclaw_paradigms.py -v
 ```
 
 TypeScript check:
 
 ```bash
-cd baselines/videoclaw/video-claw/video-claw/frontend
+cd video-claw/video-claw/frontend
 node node_modules/typescript/bin/tsc --noEmit --incremental false
 ```
 
 No paid model requests, server restart, or production UI deployment were performed. A running backend/frontend must load the updated sources before the new controls are usable. Real-model visual quality, API behavior, latency and cost still require a small end-to-end generation run.
 
-The baseline directory is ignored by the parent Git repository. `patches/videoclaw/dramachain-paradigms.patch` preserves the baseline modifications plus the runtime adapter guard. On a matching original checkout, replay with `git apply --check` then `git apply` from the LongVideoMemory root. Do not reapply to the already updated server tree. Tests and this document are stored outside the ignored baseline directory.
+VideoClaw source is tracked directly in this repository. See docs/WORKSPACE_MIGRATION.md for source provenance and environment locations.

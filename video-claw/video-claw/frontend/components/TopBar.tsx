@@ -35,6 +35,7 @@ export interface ModelConfig {
   video_start_end_model: string;
   video_reference_model: string;
   video_generation_mode: VideoGenerationMode;
+  story_language?: string;
   video_ratio: string;
   video_resolution: string;
   enable_concurrency: boolean;
@@ -214,6 +215,12 @@ function ModelSelector({
           <label className="flex flex-col gap-1">
             <span className="text-[10px] text-gray-400 font-medium">图生图</span>
             <ProviderSelect value={config.image_it2i_model} providers={i2iProviders} onChange={v => update('image_it2i_model', v)} />
+          </label>
+          <label className="flex flex-col gap-1">
+            <span className="text-[10px] text-gray-400 font-medium">剧本与对白语言</span>
+            <select value={config.story_language || 'auto'} onChange={e => onChange({ ...config, story_language: e.target.value })} className="bg-gray-50 border rounded-lg px-2 py-1.5 text-xs">
+              <option value="auto">自动识别</option><option value="zh">中文</option><option value="en">English</option>
+            </select>
           </label>
           <label className="flex flex-col gap-1">
             <span className="text-[10px] text-gray-400 font-medium">视频生成方式</span>

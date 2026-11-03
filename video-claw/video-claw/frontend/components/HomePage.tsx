@@ -31,6 +31,7 @@ export interface ProjectParams {
   video_start_end_model: string;
   video_reference_model: string;
   video_generation_mode: VideoGenerationMode;
+  story_language?: string;
   expand_idea?: boolean;
   enable_concurrency?: boolean;
   web_search?: boolean;
@@ -70,6 +71,7 @@ function stageProgressLabel(statusMap?: Record<string, string>): { text: string;
 export default function HomePage({ onStartProject, onResumeProject, onDeleteSession, history }: HomePageProps) {
   const [idea, setIdea] = useState('');
   const [showSettings, setShowSettings] = useState(false);
+  const [storyLanguage, setStoryLanguage] = useState('auto');
   const [selectedStyle, setSelectedStyle] = useState('realistic');
   const [selectedLLM, setSelectedLLM] = useState('');
   const [selectedVLM, setSelectedVLM] = useState('');
@@ -161,6 +163,7 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
           throw new Error('backend/config.yaml 缺少主流程默认模型');
         }
         if (cancelled) return;
+        setStoryLanguage(generation.story_language || 'auto');
         setSelectedStyle(generation.style || 'realistic');
         setSelectedLLM(models.llm);
         setSelectedVLM(models.vlm);
@@ -227,6 +230,7 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
       vlm_model: selectedVLM,
       image_t2i_model: selectedT2I,
       image_it2i_model: selectedI2I,
+      story_language: storyLanguage,
       video_generation_mode: selectedVideoMode,
       video_first_frame_model: selectedFirstFrameVideo,
       video_start_end_model: selectedStartEndVideo,
@@ -625,7 +629,14 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
                     ))}
                   </select>
                 </label>
-                <label className="flex flex-col gap-1 col-span-2">
+                <label className="flex flex-col gap-1">
+              <span className="text-xs text-gray-500">剧本与对白语言（任务指令固定英文）</span>
+              <select value={storyLanguage} onChange={e => setStoryLanguage(e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs">
+                <option value="auto">自动识别正文／创意，标题辅助</option>
+                <option value="zh">中文</option><option value="en">English</option>
+              </select>
+            </label>
+            <label className="flex flex-col gap-1 col-span-2">
                   <span className="text-gray-500 font-medium">视频生成方式</span>
                   <select
                     value={selectedVideoMode}

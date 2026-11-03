@@ -63,6 +63,12 @@ class VideoDirectorAgent(AgentInterface):
     def _generate_video_with_doctor(self, client, *, prompt: str, model: str,
                                     llm_model: str, context: dict, **kwargs) -> tuple:
         """Generate once; retry with a doctor-rewrite prompt only for prompt issues."""
+        from core.prompt_language import media_prompt, record_prompt
+        from pathlib import Path
+        language = context.get('story_language') or getattr(self, '_story_language', 'zh')
+        prompt = media_prompt(prompt, language)
+        record_prompt(Path(__file__).resolve().parents[2] / 'code/data/prompt_traces/media',
+                      task='video', prompt=prompt, language=language, model=model)
         try:
             client.generate_video(prompt=prompt, model=model, **kwargs)
             return prompt, None, None
@@ -83,6 +89,9 @@ class VideoDirectorAgent(AgentInterface):
 
             logger.info("Doctor rewrote video prompt: reason_type=%s reason=%s",
                         diagnosis.get("reason_type"), diagnosis.get("reason"))
+            from core.prompt_language import assert_speech_preserved
+            assert_speech_preserved(prompt, rewrite)
+            rewrite = media_prompt(rewrite, language)
             client.generate_video(prompt=rewrite, model=model, **kwargs)
             return rewrite, diagnosis, rewrite_result
 
@@ -152,21 +161,30 @@ class VideoDirectorAgent(AgentInterface):
     # ─── 提示词组装 ───
 
     def _format_shot_section(self, segment: dict) -> str:
-        prompt = "分镜列表："
+        prompt = "Shot list:"
         shots = segment.get("shots", [])
         for i, shot in enumerate(shots, 1):
             dur = shot.get("duration", 5)
             content = shot.get("content", "").strip()
-            prompt += f"\n分镜{i}：[{dur}秒] {content}"
+            from hashlib import sha256
+            paired = shot.get('visual_prompt') and shot.get('visual_prompt_source_hash') == sha256(content.encode()).hexdigest()
+            visual = shot['visual_prompt'] if paired else content
+            if paired:
+                from core.prompt_language import assert_speech_preserved
+                try:
+                    assert_speech_preserved(content, visual)
+                except ValueError:
+                    visual = content
+            prompt += f"\nShot {i}: [{dur} seconds] {visual}"
         return prompt
 
     @staticmethod
     def _extract_shot_section(prompt: str) -> str:
         text = (prompt or "").strip()
         if not text:
-            return "分镜列表："
-        marker = "分镜列表："
-        alt_marker = "分镜列表:"
+            return "Shot list:"
+        marker = "Shot list:"
+        alt_marker = "分镜列表："
         if marker in text:
             text = text[text.index(marker):].strip()
         elif alt_marker in text:
@@ -187,7 +205,7 @@ class VideoDirectorAgent(AgentInterface):
     def _build_character_section(self, segment: dict, character_artifact: Optional[dict]) -> str:
         characters = character_artifact.get("characters", []) if isinstance(character_artifact, dict) else []
         if not characters:
-            return "人物列表：无"
+            return "Characters: none"
 
         character_map = self._build_name_asset_map(characters)
         selected_assets = []
@@ -209,7 +227,7 @@ class VideoDirectorAgent(AgentInterface):
             elif name:
                 lines.append(f"- {name}")
 
-        return "人物列表：\n" + "\n".join(lines) if lines else "人物列表：无"
+        return "Characters:\n" + "\n".join(lines) if lines else "Characters: none"
 
     def _assemble_prompt(self, segment: dict, style_prompt: str,
                          character_artifact: Optional[dict] = None,
@@ -228,10 +246,10 @@ class VideoDirectorAgent(AgentInterface):
             shot_section = self._format_shot_section(segment)
 
         return (
-            f"风格控制：{style_prompt}\n"
+            f"Visual style: {style_prompt}\n"
             f"{self._build_character_section(segment, character_artifact)}\n"
             f"{shot_section}\n"
-            "不要生成字幕或水印"
+            "Do not generate subtitles or watermarks."
         )
 
     def _get_style_keywords(self, session_data: dict) -> str:
@@ -535,6 +553,7 @@ class VideoDirectorAgent(AgentInterface):
             request_hashes[key] = fingerprint({'segment': seg, 'paradigm': paradigm,
                 'model': video_model, 'ratio': video_ratio, 'resolution': video_resolution,
                 'style': input_data.get('style') or session_meta.get('style'),
+                'prompt_policy': input_data.get('prompt_policy_version'), 'story_language': input_data.get('story_language'),
                 'files': [file_identity(path) for path in files]})
 
         self._generation_request_hashes = request_hashes

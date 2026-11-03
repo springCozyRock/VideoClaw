@@ -43,6 +43,11 @@ def _active_video_model(values: dict) -> str:
 
 
 def _require_model_fields(values: dict) -> None:
+    from core.prompt_language import project_language
+    try:
+        project_language(values)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
     missing = [field for field in REQUIRED_MODEL_FIELDS if not values.get(field)]
     try:
         model = _active_video_model(values)
@@ -78,6 +83,7 @@ async def start_project(req: ProjectStartRequest):
         "video_first_frame_model": req.video_first_frame_model or req.video_model or getattr(settings, "VIDEO_FIRST_FRAME_MODEL", ""),
         "video_start_end_model": req.video_start_end_model or getattr(settings, "VIDEO_START_END_MODEL", ""),
         "video_reference_model": req.video_reference_model or getattr(settings, "VIDEO_REFERENCE_MODEL", ""),
+        "story_language": req.story_language or "auto",
         "generation_paradigm": req.generation_paradigm,
         "video_generation_mode": req.video_generation_mode or getattr(settings, "VIDEO_GENERATION_MODE", "first_frame"),
         "video_model": req.video_model,
@@ -102,6 +108,7 @@ async def start_project(req: ProjectStartRequest):
             "video_first_frame_model": meta["video_first_frame_model"],
             "video_start_end_model": meta["video_start_end_model"],
             "video_reference_model": meta["video_reference_model"],
+            "story_language": session["meta"]["story_language"],
             "generation_paradigm": meta.get("generation_paradigm"),
             "video_generation_mode": meta["video_generation_mode"],
             "video_model": meta["video_model"],
@@ -192,6 +199,7 @@ async def update_models(session_id: str, request: Request):
         "video_first_frame_model",
         "video_start_end_model",
         "video_reference_model",
+        "story_language",
         "generation_paradigm",
         "video_generation_mode",
         "video_ratio",

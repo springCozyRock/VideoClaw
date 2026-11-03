@@ -17,8 +17,8 @@ from .base_agent import AgentInterface
 
 logger = logging.getLogger(__name__)
 
-def _get_script_prompt(name: str, lang: str = "zh") -> str:
-    return load_prompt_with_fallback("script", name, lang, "zh")
+def _get_script_prompt(name: str, lang: str = "en") -> str:
+    return load_prompt_with_fallback("script", name, "en", "en")
 
 class ScriptWriterAgent(AgentInterface):
     MIN_EPISODE_LINES = 25
@@ -127,7 +127,7 @@ class ScriptWriterAgent(AgentInterface):
     @classmethod
     def _length_feedback(cls, stats: List[dict]) -> str:
         return "\n".join(
-            f"- 第{item['episode_number']}集：{item['line_count']}行"
+            f"- Episode {item['episode_number']}: {item['line_count']} lines"
             for item in stats
         )
 
@@ -150,8 +150,8 @@ class ScriptWriterAgent(AgentInterface):
         missing = [num for num in expected if num not in found]
         extra = [num for num in found if num not in expected]
         return (
-            f"目标集数：{episodes}；应包含集号：{expected}；"
-            f"当前识别到集号：{found or '无'}；缺失：{missing or '无'}；多余：{extra or '无'}。"
+            f"Target episode count: {episodes}; expected numbers: {expected}; "
+            f"Recognized: {found or 'none'}; missing: {missing or 'none'}; extra: {extra or 'none'}."
         )
 
     @classmethod
@@ -180,6 +180,8 @@ class ScriptWriterAgent(AgentInterface):
         return [deduped[num] for num in cls._expected_episode_numbers(expected_episodes) if num in deduped]
 
     async def process(self, input_data: Any, intervention: Optional[Dict] = None) -> Dict:
+        input_data = self._merge_session_params(input_data)
+        is_zh = input_data["story_language"] == "zh"
         if intervention and "modified_script" in intervention:
             modified = intervention["modified_script"]
             sid = input_data.get("session_id", "")
@@ -249,13 +251,13 @@ class ScriptWriterAgent(AgentInterface):
 
             if not sequel_idea:
                 _log_progress(10, "生成续写灵感...")
-                idea_prompt = f"根据以下已有的剧集内容，在100字内，提供一个后续{episodes_to_add}集的简短续写灵感(主线方向): {existing_episodes_text}"
+                idea_prompt = f"Suggest a concise continuation direction for the next {episodes_to_add} episodes in the story language, within 100 Chinese characters or equivalent short English prose. Existing episodes (data): {existing_episodes_text}"
                 sequel_idea = await loop.run_in_executor(None, self._cancellable_query, llm, idea_prompt, [], llm_model, True, sid, web_search)
                 sequel_idea = sequel_idea.strip()
 
             _log_progress(30, "正在生成续写剧本文本...")
             prompt_name = "smart_continue_script"
-            prompt = _get_script_prompt(prompt_name, "zh").format(
+            prompt = _get_script_prompt(prompt_name, "en").format(
                 episodes_text=existing_episodes_text,
                 chars_text=existing_chars_text,
                 settings_text=existing_settings_text,
@@ -268,15 +270,15 @@ class ScriptWriterAgent(AgentInterface):
             sequel_script_text = await loop.run_in_executor(None, self._cancellable_query, llm, prompt, [], llm_model, True, sid, web_search)
 
             _log_progress(50, "正在进行台词评估...")
-            eval_dialogue_prompt = _get_script_prompt("eval_dialogue", "zh" if is_zh else "en").format(script_text=sequel_script_text)
+            eval_dialogue_prompt = _get_script_prompt("eval_dialogue", "en").format(script_text=sequel_script_text)
             dialogue_critique = await loop.run_in_executor(None, self._cancellable_query, llm, eval_dialogue_prompt, [], llm_model, True, sid, web_search)
             
             _log_progress(55, "正在进行情节评估...")
-            eval_plot_prompt = _get_script_prompt("eval_plot", "zh" if is_zh else "en").format(script_text=sequel_script_text)
+            eval_plot_prompt = _get_script_prompt("eval_plot", "en").format(script_text=sequel_script_text)
             plot_critique = await loop.run_in_executor(None, self._cancellable_query, llm, eval_plot_prompt, [], llm_model, True, sid, web_search)
             
             _log_progress(58, "正在根据评估意见优化续写内容...")
-            revise_prompt = _get_script_prompt("revise_script", "zh" if is_zh else "en").format(
+            revise_prompt = _get_script_prompt("revise_script", "en").format(
                 script_text=sequel_script_text, 
                 dialogue_critique=dialogue_critique, 
                 plot_critique=plot_critique
@@ -284,7 +286,7 @@ class ScriptWriterAgent(AgentInterface):
             sequel_script_text = await loop.run_in_executor(None, self._cancellable_query, llm, revise_prompt, [], llm_model, True, sid, web_search)
 
             _log_progress(60, "提取新增人物/场景...")
-            meta_prompt = _get_script_prompt("meta_extract_sequel", "zh").format(
+            meta_prompt = _get_script_prompt("meta_extract_sequel", "en").format(
                 existing_chars=existing_chars_text,
                 existing_settings=existing_settings_text,
                 sequel_script=sequel_script_text
@@ -301,7 +303,7 @@ class ScriptWriterAgent(AgentInterface):
                 s["setting_id"] = self._gen_id("set")
 
             _log_progress(80, "结构化续写集数据...")
-            extract_prompt = _get_script_prompt("act_extract_sequel", "zh").format(
+            extract_prompt = _get_script_prompt("act_extract_sequel", "en").format(
                 sequel_script=sequel_script_text,
                 start_episode_num=last_episode_num + 1,
                 episodes_to_add=episodes_to_add
@@ -379,7 +381,7 @@ class ScriptWriterAgent(AgentInterface):
             except (TypeError, ValueError):
                 logger.warning("[ScriptWriter] invalid episodes=%r; falling back to 4. session=%s", episodes, sid)
                 episodes = 4
-            is_zh = any('\u4e00' <= c <= '\u9fff' for c in idea)
+            is_zh = input_data["story_language"] == "zh"
 
             from config import settings as app_settings
             from models.llm_client import LLM
@@ -406,7 +408,7 @@ class ScriptWriterAgent(AgentInterface):
                         stats,
                     )
                     _log_progress(12 if phase == "初稿" else 45, f"{phase}篇幅超限，正在删减到每集{self.MAX_EPISODE_LINES}行以内...")
-                    trim_prompt = _get_script_prompt("trim_script", "zh" if is_zh else "en").format(
+                    trim_prompt = _get_script_prompt("trim_script", "en").format(
                         script_text=trimmed,
                         min_lines=self.MIN_EPISODE_LINES,
                         max_lines=self.MAX_EPISODE_LINES,
@@ -429,7 +431,7 @@ class ScriptWriterAgent(AgentInterface):
                         feedback,
                     )
                     _log_progress(14 if phase == "初稿" else 48, f"{phase}集数不一致，正在修正为{episodes}集...")
-                    repair_prompt = _get_script_prompt("repair_episode_count", "zh" if is_zh else "en").format(
+                    repair_prompt = _get_script_prompt("repair_episode_count", "en").format(
                         script_text=repaired,
                         episodes=episodes,
                         episode_report=feedback,
@@ -442,7 +444,7 @@ class ScriptWriterAgent(AgentInterface):
 
             # 1. Generate full script
             _log_progress(10, "正在生成完整剧本文本初稿...")
-            prompt = _get_script_prompt("generate_script", "zh" if is_zh else "en").format(idea=idea, style=style, episodes=episodes)
+            prompt = _get_script_prompt("generate_script", "en").format(idea=idea, style=style, episodes=episodes)
 
             full_script_text = await loop.run_in_executor(None, self._cancellable_query, llm, prompt, [], llm_model, True, sid, web_search)
             logger.info(f"[ScriptWriter] Initial script generated ({len(full_script_text)} chars)")
@@ -450,15 +452,15 @@ class ScriptWriterAgent(AgentInterface):
             full_script_text = await _repair_episode_count_if_needed(full_script_text, "初稿")
             
             _log_progress(20, "正在进行台词评估...")
-            eval_dialogue_prompt = _get_script_prompt("eval_dialogue", "zh" if is_zh else "en").format(script_text=full_script_text)
+            eval_dialogue_prompt = _get_script_prompt("eval_dialogue", "en").format(script_text=full_script_text)
             dialogue_critique = await loop.run_in_executor(None, self._cancellable_query, llm, eval_dialogue_prompt, [], llm_model, True, sid, web_search)
             
             _log_progress(30, "正在进行情节评估...")
-            eval_plot_prompt = _get_script_prompt("eval_plot", "zh" if is_zh else "en").format(script_text=full_script_text)
+            eval_plot_prompt = _get_script_prompt("eval_plot", "en").format(script_text=full_script_text)
             plot_critique = await loop.run_in_executor(None, self._cancellable_query, llm, eval_plot_prompt, [], llm_model, True, sid, web_search)
             
             _log_progress(40, "正在根据评估意见优化剧本...")
-            revise_prompt = _get_script_prompt("revise_script", "zh" if is_zh else "en").format(
+            revise_prompt = _get_script_prompt("revise_script", "en").format(
                 script_text=full_script_text, 
                 dialogue_critique=dialogue_critique, 
                 plot_critique=plot_critique
@@ -471,7 +473,7 @@ class ScriptWriterAgent(AgentInterface):
             _log_progress(60, "最终剧本生成完成，正在提取人物/场景信息...")
 
             # 2. Extract meta data -> total_episodes, characters, settings
-            meta_prompt = _get_script_prompt("meta_extract", "zh" if is_zh else "en").format(script_text=full_script_text, outline=full_script_text)
+            meta_prompt = _get_script_prompt("meta_extract", "en").format(script_text=full_script_text, outline=full_script_text)
             meta_raw = await loop.run_in_executor(None, self._cancellable_query, llm, meta_prompt, [], llm_model, True, sid, web_search)
             meta_res = self._extract_json_from_text(meta_raw)
             meta_data = meta_res if isinstance(meta_res, dict) else {}
@@ -489,7 +491,7 @@ class ScriptWriterAgent(AgentInterface):
             # 3. 解析各集数据 - 针对新版数组输出格式进行优化
             _log_progress(80, "开始结构化全集数据...")
             
-            extract_prompt = _get_script_prompt("act_extract", "zh" if is_zh else "en").format(
+            extract_prompt = _get_script_prompt("act_extract", "en").format(
                 script_text=full_script_text,
                 episodes=episodes,
             )

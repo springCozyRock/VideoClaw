@@ -1,0 +1,13 @@
+Divide episode {episode_number}, title {episode_title}, into executable video segments from the supplied timed action/dialogue units. Each unit starts with a duration and unit_id.
+Return ONLY a JSON array: [{{"segment_number":1,"location":"exact source location","unit_ids":["U001","U002"]}}].
+Rules:
+1. Split at every scene change; no segment may cross a scene boundary.
+2. A character entrance starts a new segment and is its first unit.
+3. Prefer total durations of 5–15 seconds. Hard scene/entrance boundaries may produce shorter segments; the program later extends output duration to 5 seconds.
+4. Cover every unit exactly once in its original order. Never omit or duplicate a unit.
+5. Return only segment_number, location and unit_ids, not action text, dialogue or items.
+{retry_feedback}
+Existing characters: {asset_characters}
+Existing settings: {asset_settings}
+Timed source script:
+{annotated_script}

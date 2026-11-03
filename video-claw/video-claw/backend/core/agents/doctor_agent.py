@@ -160,7 +160,7 @@ class DoctorAgent(AgentInterface):
                 "tool": "rewrite_prompt",
                 "should_retry": True,
                 "confidence": 0.95,
-                "reason": "供应商返回内容安全或审核相关错误，疑似由生成提示词中的不文明、敏感或高风险表达触发。",
+                "reason": "The provider explicitly reports a prompt content-review issue.",
             }
 
         length_markers = ("maximum context", "max tokens", "too long", "context length", "超长", "长度")
@@ -171,7 +171,7 @@ class DoctorAgent(AgentInterface):
                 "tool": "rewrite_prompt",
                 "should_retry": True,
                 "confidence": 0.85,
-                "reason": "供应商错误指向提示词或上下文过长，需要压缩提示词后重试。",
+                "reason": "The provider reports excessive prompt/context length; remove redundant directions.",
             }
 
         asset_markers = ("file not found", "不存在", "missing", "not found", "路径")
@@ -182,7 +182,7 @@ class DoctorAgent(AgentInterface):
                 "tool": "none",
                 "should_retry": False,
                 "confidence": 0.85,
-                "reason": "错误指向输入素材缺失或路径不可用，重写提示词无法修复。",
+                "reason": "The error indicates a missing input asset or unavailable path; rewriting cannot repair it.",
             }
 
         auth_markers = ("api key", "apikey", "unauthorized", "forbidden", "permission", "权限", "密钥")
@@ -193,7 +193,7 @@ class DoctorAgent(AgentInterface):
                 "tool": "none",
                 "should_retry": False,
                 "confidence": 0.85,
-                "reason": "错误指向鉴权、权限或配置问题，重写提示词无法修复。",
+                "reason": "The error indicates authentication, permissions or configuration; rewriting cannot repair it.",
             }
 
         timeout_markers = ("timeout", "timed out", "超时")
@@ -204,7 +204,7 @@ class DoctorAgent(AgentInterface):
                 "tool": "none",
                 "should_retry": False,
                 "confidence": 0.8,
-                "reason": "错误指向网络或任务轮询超时，重写提示词不是合适修复方式。",
+                "reason": "The error indicates a network or polling timeout; rewriting is not an appropriate repair.",
             }
 
         return None
@@ -224,7 +224,7 @@ class DoctorAgent(AgentInterface):
 
         from models.llm_client import LLM
 
-        template = load_prompt("doctor", "diagnose", "zh")
+        template = load_prompt("doctor", "diagnose", 'en')
         validation_error = ""
         for attempt in range(MAX_DOCTOR_ATTEMPTS):
             doctor_prompt = template.format(
@@ -236,7 +236,7 @@ class DoctorAgent(AgentInterface):
                 reason_types=", ".join(sorted(DOCTOR_REASON_TYPES)),
                 rewritable_reason_types=", ".join(sorted(REWRITABLE_REASON_TYPES)),
                 tools=", ".join(sorted(DOCTOR_TOOLS)),
-                validation_error=validation_error or "无",
+                validation_error=validation_error or "none",
             )
             try:
                 raw = LLM().query(doctor_prompt, model=self.llm_model, safe_content=False)
@@ -267,7 +267,7 @@ class DoctorAgent(AgentInterface):
 
         from models.llm_client import LLM
 
-        template = load_prompt("doctor", "rewrite_prompt", "zh")
+        template = load_prompt("doctor", "rewrite_prompt", 'en')
         validation_error = ""
         for attempt in range(MAX_DOCTOR_ATTEMPTS):
             rewrite_prompt = template.format(
@@ -276,12 +276,15 @@ class DoctorAgent(AgentInterface):
                 reason=reason,
                 original_prompt=prompt,
                 context=self._json_dumps(context),
-                validation_error=validation_error or "无",
+                validation_error=validation_error or "none",
             )
             try:
                 raw = LLM().query(rewrite_prompt, model=self.llm_model, safe_content=False)
                 data = self._load_json_object(raw)
-                return self._validate_rewrite(data, prompt)
+                rewritten = self._validate_rewrite(data, prompt)
+                from core.prompt_language import assert_speech_preserved
+                assert_speech_preserved(prompt, rewritten)
+                return rewritten
             except Exception as exc:
                 validation_error = str(exc)
                 logger.warning(

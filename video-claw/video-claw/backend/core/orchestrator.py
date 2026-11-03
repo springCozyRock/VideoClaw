@@ -65,6 +65,9 @@ SESSION_META_KEYS = (
     "video_first_frame_model",
     "video_start_end_model",
     "video_reference_model",
+    "story_language",
+    "story_language_source",
+    "prompt_policy_version",
     "generation_paradigm",
     "video_generation_mode",
     "video_style",
@@ -229,9 +232,10 @@ class WorkflowEngine:
             if not isinstance(state.status, dict):
                 state.status = {}
             state.status[state.current_stage.value] = "completed"
-            state.meta = copy.deepcopy(meta)
+            from core.prompt_language import project_language
+            state.meta = {**copy.deepcopy(meta), **project_language(meta)}
             state.updated_at = datetime.now()
-            self.save_session_to_disk(session_id, meta)
+            self.save_session_to_disk(session_id, state.meta)
             return {
                 "session_id": session_id,
                 "status": copy.deepcopy(state.status),
@@ -266,7 +270,11 @@ class WorkflowEngine:
             if 'video_generation_mode' in updates and 'generation_paradigm' not in updates:
                 next_meta.pop('generation_paradigm', None)
             resolve_paradigm(next_meta)
-            visual_keys = {'generation_paradigm', 'video_generation_mode', 'image_t2i_model', 'image_it2i_model', 'style', 'video_ratio'}
+            from core.prompt_language import project_language
+            if 'story_language' in updates:
+                next_meta.pop('story_language_source', None)
+            language = project_language(next_meta, state.artifacts)
+            visual_keys = {'story_language', 'generation_paradigm', 'video_generation_mode', 'image_t2i_model', 'image_it2i_model', 'style', 'video_ratio'}
             changed = {k for k in allowed_keys if k in updates and updates[k] != state.meta.get(k)}
             downstream = ('reference_generation', 'video_generation', 'post_production') if changed & visual_keys else ('video_generation', 'post_production') if changed & {'video_model', 'video_first_frame_model', 'video_start_end_model', 'video_reference_model', 'video_resolution'} else ()
             if downstream and session_id in self._active_sessions:
@@ -280,6 +288,7 @@ class WorkflowEngine:
             for key in allowed_keys:
                 if key in updates:
                     state.meta[key] = updates[key]
+            state.meta.update(language)
             state.updated_at = datetime.now()
             self.save_session_to_disk(session_id)
             return {"status": "ok", "meta": copy.deepcopy(state.meta)}
@@ -288,6 +297,10 @@ class WorkflowEngine:
         """Build stage input from current meta/artifacts without exposing mutable state to routers."""
         with self._state_lock:
             state = self.get_or_create_state(session_id)
+            from core.prompt_language import project_language
+            if not state.meta.get('story_language') or state.meta.get('story_language') == 'auto':
+                state.meta.update(project_language(state.meta, state.artifacts))
+                self.save_session_to_disk(session_id)
             input_data = copy.deepcopy(body) if isinstance(body, dict) else {}
             input_data["session_id"] = session_id
 

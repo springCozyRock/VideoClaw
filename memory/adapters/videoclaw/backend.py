@@ -13,13 +13,15 @@ class VideoClawBackend:
     def __init__(self, agent, settings, run):
         from msvbench_qwen import QwenAPI
 
+        from prompting.language import project_language
+        settings = {**settings, **project_language(settings, agent._session_artifacts(settings) if hasattr(agent, '_session_artifacts') else {})}
         self.agent, self.settings, self.run = agent, settings, Path(run)
         self.media = MediaIO(agent, settings)
         self.judge = QwenAPI()
         self.judge.out = self.run / "judge_calls"
         self.judge.retry_delays = ()
         self.judge._video = self.media._sample_video
-        self.transport = StructuredTransport(agent, self.judge)
+        self.transport = StructuredTransport(agent, self.judge, settings["story_language"])
         self.planning = Planning(self.transport)
         self.inspection = Inspection(self.transport, self.media)
         self.embedding_model = settings.get(
@@ -35,12 +37,16 @@ class VideoClawBackend:
         import rate_limit_policy
 
         files = list(Path(__file__).resolve().parents[2].rglob("*.py"))
+        import prompting.language
+        files += list(Path(prompting.language.__file__).parent.rglob('*.py'))
         files += [
             Path(module.__file__)
             for module in (msvbench_qwen, videoclaw_runtime, rate_limit_policy)
         ]
         return {
             "adapter": "videoclaw-memory",
+            "prompt_policy_version": self.settings.get('prompt_policy_version'),
+            "story_language": self.settings.get('story_language'),
             "video_model": self.media.video_model,
             "image_model": self.media.image_model,
             "text_image_model": self.media.text_image_model,

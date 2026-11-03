@@ -536,6 +536,7 @@ export default function WorkflowPanel() {
         image_t2i_model: params.image_t2i_model,
         image_it2i_model: params.image_it2i_model,
         video_generation_mode: params.video_generation_mode,
+        story_language: params.story_language,
         video_first_frame_model: params.video_first_frame_model,
         video_start_end_model: params.video_start_end_model,
         video_reference_model: params.video_reference_model,
@@ -571,6 +572,7 @@ export default function WorkflowPanel() {
         image_t2i_model: params.image_t2i_model,
         image_it2i_model: params.image_it2i_model,
         video_generation_mode: params.video_generation_mode,
+        story_language: params.story_language,
         video_first_frame_model: params.video_first_frame_model,
         video_start_end_model: params.video_start_end_model,
         video_reference_model: params.video_reference_model,
@@ -658,6 +660,7 @@ export default function WorkflowPanel() {
           image_t2i_model: projectParams?.image_t2i_model,
           image_it2i_model: projectParams?.image_it2i_model,
           video_generation_mode: projectParams?.video_generation_mode,
+          story_language: projectParams?.story_language,
           video_first_frame_model: projectParams?.video_first_frame_model,
           video_start_end_model: projectParams?.video_start_end_model,
           video_reference_model: projectParams?.video_reference_model,
@@ -766,6 +769,7 @@ export default function WorkflowPanel() {
       image_t2i_model: projectParams?.image_t2i_model,
       image_it2i_model: projectParams?.image_it2i_model,
       video_generation_mode: projectParams?.video_generation_mode,
+      story_language: projectParams?.story_language,
       video_first_frame_model: projectParams?.video_first_frame_model,
       video_start_end_model: projectParams?.video_start_end_model,
       video_reference_model: projectParams?.video_reference_model,
@@ -1068,6 +1072,7 @@ export default function WorkflowPanel() {
         image_t2i_model: projectParams?.image_t2i_model,
         image_it2i_model: projectParams?.image_it2i_model,
         video_generation_mode: projectParams?.video_generation_mode,
+        story_language: projectParams?.story_language,
         video_first_frame_model: projectParams?.video_first_frame_model,
         video_start_end_model: projectParams?.video_start_end_model,
         video_reference_model: projectParams?.video_reference_model,
@@ -1188,6 +1193,7 @@ export default function WorkflowPanel() {
           vlm_model: s.vlm_model || '',
           image_t2i_model: s.image_t2i_model || '',
           image_it2i_model: s.image_it2i_model || '',
+          story_language: s.story_language || 'auto',
           video_generation_mode: normalizeVideoMode(s.generation_paradigm || s.video_generation_mode),
           video_first_frame_model: restoredFirstFrameVideoModel,
           video_start_end_model: s.video_start_end_model || 'wan2.7-i2v',
@@ -1242,7 +1248,7 @@ export default function WorkflowPanel() {
   const handleModelConfigChange = async (config: ModelConfig) => {
     try {
       if (sessionId) await updateModels(sessionId, { ...config });
-      const visualChanged = projectParams && ['video_generation_mode', 'image_t2i_model', 'image_it2i_model', 'video_ratio'].some(key =>
+      const visualChanged = projectParams && ['story_language', 'video_generation_mode', 'image_t2i_model', 'image_it2i_model', 'video_ratio'].some(key =>
         (projectParams as unknown as Record<string, unknown>)[key] !== (config as unknown as Record<string, unknown>)[key]);
       const videoChanged = projectParams && ['video_model', 'video_first_frame_model', 'video_start_end_model', 'video_reference_model', 'video_resolution'].some(key =>
         (projectParams as unknown as Record<string, unknown>)[key] !== (config as unknown as Record<string, unknown>)[key]);
@@ -1269,6 +1275,7 @@ export default function WorkflowPanel() {
         image_t2i_model: projectParams.image_t2i_model,
         image_it2i_model: projectParams.image_it2i_model,
         // Legacy session compatibility: projectParams may come from an old session with only video_model.
+        story_language: projectParams.story_language || 'auto',
         video_generation_mode: normalizeVideoMode(projectParams.video_generation_mode),
         video_first_frame_model: projectParams.video_first_frame_model || projectParams.video_model,
         video_start_end_model: projectParams.video_start_end_model || 'wan2.7-i2v',

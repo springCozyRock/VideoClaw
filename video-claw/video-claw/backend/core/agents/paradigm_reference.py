@@ -105,7 +105,7 @@ async def prepare_references(agent, data: dict, intervention: dict | None = None
         for group in groups:
             agent._check_cancel()
             unique_refs = list(dict.fromkeys(r['path'] for s in group for r in refs[s['segment_id']]))
-            source = {'schema': 'videoclaw.paradigm/1', 'generation_paradigm': paradigm,
+            source = {'prompt_policy_version': data.get('prompt_policy_version'), 'story_language': data.get('story_language'), 'schema': 'videoclaw.paradigm/1', 'generation_paradigm': paradigm,
                       'segments': group, 'references': [file_identity(p) for p in unique_refs],
                       'style': style, 'ratio': data.get('video_ratio', '16:9'),
                       'image_models': [image_model, text_model]}

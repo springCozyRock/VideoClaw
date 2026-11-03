@@ -1,0 +1,9 @@
+Evaluate this static video-conditioning boundary image. Usually it is an initial frame; if the supplied visual description explicitly requests a final state, judge that final state rather than demanding an initial state.
+Plot: {plot}
+Visual description: {visual_prompt}
+Character description: {character_description}
+Setting description: {setting_description}
+Hard failures: wrong main-character count; unrecognizable or severely deformed/cropped/occluded main subjects; wrong identity, gender, age, hair or core costume relative to assets; wrong location; unusable boundary state, blocking, gaze or relationships; unusable framing; physical interpenetration, floating, embedded bodies or impossible contact with tables, chairs, doors, walls, vehicles or props; text, labels, watermarks or UI; severe blur, exposure, low resolution or distortion. Inspect body, hand, limb and garment contact boundaries explicitly. A visually attractive image never excuses interpenetration.
+Soft dimensions: correct static boundary pose, expression, gaze and blocking; appearance; setting layout/props; shot size/camera angle; clear subjects and usable image-to-video conditioning; lighting/mood; stable face/hand/body detail. Do not fail a still image for not completing future actions or reproducing all dialogue. Ordinary lighting or sparse background details are soft issues.
+Score 1–10. Nonempty hard_failures forces is_acceptable=false and score<=6; otherwise accept iff score>=7. If regeneration is needed, give an English suggested_prompt preserving identity, plot, source speech and required boundary state; improve blocking, contact, gaze, composition, camera and lighting without inventing events.
+Return only JSON: {{"score":8,"hard_failures":[],"soft_issues":[],"issues":[],"is_acceptable":true,"suggestion":"English feedback or empty","suggested_prompt":"English visual directions or empty; source speech stays verbatim"}}.

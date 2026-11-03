@@ -1,0 +1,8 @@
+Continue a serial short drama from its existing story, cast and settings.
+Existing episodes: {episodes_text}
+Existing characters: {chars_text}
+Existing settings: {settings_text}
+Continuation direction: {sequel_idea}
+Write exactly {episodes_to_add} consecutive new episodes starting at episode {start_episode_num}. Do not rewrite completed episodes. Preserve character identities, personalities, causal continuity and the continuation direction; add only necessary new characters/settings.
+Maintain high conflict, reversals, clear physical reactions and cliffhangers. Each episode has 25–30 action/dialogue lines, approximately 1–2 minutes. Use the established source-language episode and scene-heading format, with a character-list line after each scene heading and a blank line. Action lines start with <action>. Dialogue uses speaker-name plus colon; emotional cues follow the name in parentheses. Describe filmable human action and expression, not thoughts, skin-color changes, environmental transitions or visual effects. Communicate information through speech, not text displayed on screens or notes. Preserve existing quoted dialogue and narration verbatim. New story and speech follow the resolved story language.
+Output only the complete new script text, without JSON, fences, preface or summary.

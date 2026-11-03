@@ -1,0 +1,22 @@
+Design shots for episode {episode_number}, title {episode_title}, video segment {segment_number}.
+Return ONLY one JSON object:
+{{"location":"{location}","characters":{characters},"shots":[{{"unit_id":"U001","shot_type":"中景","duration":5,"content":"shot description","visual_prompt":"English visual/action/camera description with source speech verbatim"}}]}}
+Rules:
+1. shots correspond one-to-one with input items. Preserve all unit_ids, with no additions or duplicates.
+2. Preserve each item.duration. If total duration is below 5 seconds, extend only the final shot so total reaches 5.
+3. shot_type uses the existing protocol enum: 近景 (close-up), 中景 (medium), 全景 (wide). Do not translate these enum tokens.
+4. The opening shot is medium or wide, eye-level, showing every segment character with explicit blocking.
+5. Describe camera angle, screen orientation, character facing and positions in every content.
+6. Preserve source action/dialogue text verbatim and in full. Add camera/blocking directions without rewriting source speech.
+7. Follow scene_context and scene_space exactly. 外 means exterior, 内 means interior. Never introduce an interior into an exterior segment or vice versa.
+8. Style: {style}. Write new narrative shot descriptions in the story language, while keeping source text intact.
+{retry_feedback}
+scene_context: {scene_context}
+scene_time: {scene_time}
+scene_space: {scene_space}
+location: {location}
+characters: {characters}
+total_duration: {total_duration}
+items: {items}
+
+For each shot also return visual_prompt: English visual/action/camera directions for the same shot, with any dialogue/narration copied verbatim. Generate this alongside content in this single response. Never translate speech.

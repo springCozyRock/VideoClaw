@@ -7,7 +7,8 @@ from memory.assets.files import digest
 
 
 def shot_text(segment):
-    return segment["context"].split("\n分镜列表：\n", 1)[-1]
+    from prompting.language import shot_source
+    return shot_source(segment["context"])
 
 
 def validate_state_plan(plan, segments, sources):

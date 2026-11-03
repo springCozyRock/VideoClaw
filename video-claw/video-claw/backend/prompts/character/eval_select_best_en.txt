@@ -1,0 +1,7 @@
+Choose the best of {num_images} character sheets.
+Name: {character_name}
+Description: {character_description}
+Species: {species}
+Images: {images_list}
+Score each image out of 10 using ten equally weighted checks: appearance matches source; clear matching facial features; plausible body proportions; intended style; complete details; correct colors; sharp undistorted image; balanced composition; consistent four views; no unrelated text, watermark or labels. Choose the highest score, breaking ties by the first image.
+Return only JSON: {{"scores":[{{"image_index":0,"score":8,"reasons":["English reason"]}}],"best_index":0,"best_reason":"English reason"}}.

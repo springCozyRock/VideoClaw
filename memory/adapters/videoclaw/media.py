@@ -52,6 +52,8 @@ class MediaIO:
     def _render_frame(self, segment, prompt, references, target):
         from models.image_client import ImageClient
 
+        from prompting.language import media_prompt
+        prompt = media_prompt(prompt, self.settings.get('story_language', 'zh'))
         self.agent._check_cancel()
         paths = ImageClient().generate_image(
             prompt=prompt,
@@ -71,6 +73,8 @@ class MediaIO:
     def render_video(self, segment, prompt, begin, target):
         from models.video_client import VideoClient
 
+        from prompting.language import media_prompt
+        prompt = media_prompt(prompt, self.settings.get('story_language', 'zh'))
         self.agent._check_cancel()
         if int(segment.duration) != segment.duration:
             raise ValueError("VideoClaw provider expects whole-second duration")

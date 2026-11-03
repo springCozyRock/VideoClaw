@@ -1,0 +1,4 @@
+Character design reference sheet, {style}, pure white background.
+Character name: {name}
+Character description: {desc}
+Arrange four views of the SAME character left to right in one row: front portrait (chest up), front full body, side full body, back full body. Keep face, hair, skin tone, proportions, clothing and accessories consistent across views. Clean appearance, intact clothes; no wounds, blood, tears, special facial/body markings, scars, birthmarks or tattoos. No text, labels, annotations, captions, watermarks or UI.

@@ -14,8 +14,9 @@ def parse_json(text):
 
 
 class StructuredTransport:
-    def __init__(self, agent, judge):
+    def __init__(self, agent, judge, story_language="zh"):
         self.agent, self.judge = agent, judge
+        self.story_language = story_language
 
     def ask(self, instruction, data, images=(), videos=()):
         self.agent._check_cancel()
@@ -46,6 +47,13 @@ class StructuredTransport:
                 + data["schema_correction"]
                 + "\nDo not repeat the invalid JSON unchanged. Preserve the original source constraints."
             )
+        from prompting.language import language_instruction, record_prompt
+        prompt = language_instruction(self.story_language) + '\n\n' + prompt
+        output = getattr(self.judge, 'out', None)
+        from pathlib import Path
+        if isinstance(output, (str, Path)):
+            record_prompt(output, task='memory.structured', prompt=prompt, language=self.story_language,
+                          model=getattr(self.judge, 'model', ''))
         text = self.judge.generate_multimodal(
             prompt, image_paths=list(images), video_paths=list(videos)
         )

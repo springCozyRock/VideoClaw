@@ -33,7 +33,7 @@ class CharacterDesignerAgent(AgentInterface):
     def _char_prompt(name: str, desc: str, style: str, species: str = "") -> str:
         """角色4视图提示词 - 直接加载 character_zh 模板"""
         # 加载基础角色提示词模板
-        template = load_prompt('character', 'character', 'zh')
+        template = load_prompt('character', 'character', 'en')
         # 替换角色信息
         return template.format(name=name, desc=desc, style=style)
 
@@ -41,7 +41,7 @@ class CharacterDesignerAgent(AgentInterface):
     def _setting_prompt(name: str, desc: str, style: str) -> str:
         """场景全景图提示词 - 直接加载 setting_zh 模板"""
         # 加载基础场景提示词模板
-        template = load_prompt('setting', 'setting', 'zh')
+        template = load_prompt('setting', 'setting', 'en')
         # 替换场景信息
         return template.format(name=name, desc=desc, style=style)
 
@@ -58,20 +58,20 @@ class CharacterDesignerAgent(AgentInterface):
 
         feedback_lines = []
         if hard_failures:
-            feedback_lines.append("硬性失败项：" + "；".join(map(str, hard_failures)))
+            feedback_lines.append("Hard failures: " + "；".join(map(str, hard_failures)))
         if issues:
-            feedback_lines.append("主要问题：" + "；".join(map(str, issues)))
+            feedback_lines.append("Main issues: " + "；".join(map(str, issues)))
         if soft_issues:
-            feedback_lines.append("软性问题：" + "；".join(map(str, soft_issues)))
+            feedback_lines.append("Soft issues: " + "；".join(map(str, soft_issues)))
         if suggestion:
-            feedback_lines.append("修改建议：" + suggestion)
+            feedback_lines.append("Revision advice: " + suggestion)
         if not feedback_lines:
             return base_prompt
 
         return (
             f"{base_prompt}\n\n"
-            f"【第{iteration + 1}轮VLM评估反馈】\n"
-            f"上一轮生成未通过评估，请在下一轮生成时优先修正以下问题，同时保持原始角色/场景设定不变：\n"
+            f"[Iteration {iteration + 1} VLM feedback]\n"
+            f"The last image failed review. Correct the following issues while preserving the original character/setting design:\n"
             + "\n".join(f"- {line}" for line in feedback_lines)
         )
 
@@ -144,6 +144,12 @@ class CharacterDesignerAgent(AgentInterface):
     def _generate_image_with_doctor(self, img_client, *, prompt: str, model: str,
                                     llm_model: str, context: dict, **kwargs) -> tuple:
         """Generate once; if prompt-related failure is diagnosed, rewrite and retry once."""
+        from core.prompt_language import media_prompt, record_prompt
+        from pathlib import Path
+        language = context.get('story_language') or getattr(self, '_story_language', 'zh')
+        prompt = media_prompt(prompt, language)
+        record_prompt(Path(__file__).resolve().parents[2] / 'code/data/prompt_traces/media',
+                      task='image', prompt=prompt, language=language, model=model)
         try:
             paths = img_client.generate_image(prompt=prompt, model=model, **kwargs)
             if not paths:
@@ -166,6 +172,9 @@ class CharacterDesignerAgent(AgentInterface):
 
             logger.info("Doctor rewrote character prompt: reason_type=%s reason=%s",
                         diagnosis.get("reason_type"), diagnosis.get("reason"))
+            from core.prompt_language import assert_speech_preserved
+            assert_speech_preserved(prompt, rewrite)
+            rewrite = media_prompt(rewrite, language)
             paths = img_client.generate_image(prompt=rewrite, model=model, **kwargs)
             if not paths:
                 raise RuntimeError("Image generation returned no output after doctor rewrite")
@@ -311,11 +320,11 @@ class CharacterDesignerAgent(AgentInterface):
 
             # 选择评估提示词
             if asset_type == 'characters':
-                eval_prompt = load_prompt('character', 'eval_character', 'zh').format(
+                eval_prompt = load_prompt('character', 'eval_character', 'en').format(
                     character_description=description
                 )
             else:
-                eval_prompt = load_prompt('setting', 'eval_setting', 'zh').format(
+                eval_prompt = load_prompt('setting', 'eval_setting', 'en').format(
                     setting_description=description
                 )
 
@@ -365,21 +374,21 @@ class CharacterDesignerAgent(AgentInterface):
 
             # 选择评估提示词
             if asset_type == 'characters':
-                select_prompt = load_prompt('character', 'eval_select_best', 'zh').format(
+                select_prompt = load_prompt('character', 'eval_select_best', 'en').format(
                     num_images=len(image_paths),
                     num_images_minus_1=len(image_paths) - 1,
                     character_name=name,
                     character_description=description,
                     species=species,
-                    images_list="\n".join([f"图片{i}: {p}" for i, p in enumerate(image_paths)])
+                    images_list="\n".join([f"Image {i}: {p}" for i, p in enumerate(image_paths)])
                 )
             else:
-                select_prompt = load_prompt('setting', 'eval_select_best', 'zh').format(
+                select_prompt = load_prompt('setting', 'eval_select_best', 'en').format(
                     num_images=len(image_paths),
                     num_images_minus_1=len(image_paths) - 1,
                     setting_name=name,
                     setting_description=description,
-                    images_list="\n".join([f"图片{i}: {p}" for i, p in enumerate(image_paths)])
+                    images_list="\n".join([f"Image {i}: {p}" for i, p in enumerate(image_paths)])
                 )
 
             result = vlm.query(select_prompt, image_paths=image_paths, model=vlm_model)

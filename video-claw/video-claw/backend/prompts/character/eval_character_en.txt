@@ -1,0 +1,7 @@
+Evaluate this four-view character sheet as a reusable video-generation asset.
+Character description: {character_description}
+Required views: front portrait (head and upper body), front full body, side full body, back full body.
+Hard failures: a missing/incomplete required view; different identity, hair, build or costume across views; wrong gender, age, occupation appearance, core outfit or hairstyle; unusable face/body, severe deformity, occlusion or cropping; text/watermark/labels/annotation/UI; severe blur, exposure or low resolution.
+If none apply, score 1–10 for face, hair, clothing/material/color, build, clear angles, usable centered composition, project style and stable accessories/details. Minor fingers, ordinary lighting and a plain background are soft issues, not hard failures.
+Nonempty hard_failures forces is_acceptable=false and score<=6. Otherwise accept iff score>=7.
+Return only JSON with keys score:number, hard_failures:string[], soft_issues:string[], issues:string[], is_acceptable:boolean, suggestion:string (empty if no regeneration is needed). Write evaluative prose in English.

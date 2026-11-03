@@ -1,0 +1,9 @@
+Rewrite a generation prompt to address the diagnosed failure. Return only a strict JSON object.
+Stage: {stage}
+reason_type: {reason_type}
+Doctor reason: {reason}
+Context: {context}
+Previous validation error: {validation_error}
+Original prompt: {original_prompt}
+Preserve plot, relationships, location, camera intent and visual goals. Neutralize problematic non-speech visual wording when possible. For prompt_too_long remove redundant directions; for prompt_format use clear direct generation instructions. Do not add subtitles, watermarks or extra events. Write visual and camera directions in English. Preserve every existing dialogue/narration/quotation exactly in its source language and punctuation; never translate, censor or paraphrase spoken text. If a repair would require altering protected speech, leave that speech unchanged so the caller can decline the repair.
+Output: {{"rewrite_prompt":"complete repaired prompt"}}.

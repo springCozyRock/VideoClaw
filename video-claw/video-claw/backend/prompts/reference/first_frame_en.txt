@@ -1,4 +1,4 @@
-You are an expert AI prompt engineer and cinematic storyboard director. Generate a purely English "Static First Frame Visual Prompt" for an AI video generation tool.
+You are an expert AI prompt engineer and cinematic storyboard director. Generate an English "Static First Frame Visual Prompt" for an AI video generation tool.
 
 [Core Goal]
 The prompt should create a static, high-quality image that works as a stable first frame for video generation. The first frame should establish characters, setting, positions, gaze, and relationships. The video model will create motion later.
@@ -28,6 +28,9 @@ Do not depict the action itself, and do not depict the starting instant of an ac
 - Do not include text, watermark, subtitles, labels, signs, UI elements, or explanations.
 - No Markdown.
 
+[Complete source script / task data]
+{original_text}
+
 [Segment Plot]
 {plot}
 
@@ -43,3 +46,5 @@ Good: Cinematic medium shot, a man standing in front of a large window, body ang
 
 [Output Format]
 Output ONLY the final English visual prompt text.
+
+Keep proper names and any explicitly quoted speech in their original language; do not invent image text or speech.

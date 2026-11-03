@@ -1,0 +1,7 @@
+Review blocking, facing and spatial continuity in episode {episode_number}, title {episode_title}. Repair descriptions without changing shot structure.
+Return only JSON: {{"issues":["English issue"],"patches":[{{"segment_number":1,"shot_number":1,"content":"complete corrected shot description"}}]}}.
+Review each scene separately. Preserve relative positions, facing, gaze and relations to doors/walls/tables/chairs unless source movement explicitly changes them. Subsequent shots must inherit the result of moving, sitting or standing. Do not teleport characters across a table or embed bodies in furniture/walls. Specify physically plausible contact and blocking. Opening multi-character shots remain eye-level with every character visible. Only change blocking, gaze, camera position and physical spatial relations; preserve plot, dialogue, shot count and order. Do not prefix content with an original-text label. Follow scene_context and scene_space: 外=exterior, 内=interior, with no unjustified switches. If consistent, return empty patches.
+Write repaired content in the story language and preserve all source speech verbatim.
+{retry_feedback}
+Storyboard JSON:
+{segments}

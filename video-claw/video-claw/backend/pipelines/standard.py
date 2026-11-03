@@ -132,7 +132,11 @@ async def generate_image_prompts(
         narrations_count=len(narrations),
         narrations_json=json.dumps({"narrations": narrations}, ensure_ascii=False, indent=2),
     )
-    response = await run_blocking(llm.query, prompt, model=llm_model)
+    from core.prompt_language import language_instruction
+    from prompting.language import resolve_language
+    language = resolve_language(script='\n'.join(narrations))['story_language']
+    prompt = language_instruction(language, media=True) + '\n\n' + prompt
+    response = await run_blocking(llm.query, prompt, model=llm_model, safe_content=False)
     visual_prompts = parse_image_prompts_response(response, len(narrations))
     return [
         build_image_prompt(
@@ -151,13 +155,17 @@ async def generate_narrations_from_inspiration(
     llm: LLM,
     llm_model: str,
 ) -> list[str]:
-    template = load_prompt("pipelines", "standard_narration_generation", "zh")
+    template = load_prompt("pipelines", "standard_narration_generation", 'en')
     prompt = format_prompt(
         template,
         inspiration=inspiration,
         segment_count=segment_count,
     )
-    response = await run_blocking(llm.query, prompt, model=llm_model)
+    from core.prompt_language import language_instruction
+    from prompting.language import resolve_language
+    language = resolve_language(idea=inspiration)['story_language']
+    prompt = language_instruction(language) + '\n\n' + prompt
+    response = await run_blocking(llm.query, prompt, model=llm_model, safe_content=False)
     return parse_narrations_response(response, segment_count)
 
 

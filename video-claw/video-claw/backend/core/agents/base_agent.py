@@ -14,6 +14,7 @@ SESSION_PARAM_KEYS = [
     "llm_model", "vlm_model",
     "image_t2i_model", "image_it2i_model", "video_model",
     "video_first_frame_model", "video_start_end_model", "video_reference_model",
+    "story_language", "story_language_source", "prompt_policy_version",
     "generation_paradigm",
     "video_generation_mode",
     "video_style", "expand_idea", "enable_concurrency", "web_search", "episodes"
@@ -39,6 +40,10 @@ class AgentInterface(ABC):
             if key not in merged_data or not merged_data[key]:
                 if key in session_meta and session_meta[key] is not None:
                     merged_data[key] = session_meta[key]
+        from core.prompt_language import project_language
+        language = project_language(merged_data, self._session_artifacts(merged_data))
+        merged_data.update(language)
+        self._story_language = language['story_language']
         return merged_data
 
     def _session_meta(self, input_data: Dict) -> Dict:
@@ -77,7 +82,14 @@ class AgentInterface(ABC):
         """在 LLM 调用前后检查取消状态"""
         self._check_cancel()
         # 将位置参数映射给 llm.query
-        result = llm.query(prompt, image_urls, model, safe_content, task_id, web_search)
+        from pathlib import Path
+        from core.prompt_language import language_instruction, record_prompt
+        language = getattr(self, '_story_language', 'zh')
+        final_prompt = language_instruction(language) + '\n\n' + prompt
+        record_prompt(Path(__file__).resolve().parents[2] / 'code/data/prompt_traces/text',
+                      task=self.name, prompt=final_prompt, language=language, model=model)
+        # Unicode/full-width normalization would alter source dialogue punctuation.
+        result = llm.query(final_prompt, image_urls, model, False, task_id, web_search)
         self._check_cancel()
         return result
 

@@ -1,0 +1,4 @@
+Expand the user's inspiration into exactly {segment_count} short narration segments, each suitable for one image, one spoken audio segment and one static video clip. Make each segment a clear image or idea and make the sequence a coherent narrative.
+Inspiration: {inspiration}
+Return only valid JSON with a top-level narrations string array of exactly {segment_count} items. Use the resolved story language for new narration; preserve any source narration verbatim. Conversational, rhythmic, TTS-friendly phrasing. No numbering, shot labels, parenthetical stage directions or extra text. Prefer 20–45 Chinese characters for Chinese narration or similarly short natural English sentences for English narration. Use language-appropriate sentence-ending punctuation.
+Output schema: {{"narrations":["first narration","second narration"]}}.

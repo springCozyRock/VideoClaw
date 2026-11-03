@@ -333,9 +333,9 @@ class ReferenceMemory:
             for b in context["appearance_binding"]["bindings"]
         ]
         enriched["decision"]["frame_prompt"] += (
-            "\n此边界帧必须符合的角色形态："
+            "\nRequired character appearance at this boundary: "
             + str(specs)
-            + "。当前形态参考优先于历史画面的旧服装；保持同一角色身份。"
+            + ". Current appearance references override historical costumes; preserve character identity."
         )
         return enriched, selected
 
@@ -352,8 +352,8 @@ class ReferenceMemory:
             for b in bindings
         ]
         enriched["decision"]["video_prompt"] += (
-            "\n角色状态约束："
+            "\nCharacter-state constraints: "
             + json.dumps(requirements, ensure_ascii=False, separators=(",", ":"))
-            + "。形态保持的片段不得重复变身；换装不能保留已移除的旧衣物。"
+            + ". Do not repeat transformations in a hold-state segment; do not retain removed garments after a costume change."
         )
         return enriched

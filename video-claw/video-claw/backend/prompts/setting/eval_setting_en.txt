@@ -1,0 +1,6 @@
+Evaluate this environment sheet as a reusable video-generation asset.
+Setting description: {setting_description}
+Hard failures: wrong location/type; unreadable/unusable core spatial structure; absent or misplaced essential furnishings/props; unrelated main subjects or crowds preventing reuse (any people fail if an empty set is required); text/watermark/labels/annotations/UI; severe blur, exposure, perspective collapse or low resolution.
+Otherwise score 1–10 for matching layout, usable core objects, day/night and lighting, color/style, natural perspective/depth, clear composition and sufficient uncluttered detail. Ordinary lighting, slightly different layout or sparse detail are soft issues.
+Nonempty hard_failures forces is_acceptable=false and score<=6. Otherwise accept iff score>=7.
+Return only JSON with keys score:number, hard_failures:string[], soft_issues:string[], issues:string[], is_acceptable:boolean, suggestion:string (empty if acceptable). Write evaluative prose in English.

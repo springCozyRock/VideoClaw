@@ -11,72 +11,18 @@ from typing import Optional
 PROMPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-def load_prompt(category: str, name: str, lang: str = 'zh') -> str:
-    """
-    加载提示词文件
-
-    Args:
-        category: 提示词分类 (script, character, setting, storyboard, reference, video, logline)
-        name: 提示词文件名 (不含扩展名)
-        lang: 语言版本 ('zh' 或 'en')
-
-    Returns:
-        提示词内容字符串
-
-    Example:
-        prompt = load_prompt('script', 'logline_generate', 'zh')
-    """
-    # 尝试加载语言版本
+def load_prompt(category: str, name: str, lang: str = 'en') -> str:
+    """Load an explicit instruction language. Missing variants fail visibly."""
     file_path = os.path.join(PROMPTS_DIR, category, f"{name}_{lang}.txt")
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-
-    # 回退到带 _zh 的版本
-    file_path = os.path.join(PROMPTS_DIR, category, f"{name}_zh.txt")
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-
-    # 回退到不带后缀的通用版本
-    file_path = os.path.join(PROMPTS_DIR, category, f"{name}.txt")
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-
-    raise FileNotFoundError(f"Prompt not found: {category}/{name}_{lang}.txt or {category}/{name}.txt")
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f"Missing explicit prompt template: {category}/{name}_{lang}.txt")
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return f"[Template: {category}.{name}@{lang}-v2]\n" + f.read().strip()
 
 
-def load_prompt_with_fallback(category: str, name: str, lang: str = 'zh', fallback_lang: str = 'zh') -> str:
-    """
-    加载提示词，如果指定语言不存在则回退
-
-    Args:
-        category: 提示词分类
-        name: 提示词文件名
-        lang: 首选语言
-        fallback_lang: 回退语言
-    """
-    # 先尝试首选语言
-    file_path = os.path.join(PROMPTS_DIR, category, f"{name}_{lang}.txt")
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-
-    # 回退到指定语言
-    if fallback_lang != lang:
-        file_path = os.path.join(PROMPTS_DIR, category, f"{name}_{fallback_lang}.txt")
-        if os.path.exists(file_path):
-            with open(file_path, 'r', encoding='utf-8') as f:
-                return f.read().strip()
-
-    # 最后尝试不带后缀的版本
-    file_path = os.path.join(PROMPTS_DIR, category, f"{name}.txt")
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return f.read().strip()
-
-    raise FileNotFoundError(f"Prompt not found: {category}/{name}_{lang}.txt")
+def load_prompt_with_fallback(category: str, name: str, lang: str = 'en', fallback_lang: str = 'en') -> str:
+    """Compatibility signature; never silently change instruction language."""
+    return load_prompt(category, name, lang)
 
 
 def format_prompt(template: str, **kwargs) -> str:

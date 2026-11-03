@@ -222,6 +222,12 @@ class ReferenceGeneratorAgent(AgentInterface):
     def _generate_image_with_doctor(self, img_client, *, prompt: str, model: str,
                                     llm_model: str, context: dict, **kwargs) -> tuple:
         """Generate once; if doctor rewrites a prompt-related failure, retry once."""
+        from core.prompt_language import media_prompt, record_prompt
+        from pathlib import Path
+        language = context.get('story_language') or getattr(self, '_story_language', 'zh')
+        prompt = media_prompt(prompt, language)
+        record_prompt(Path(__file__).resolve().parents[2] / 'code/data/prompt_traces/media',
+                      task='image', prompt=prompt, language=language, model=model)
         try:
             paths = img_client.generate_image(prompt=prompt, model=model, **kwargs)
             if not paths:
@@ -244,6 +250,9 @@ class ReferenceGeneratorAgent(AgentInterface):
 
             logger.info("Doctor rewrote reference prompt: reason_type=%s reason=%s",
                         diagnosis.get("reason_type"), diagnosis.get("reason"))
+            from core.prompt_language import assert_speech_preserved
+            assert_speech_preserved(prompt, rewrite)
+            rewrite = media_prompt(rewrite, language)
             paths = img_client.generate_image(prompt=rewrite, model=model, **kwargs)
             if not paths:
                 raise RuntimeError("Image generation returned no output after doctor rewrite")
@@ -262,20 +271,20 @@ class ReferenceGeneratorAgent(AgentInterface):
 
         feedback_lines = []
         if hard_failures:
-            feedback_lines.append("硬性失败项：" + "；".join(map(str, hard_failures)))
+            feedback_lines.append("Hard failures: " + "；".join(map(str, hard_failures)))
         if issues:
-            feedback_lines.append("主要问题：" + "；".join(map(str, issues)))
+            feedback_lines.append("Main issues: " + "；".join(map(str, issues)))
         if soft_issues:
-            feedback_lines.append("软性问题：" + "；".join(map(str, soft_issues)))
+            feedback_lines.append("Soft issues: " + "；".join(map(str, soft_issues)))
         if suggestion:
-            feedback_lines.append("修改建议：" + suggestion)
+            feedback_lines.append("Revision advice: " + suggestion)
         if not feedback_lines:
             return current_prompt
 
         return (
             f"{current_prompt}\n\n"
-            f"【第{version + 1}轮VLM评估反馈】\n"
-            f"上一轮参考图未通过评估，请在下一轮生成时优先修正以下问题；不要改变角色核心外貌和场景核心设定：\n"
+            f"[Iteration {version + 1} VLM feedback]\n"
+            f"The last reference image failed review. Correct these issues without changing character identity or the core setting:\n"
             + "\n".join(f"- {line}" for line in feedback_lines)
         )
 
@@ -433,14 +442,14 @@ class ReferenceGeneratorAgent(AgentInterface):
         segment_id = segment.get('segment_id', '')
 
         # 加载评估提示词
-        select_prompt = load_prompt('reference', 'eval_select_best', 'zh').format(
+        select_prompt = load_prompt('reference', 'eval_select_best', 'en').format(
             num_images=len(image_paths),
             num_images_minus_1=len(image_paths) - 1,
             plot=plot,
             visual_prompt=visual_prompt,
             character_description=character_description,
             setting_description=setting_description,
-            images_list="\n".join([f"图片{i}: {p}" for i, p in enumerate(image_paths)])
+            images_list="\n".join([f"Image {i}: {p}" for i, p in enumerate(image_paths)])
         )
 
         try:
@@ -491,7 +500,7 @@ class ReferenceGeneratorAgent(AgentInterface):
             from models.vlm_client import VLM
             vlm = VLM()
 
-            eval_prompt = load_prompt('reference', 'eval_first_frame', 'zh').format(
+            eval_prompt = load_prompt('reference', 'eval_first_frame', 'en').format(
                 plot=plot,
                 visual_prompt=visual_prompt,
                 character_description=character_description,
@@ -688,7 +697,7 @@ class ReferenceGeneratorAgent(AgentInterface):
         character_json = artifacts.get('character_design', {})
 
         # 判断中英文
-        is_zh = any('\u4e00' <= c <= '\u9fff' for c in script_json.get("title", ""))
+        is_zh = input_data["story_language"] == "zh"
 
         # 构建 name → id 映射（用于素材匹配）
         char_id_map = {}
@@ -751,7 +760,7 @@ class ReferenceGeneratorAgent(AgentInterface):
                             ff_prompt = existing_vp
                             logger.info(f"[{segment_id}] 重新生成时命中已有提示词，复用原提示词...")
                         else:
-                            ff_prompt_tpl = load_prompt('reference', 'first_frame', 'zh' if is_zh else 'en')
+                            ff_prompt_tpl = load_prompt('reference', 'first_frame', 'en')
                             try:
                                 local_llm = LLM()
                                 ff_prompt_resp = self._cancellable_query(
@@ -916,7 +925,7 @@ class ReferenceGeneratorAgent(AgentInterface):
                         ff_prompt = existing_vp
                         logger.info(f"[{segment_id}] 命中已有提示词，复用原提示词...")
                     else:
-                        ff_prompt_tpl = load_prompt('reference', "first_frame", 'zh' if is_zh else 'en')
+                        ff_prompt_tpl = load_prompt('reference', "first_frame", 'en')
                         try:
                             local_llm = LLM()
                             ff_prompt_resp = self._cancellable_query(

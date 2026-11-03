@@ -60,7 +60,7 @@ class UnifiedBackend(VideoClawBackend):
             ImageClient(), prompt=prompt,
             model=self.media.image_model if refs else self.media.text_image_model,
             llm_model=self.settings.get("llm_model", ""),
-            context={"segment_id": segment.id, "memory": True},
+            context={"segment_id": segment.id, "memory": True, "story_language": self.settings.get("story_language", "zh")},
             image_paths=refs or None, save_dir=str(target.parent),
             session_id=self.settings["session_id"],
             video_ratio=self.settings.get("video_ratio", "16:9"), resolution="720P")
@@ -80,7 +80,7 @@ class UnifiedBackend(VideoClawBackend):
         result = self.agent._generate_video_with_doctor(
             VideoClient(), prompt=prompt, model=self.media.video_model,
             llm_model=self.settings.get("llm_model", ""),
-            context={"segment_id": segment.id, "memory": True},
+            context={"segment_id": segment.id, "memory": True, "story_language": self.settings.get("story_language", "zh")},
             image_path=begin, last_image_path=end, save_path=str(target),
             duration=int(segment.duration), video_ratio=self.settings.get("video_ratio", "16:9"),
             resolution=self.settings.get("video_resolution", "720P"), prompt_extend=False, watermark=False)

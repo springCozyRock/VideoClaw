@@ -155,10 +155,11 @@ def activate_snapshot(run):
             raise RuntimeError('Incomplete source snapshot; inspect before reusing this run')
         directory.mkdir()
         shutil.copytree(ROOT / 'memory', directory / 'memory', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+        shutil.copytree(ROOT / 'prompting', directory / 'prompting', ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
         (directory / 'host_scripts').mkdir()
         for name in host_names:
             shutil.copy2(ROOT / 'scripts' / name, directory / 'host_scripts' / name)
-        save(manifest, {'created_at': time.time(), 'memory': {str(p.relative_to(directory)): hashlib.sha256(p.read_bytes()).hexdigest() for p in (directory / 'memory').rglob('*.py')}, 'host': {name: hashlib.sha256((ROOT / 'scripts' / name).read_bytes()).hexdigest() for name in host_names}})
+        save(manifest, {'created_at': time.time(), 'memory': {str(p.relative_to(directory)): hashlib.sha256(p.read_bytes()).hexdigest() for package_dir in ('memory', 'prompting') for p in (directory / package_dir).rglob('*.py')}, 'host': {name: hashlib.sha256((ROOT / 'scripts' / name).read_bytes()).hexdigest() for name in host_names}})
     provenance = json.loads(manifest.read_text())
     for relative, expected in provenance['memory'].items():
         if hashlib.sha256((directory / relative).read_bytes()).hexdigest() != expected:
@@ -176,6 +177,7 @@ def main():
     parser.add_argument('--session', type=Path, required=True)
     parser.add_argument('--run', type=Path, required=True)
     parser.add_argument('--execute', action='store_true')
+    parser.add_argument('--story-language', choices=['auto', 'zh', 'en'], default=None)
     parser.add_argument('--integration', choices=['unified'], default='unified')
     parser.add_argument('--max-candidates', type=int, default=2)
     parser.add_argument('--reference-candidates', type=int, default=2)
@@ -196,8 +198,14 @@ def main():
     from memory import Policy
     from memory.assets.checkpoint import Checkpoint as MemoryStore
     snapshot = json.loads(source.read_text())
+    from prompting.language import project_language
+    language_meta = dict(snapshot.get('meta', {}))
+    if args.story_language is not None:
+        language_meta['story_language'] = args.story_language
+        language_meta.pop('story_language_source', None)
+    snapshot['meta'] = {**language_meta, **project_language(language_meta, snapshot.get('artifacts', {}))}
     policy = Policy(frame_candidates=args.max_candidates, video_candidates=args.max_candidates, reference_candidates=args.reference_candidates, fresh_reference_images=args.fresh_reference_images, selection=args.selection, critical_state_gate=not args.allow_unverified_state, experience_repository=str(args.experience_repository.resolve()) if args.experience_repository else '')
-    config = {'source': str(source), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'policy': asdict(policy), 'integration': args.integration, 'stages': args.stages, 'judge_concurrency': args.judge_concurrency, 'pacing_directory': str(args.pacing_directory.resolve()) if args.pacing_directory else None, 'selection_semantics': 'Best candidate can retain explicitly reported defects'}
+    config = {'story_language': snapshot['meta']['story_language'], 'prompt_policy_version': snapshot['meta']['prompt_policy_version'], 'source': str(source), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'policy': asdict(policy), 'integration': args.integration, 'stages': args.stages, 'judge_concurrency': args.judge_concurrency, 'pacing_directory': str(args.pacing_directory.resolve()) if args.pacing_directory else None, 'selection_semantics': 'Best candidate can retain explicitly reported defects'}
     with MemoryStore(run / 'runner_lock'):
         if (run / 'config.json').exists() and json.loads((run / 'config.json').read_text()) != config:
             raise ValueError('Frozen run configuration changed')
