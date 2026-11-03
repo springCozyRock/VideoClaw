@@ -13,10 +13,10 @@ GitHub: https://github.com/springCozyRock/VideoClaw
 | `prompting/` | Shared instruction/content-language policy |
 | `scripts/run_memory.py` | Main Memory run entrypoint |
 | `evaluation/` | Project evaluation adapters; no dependency on the Codex generation baseline |
-| `benchmarks/` | MSVBench, DirectorBench (original/public), VBench, ViStoryBench source snapshots |
-| `benchmarks/SOURCES.json` | Upstream commit and source-file checksums |
-| `environments/manifest.json` | Installed Python/package versions and environment entrypoints |
+| `benchmarks/SOURCES.json` | Upstream commit IDs and checksums for local benchmark trees |
 | `tests/` | Offline Memory, generation, transport and evaluation checks |
+
+Benchmark source trees (`benchmarks/msvbench`, `vbench`, `vistorybench`, `directorbench*`), `FilmAgent/`, README screenshots and `third_party/` stay on this machine for evaluation and archive use. They are gitignored; a fresh clone does not include them. Restore locally from the recorded upstream commits in `benchmarks/SOURCES.json`. Experiment snapshots such as `configs/msvbench_agents_20261018/` are likewise local-only.
 
 ```bash
 cd /mnt/data/bts/repos/VideoClaw
