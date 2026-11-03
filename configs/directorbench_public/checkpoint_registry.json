@@ -1,0 +1,1345 @@
+{
+  "upstream_commit": "63174ef2a00df2ae839d74a9af7f91883c790f8b",
+  "registered_metrics": {
+    "temporal_coherence": [
+      {
+        "id": "char_face_consistency",
+        "question": "Do the characters' facial features (face shape, eye colour, skin tone, hairstyle) remain consistent across consecutive shots?",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {
+          "has_characters": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Face is pixel-level consistent; clearly the same person in every shot."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Minor shifts at extreme angles, but still clearly recognisable as the same person."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Visible drift in proportions or skin tone; identity is plausible but questionable."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Faces look like different people in some shots."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Character face changes drastically between shots — effectively different characters."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "char_clothing_consistency",
+        "question": "Do characters' clothing, accessories, and body proportions stay consistent within the same scene (excluding intentional costume changes)?",
+        "checkpoint_type": "likert",
+        "weight": 0.15,
+        "applicable_when": {
+          "has_characters": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Outfit colours, patterns, and fit are identical across shots in the same scene."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Very minor colour shade shift; overall outfit clearly the same."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some clothing details change (e.g. pattern disappears, sleeve length changes)."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Outfit changes noticeably between shots with no narrative reason."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Completely different outfits between consecutive shots in the same scene."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "object_permanence",
+        "question": "Do objects held by or near characters persist correctly? (e.g. a cup doesn't vanish/appear spontaneously)",
+        "checkpoint_type": "binary",
+        "weight": 0.15,
+        "applicable_when": {
+          "has_held_objects": true
+        },
+        "rubric": [],
+        "na_score": null
+      },
+      {
+        "id": "background_consistency",
+        "question": "Is the background environment consistent within the same scene? (walls, furniture, landscape don't morph or change)",
+        "checkpoint_type": "likert",
+        "weight": 0.15,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Background is perfectly stable — identical layout, colours, and objects across shots in the same scene."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Background is recognisably the same; very minor texture changes only."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Background shifts noticeably (e.g. wall colour changes, furniture rearranges slightly)."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Background is different enough that continuity feels broken."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Background changes completely between shots in what should be the same scene."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "scale_proportion",
+        "question": "Do the relative sizes and proportions of people/objects remain physically plausible across shots?",
+        "checkpoint_type": "likert",
+        "weight": 0.1,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "All sizes are physically consistent — no distortion."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Proportions are mostly correct; minor camera-angle-induced differences only."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some objects or characters appear to change size without justification."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Obvious size inconsistencies (e.g. a person is much larger/smaller between cuts)."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Severe proportion errors — objects or people resize dramatically."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "motion_continuity",
+        "question": "Is the direction and speed of motion continuous across cuts? (no teleportation or sudden direction reversal without cause)",
+        "checkpoint_type": "binary",
+        "weight": 0.15,
+        "applicable_when": {},
+        "rubric": [],
+        "na_score": null
+      },
+      {
+        "id": "temporal_logic",
+        "question": "When time progression is implied (day→night, season change), is it logically justified by the narrative?",
+        "checkpoint_type": "likert",
+        "weight": 0.1,
+        "applicable_when": {
+          "has_scene_changes": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "All time jumps are clearly signalled and narratively motivated."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Time jumps are plausible; minor ambiguity about duration."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some time shifts feel abrupt or under-motivated."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Confusing temporal jumps that undermine coherence."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Time progression is nonsensical (e.g. night→day→night in seconds with no reason)."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "lighting_consistency": [
+      {
+        "id": "light_direction",
+        "question": "Is the direction of the key light source consistent across shots within the same scene?",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Shadows and highlights consistently indicate the same light source direction."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Light direction is mostly consistent; very minor shifts."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Light direction shifts between some shots without justification."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Light direction is frequently inconsistent."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Light comes from obviously different directions in consecutive same-scene shots."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "shadow_consistency",
+        "question": "Are shadows physically plausible and consistent with the light sources shown?",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Shadows are physically accurate and match the light source in every shot."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Shadows are mostly correct; minor inconsistencies."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some shadows are misaligned or missing where they should be."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Shadows frequently contradict the visible light source."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Shadows are absent, inverted, or nonsensical."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "color_temperature",
+        "question": "Is the colour temperature (warm/cool) consistent within the same scene, without unjustified sudden shifts?",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Colour temperature is uniform throughout each scene."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Very slight colour temperature drift that most viewers wouldn't notice."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Visible warm↔cool shift between shots in the same scene."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Jarring colour temperature changes."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Scene oscillates wildly between warm and cool tones."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "exposure_stability",
+        "question": "Is the exposure/brightness level stable, without sudden flashes or darkening?",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Exposure is perfectly stable across all shots in each scene."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Minor exposure variation that doesn't distract."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some shots are noticeably brighter/darker than neighbours."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Frequent brightness jumps."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Severe flashing or extreme exposure changes between cuts."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "script_reasonableness": [
+      {
+        "id": "event_chain_logic",
+        "question": "Does each story event logically follow from the previous one, with plausible cause-and-effect?",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Every transition between events is causally motivated — no plot holes."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Cause-and-effect is mostly clear; one minor logical stretch."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some events feel disconnected or require viewer inference to connect."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Multiple events lack causal connection; narrative feels random."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Events are entirely disconnected — no coherent story."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "character_motivation",
+        "question": "Do characters act with plausible motivations? (actions make sense given what we know about them)",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {
+          "has_characters": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Every character action feels motivated and in-character."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Motivations are mostly clear; one action feels slightly arbitrary."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some character actions feel unmotivated or out-of-character."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Characters frequently do things that contradict their established behaviour."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Characters act randomly with no discernible motivation."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "pacing_structure",
+        "question": "Does the narrative have a clear beginning-middle-end structure with appropriate pacing for a ~1 minute video?",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Clear setup→conflict→resolution arc; pacing feels natural for the duration."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Structure is recognisable; pacing is slightly uneven."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Structure is loose — story meanders or rushes."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "No clear structure; feels like a random sequence of events."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "No narrative arc whatsoever."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "internal_consistency",
+        "question": "Are there any internal contradictions? (e.g. a character is said to be alone but others are present, time of day contradicts dialogue)",
+        "checkpoint_type": "binary",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [],
+        "na_score": null
+      },
+      {
+        "id": "dialogue_naturalness",
+        "question": "Is the dialogue (if any) natural, context-appropriate, and free of unintentional repetition?",
+        "checkpoint_type": "likert",
+        "weight": 0.15,
+        "applicable_when": {
+          "has_dialogue": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Dialogue sounds natural and advances the story."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Dialogue is mostly natural; minor awkwardness."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some lines feel wooden, repetitive, or out of place."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Dialogue frequently sounds unnatural or robotic."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Dialogue is incomprehensible or completely unnatural."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "script_novelty": [
+      {
+        "id": "premise_originality",
+        "question": "Is the core premise/concept original or surprising, rather than a common cliché?",
+        "checkpoint_type": "likert",
+        "weight": 0.35,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Highly original",
+            "description": "Premise is fresh, surprising, and unlikely to have been seen before."
+          },
+          {
+            "value": 4,
+            "label": "Somewhat original",
+            "description": "Interesting twist on a known concept."
+          },
+          {
+            "value": 3,
+            "label": "Average",
+            "description": "Standard premise — not cliché but not surprising."
+          },
+          {
+            "value": 2,
+            "label": "Derivative",
+            "description": "Heavily borrows from well-known templates."
+          },
+          {
+            "value": 1,
+            "label": "Cliché",
+            "description": "Extremely predictable, overused concept."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "narrative_surprise",
+        "question": "Does the story contain any unexpected turns, reveals, or creative choices that keep the viewer engaged?",
+        "checkpoint_type": "likert",
+        "weight": 0.35,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Highly surprising",
+            "description": "Multiple genuinely unexpected moments that feel earned."
+          },
+          {
+            "value": 4,
+            "label": "Some surprise",
+            "description": "At least one notable surprise element."
+          },
+          {
+            "value": 3,
+            "label": "Predictable",
+            "description": "Story proceeds as expected without surprises."
+          },
+          {
+            "value": 2,
+            "label": "Very predictable",
+            "description": "Every beat is telegraphed far in advance."
+          },
+          {
+            "value": 1,
+            "label": "No engagement",
+            "description": "Completely flat — no creative choices whatsoever."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "visual_creativity",
+        "question": "Are there creative visual storytelling techniques? (unusual angles, metaphorical imagery, creative transitions)",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Highly creative",
+            "description": "Inventive visual language that enhances the narrative."
+          },
+          {
+            "value": 4,
+            "label": "Some creativity",
+            "description": "A few interesting visual choices."
+          },
+          {
+            "value": 3,
+            "label": "Standard",
+            "description": "Competent but conventional visual approach."
+          },
+          {
+            "value": 2,
+            "label": "Uninspired",
+            "description": "Generic visual presentation."
+          },
+          {
+            "value": 1,
+            "label": "Flat",
+            "description": "No visual storytelling — static and lifeless."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "bgm_consistency": [
+      {
+        "id": "bgm_mood_match",
+        "question": "Does the background music mood match the visual/narrative mood of each scene?",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {
+          "has_background_music": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Music mood perfectly complements every scene's emotional tone."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Music mood mostly matches; minor misalignment in one scene."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Music feels generic — not mismatched but not enhancing either."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Music mood clashes with the visual mood in some scenes."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Music is completely wrong for the content (e.g. upbeat during tragedy)."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "bgm_transition_smoothness",
+        "question": "Do music transitions between scenes feel smooth, without abrupt cuts or jarring volume changes?",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {
+          "has_background_music": true,
+          "has_scene_changes": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Music transitions are seamless — crossfades or natural breakpoints."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Transitions are mostly smooth; one minor audible cut."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some music cuts are noticeable but not jarring."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Music frequently cuts abruptly at scene changes."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Harsh audio cuts or overlapping tracks at every transition."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "bgm_tempo_pacing",
+        "question": "Does the music tempo/rhythm match the pacing of the visual action?",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {
+          "has_background_music": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Tempo mirrors the action pacing — builds during intense moments, relaxes during calm."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Tempo is appropriate; one segment feels slightly mismatched."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Tempo is constant and doesn't adapt to pacing changes."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Tempo actively contradicts the visual pacing."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Music rhythm is completely out of sync with the visual action."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "bgm_volume_balance",
+        "question": "Is the BGM volume balanced against dialogue/narration? (not drowning out speech, not inaudible)",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {
+          "has_background_music": true,
+          "has_dialogue": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Music ducks appropriately under dialogue; perfectly balanced."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Balance is good; music occasionally slightly loud."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Music sometimes competes with dialogue."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Dialogue is hard to hear over the music in multiple scenes."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Music completely drowns out or is entirely absent during dialogue."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "narration_reasonableness": [
+      {
+        "id": "speech_timing",
+        "question": "Does speech start and end at natural points? (no cut-off mid-word, no awkward silence gaps)",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {
+          "has_dialogue": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "All speech segments start and end cleanly at natural sentence/phrase boundaries."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Speech timing is mostly natural; one minor clipping."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some speech is cut off or has unnatural pauses."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Frequent mid-word cuts or awkwardly long gaps."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Speech is severely clipped, overlapping, or has nonsensical timing."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "speech_emotion_fit",
+        "question": "Does the vocal emotion/tone match the scene's mood? (e.g. not cheerful during a sad scene)",
+        "checkpoint_type": "likert",
+        "weight": 0.35,
+        "applicable_when": {
+          "has_dialogue": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Vocal emotion precisely matches the scene's mood in every segment."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Emotion is mostly appropriate; one segment feels slightly off."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Vocal emotion is flat/neutral regardless of scene mood."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Vocal emotion clashes with the scene mood in some segments."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Vocal emotion is completely wrong (e.g. laughing during crisis)."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "speech_intelligibility",
+        "question": "Is the speech clearly intelligible? (no garbling, mumbling, or AI-artefact distortion)",
+        "checkpoint_type": "likert",
+        "weight": 0.35,
+        "applicable_when": {
+          "has_dialogue": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Every word is crystal clear and easily understood."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Almost all speech is clear; one or two words are slightly unclear."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some phrases are hard to understand without replaying."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Significant portions are garbled or distorted."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Speech is largely unintelligible."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "generation_stability": [
+      {
+        "id": "visual_artifact_frequency",
+        "question": "How frequently do visual artefacts appear? (flickering, warping, morphing, ghosting)",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Clean",
+            "description": "No visible artefacts throughout the entire video."
+          },
+          {
+            "value": 4,
+            "label": "Rare",
+            "description": "1-2 very brief artefacts that most viewers would miss."
+          },
+          {
+            "value": 3,
+            "label": "Occasional",
+            "description": "Artefacts appear in a few scenes but don't dominate."
+          },
+          {
+            "value": 2,
+            "label": "Frequent",
+            "description": "Artefacts in many scenes; distracting."
+          },
+          {
+            "value": 1,
+            "label": "Pervasive",
+            "description": "Constant artefacts throughout — nearly unwatchable."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "resolution_sharpness",
+        "question": "Is the video sharp and well-resolved, or does it appear blurry/soft?",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Sharp",
+            "description": "Crisp detail throughout; looks like a professional render."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Mostly sharp; minor softness in some areas."
+          },
+          {
+            "value": 3,
+            "label": "Soft",
+            "description": "Noticeably softer than expected for the resolution."
+          },
+          {
+            "value": 2,
+            "label": "Blurry",
+            "description": "Significant blur that obscures detail."
+          },
+          {
+            "value": 1,
+            "label": "Very blurry",
+            "description": "Extremely blurry — looks like a low-resolution upscale."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "temporal_degradation",
+        "question": "Does the video quality degrade over time? (e.g. second half is blurrier, more artefacts than first half)",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Stable",
+            "description": "Quality is consistent from start to finish."
+          },
+          {
+            "value": 4,
+            "label": "Slight",
+            "description": "Very minor quality drop in the last few seconds."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Visible quality degradation in the second half."
+          },
+          {
+            "value": 2,
+            "label": "Significant",
+            "description": "Second half is markedly worse than the first."
+          },
+          {
+            "value": 1,
+            "label": "Severe",
+            "description": "Quality collapses dramatically — last portion is barely recognisable."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "color_consistency",
+        "question": "Are colours natural and consistent? (no random colour banding, posterisation, or saturation spikes)",
+        "checkpoint_type": "likert",
+        "weight": 0.15,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Natural",
+            "description": "Colours are natural, well-graded, and consistent."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Colours are mostly natural; very minor inconsistency."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some colour banding or saturation issues visible."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Frequent colour artefacts."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Severe posterisation, banding, or colour corruption."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "duration_completeness",
+        "question": "Does the video reach the expected duration (~60 seconds) without cutting short or having frozen/repeated frames at the end?",
+        "checkpoint_type": "binary",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [],
+        "na_score": null
+      }
+    ],
+    "text_video_consistency": [
+      {
+        "id": "scene_presence",
+        "question": "Are the key scenes/events described in the script visually present in the video?",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "All present",
+            "description": "Every scripted scene is visually realised."
+          },
+          {
+            "value": 4,
+            "label": "Mostly present",
+            "description": "One minor scripted detail is missing or vague."
+          },
+          {
+            "value": 3,
+            "label": "Partial",
+            "description": "Some scripted scenes are present; others are missing or replaced."
+          },
+          {
+            "value": 2,
+            "label": "Sparse",
+            "description": "Only a few scripted scenes appear; much of the script is not reflected."
+          },
+          {
+            "value": 1,
+            "label": "Absent",
+            "description": "The video bears almost no resemblance to the script."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "scene_order",
+        "question": "Do the scripted events appear in the correct temporal order in the video?",
+        "checkpoint_type": "binary",
+        "weight": 0.15,
+        "applicable_when": {},
+        "rubric": [],
+        "na_score": null
+      },
+      {
+        "id": "character_matching",
+        "question": "Do the characters' visual appearance (gender, age, attire) match the script descriptions?",
+        "checkpoint_type": "likert",
+        "weight": 0.25,
+        "applicable_when": {
+          "has_characters": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Characters perfectly match script descriptions in every detail."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Characters are recognisable from descriptions; minor deviations."
+          },
+          {
+            "value": 3,
+            "label": "Partial",
+            "description": "Some character attributes match; others are noticeably different."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Characters look quite different from descriptions."
+          },
+          {
+            "value": 1,
+            "label": "Mismatched",
+            "description": "Characters bear no resemblance to script descriptions."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "hallucinated_content",
+        "question": "Does the video contain significant visual elements NOT mentioned in the script? (hallucination check)",
+        "checkpoint_type": "likert",
+        "weight": 0.15,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Faithful",
+            "description": "No hallucinated content — everything shown is scripted."
+          },
+          {
+            "value": 4,
+            "label": "Minor extras",
+            "description": "One or two extra details that don't contradict the script."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "Some unscripted elements appear but don't dominate."
+          },
+          {
+            "value": 2,
+            "label": "Significant",
+            "description": "Major unscripted elements that confuse the narrative."
+          },
+          {
+            "value": 1,
+            "label": "Hallucinated",
+            "description": "Video is full of content not in the script."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "setting_accuracy",
+        "question": "Do the visual settings/locations match the script descriptions? (indoor/outdoor, time of day, weather)",
+        "checkpoint_type": "likert",
+        "weight": 0.15,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Every setting precisely matches script descriptions."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Settings are mostly accurate; minor environmental differences."
+          },
+          {
+            "value": 3,
+            "label": "Partial",
+            "description": "Some settings match; others are noticeably different."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Most settings don't match descriptions."
+          },
+          {
+            "value": 1,
+            "label": "Wrong",
+            "description": "Settings are completely different from what the script describes."
+          }
+        ],
+        "na_score": null
+      }
+    ],
+    "video_audio_consistency": [
+      {
+        "id": "lip_sync_quality",
+        "question": "When characters speak, do their lip movements match the audio timing?",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {
+          "has_characters": true,
+          "has_dialogue": true
+        },
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect sync",
+            "description": "Lip movements precisely match audio — professional quality."
+          },
+          {
+            "value": 4,
+            "label": "Good sync",
+            "description": "Lips are mostly in sync; very slight delay/advance."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable lag",
+            "description": "Visible but tolerable desynchronisation."
+          },
+          {
+            "value": 2,
+            "label": "Poor sync",
+            "description": "Obvious mismatch between lip movement and audio."
+          },
+          {
+            "value": 1,
+            "label": "No sync",
+            "description": "Lips move independently of audio — like a badly dubbed film."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "sound_event_alignment",
+        "question": "Do sound effects match the visual events that produce them? (e.g. door slam → bang sound at the right moment)",
+        "checkpoint_type": "likert",
+        "weight": 0.3,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Every visual event has a matching, well-timed sound effect."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Most events are properly accompanied; one minor timing issue."
+          },
+          {
+            "value": 3,
+            "label": "Partial",
+            "description": "Some events have sounds, others are silent or mistimed."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Frequent mismatches between sounds and visual events."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Sounds bear no relation to visual events."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "audio_continuity",
+        "question": "Is the audio continuous across shot transitions? (no abrupt cuts, pops, or silence gaps)",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Seamless",
+            "description": "Audio flows naturally across all transitions."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "One minor audio hiccup at a transition."
+          },
+          {
+            "value": 3,
+            "label": "Noticeable",
+            "description": "A few audible cuts or pops at transitions."
+          },
+          {
+            "value": 2,
+            "label": "Poor",
+            "description": "Frequent audio discontinuities."
+          },
+          {
+            "value": 1,
+            "label": "Broken",
+            "description": "Audio cuts out, pops, or glitches at most transitions."
+          }
+        ],
+        "na_score": null
+      },
+      {
+        "id": "ambient_sound_match",
+        "question": "Does the ambient audio match the visual environment? (e.g. outdoor sounds for outdoor scenes)",
+        "checkpoint_type": "likert",
+        "weight": 0.2,
+        "applicable_when": {},
+        "rubric": [
+          {
+            "value": 5,
+            "label": "Perfect",
+            "description": "Ambient audio perfectly matches every visual environment."
+          },
+          {
+            "value": 4,
+            "label": "Good",
+            "description": "Ambient is mostly appropriate; one scene feels slightly off."
+          },
+          {
+            "value": 3,
+            "label": "Generic",
+            "description": "Ambient audio is present but generic — doesn't enhance immersion."
+          },
+          {
+            "value": 2,
+            "label": "Mismatched",
+            "description": "Ambient audio clashes with the visual environment."
+          },
+          {
+            "value": 1,
+            "label": "Absent/wrong",
+            "description": "No ambient audio, or completely wrong ambience."
+          }
+        ],
+        "na_score": null
+      }
+    ]
+  },
+  "registered_metric_count": 9,
+  "checkpoint_count": 40,
+  "additional_code_metrics": [
+    "overall_multimodal_harmony",
+    "script_video_fidelity",
+    "text_audio_consistency",
+    "transition_quality",
+    "user_demand_fulfillment",
+    "user_requirement_consistency"
+  ],
+  "excluded_by_project_policy": [
+    "bgm_consistency"
+  ],
+  "excluded_checkpoint_ids": [
+    "bgm_mood_match",
+    "bgm_transition_smoothness",
+    "bgm_tempo_pacing",
+    "bgm_volume_balance"
+  ]
+}

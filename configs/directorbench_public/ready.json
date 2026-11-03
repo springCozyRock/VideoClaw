@@ -1,0 +1,27 @@
+{
+  "status": "ALIGNED_AND_OFFLINE_VALIDATED",
+  "upstream_commit": "63174ef2a00df2ae839d74a9af7f91883c790f8b",
+  "counts": {
+    "original": 75,
+    "cross_lingual": 134,
+    "multilingual": 219
+  },
+  "profiles": 7,
+  "native_input_pairs_validated": 2996,
+  "tests": 13,
+  "no_paid_calls": true,
+  "bound_videos": 0,
+  "full_optional_models_ready": true,
+  "artifacts": {
+    "scripts/directorbench_public.py": "f33b5dcec543a39faff3c8e1b5ae04f79019f2b31a1ae3df8b37defb49a60624",
+    "scripts/directorbench_public_provider.py": "99dd9cac6db6219b6a1d56e1196d1196cae9e6af44c8f7255fd6bd75efa9e136",
+    "scripts/directorbench_public.sh": "ac3c3141e708ff3716541752a5ae8e851a6d6b3c16b80db3ec697fd17ec19b53",
+    "tests/test_directorbench_public.py": "00ef6f258dacb7d10a7df08d19a63e0e6c03c7f6d6679aae9453b390799c5355",
+    "scripts/mobileviclip_runtime.py": "41695cc645259b45fa574625c49080c3e6dc9ca2360f02249eeea20d8344326f",
+    "scripts/mobileviclip_smoke.py": "961ad4554a052568ce365bf93a68af07f5faf3ab0e41f9c702ffaf419c7d505d",
+    "scripts/mobileviclip.sh": "cfe868c050d2b94ed27e1b1d4deacf43c07a5aafb553ffb4370974e08f5f6e10",
+    "configs/mobileviclip/runtime-imports.patch": "ca8af144eed7ff740d9cfdeeeec9db137e4cbc825d3d5d39cfa580aef47d70eb"
+  },
+  "mobileviclip_status": "DEPLOYED_AND_INFERENCE_VERIFIED",
+  "mobileviclip_smoke_report": "experiments/mobileviclip/smoke/result.json"
+}

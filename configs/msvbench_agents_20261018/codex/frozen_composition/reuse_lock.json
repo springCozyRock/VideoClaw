@@ -1,0 +1,21 @@
+{
+  "source": "/mnt/data/bts/repos/LongVideoMemory/configs/codex_composition_wan3/frozen_composition/skills/lvm-narrative-wan3",
+  "composition_hashes": {
+    "SKILL.md": "f62e42f597228e8c5145909ab617659fc29f1e35d0e2c12933194bb8c3613f61",
+    "references/consistency_playbook.md": "a6b593b8b2896743e3a8f9f5ba82ed418f60130903a183776f5bd22b7df8d6b8",
+    "references/planning_schema.md": "6ee27782cdcafe0aba288e8007875a27ba490b888173f46f9a186ee62fdf6e29",
+    "references/qa_checklist.md": "b57c1a65fa5f5acd412c69be72963616db9fc7b8eda26707cbcb2ccc27e37ac3"
+  },
+  "input_manifest_sha256": "3fd1fdab8fb3657efa9cc897b4c995ffe1dfa0f929e9794553f6b3fe75247aed",
+  "skill_changed": false,
+  "foundation_changes": "Only tool command paths changed to isolated adapter",
+  "model_settings": {
+    "image": "wan2.7-image",
+    "video": "wan3.0-video",
+    "resolution": "720P",
+    "ratio": "16:9",
+    "duration": "Each system plans independently; no fixed5s rule",
+    "judge": "qwen3.5-omni-plus",
+    "codex_agent": "qwen3.8-max-0902"
+  }
+}

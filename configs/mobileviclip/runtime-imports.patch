@@ -1,0 +1,57 @@
+diff --git a/models/backbones/internvideo2/__init__.py b/models/backbones/internvideo2/__init__.py
+index 8406a29..12c1fe7 100644
+--- a/models/backbones/internvideo2/__init__.py
++++ b/models/backbones/internvideo2/__init__.py
+@@ -1,5 +1,20 @@
+-from .internvl_clip_vision import internvl_clip_6b
+-from .internvideo2 import pretrain_internvideo2_1b_patch14_224, pretrain_internvideo2_6b_patch14_224
+-from .internvideo2_clip_vision import InternVideo2
+-from .internvideo2_clip_text import LLaMA, Tokenizer
+-from .mobileclip import TextTransformer, ClipTokenizer
+\ No newline at end of file
++"""Lazy backbone exports: MobileViCLIP does not require InternVideo/FlashAttention."""
++import importlib
++_EXPORTS = {
++    "internvl_clip_6b": ("internvl_clip_vision", "internvl_clip_6b"),
++    "pretrain_internvideo2_1b_patch14_224": ("internvideo2", "pretrain_internvideo2_1b_patch14_224"),
++    "pretrain_internvideo2_6b_patch14_224": ("internvideo2", "pretrain_internvideo2_6b_patch14_224"),
++    "InternVideo2": ("internvideo2_clip_vision", "InternVideo2"),
++    "LLaMA": ("internvideo2_clip_text", "LLaMA"),
++    "Tokenizer": ("internvideo2_clip_text", "Tokenizer"),
++    "TextTransformer": ("mobileclip", "TextTransformer"),
++    "ClipTokenizer": ("mobileclip", "ClipTokenizer"),
++}
++__all__ = list(_EXPORTS)
++def __getattr__(name):
++    if name not in _EXPORTS:
++        raise AttributeError(name)
++    module, attr = _EXPORTS[name]
++    value = getattr(importlib.import_module("." + module, __name__), attr)
++    globals()[name] = value
++    return value
+diff --git a/models/mobileviclip_small.py b/models/mobileviclip_small.py
+index 4b6bb82..f965365 100644
+--- a/models/mobileviclip_small.py
++++ b/models/mobileviclip_small.py
+@@ -10,7 +10,7 @@ import torchvision.transforms as transforms
+ from torchvision.transforms import InterpolationMode
+ 
+ import torch.utils.checkpoint as checkpoint
+-from .backbones.internvideo2 import InternVideo2, TextTransformer, ClipTokenizer
++from .backbones.internvideo2 import TextTransformer, ClipTokenizer
+ from .criterions import VTC_VTM_Loss
+ 
+ import copy
+diff --git a/models/mobileviclip_tiny.py b/models/mobileviclip_tiny.py
+index 2067ae4..606a7f2 100644
+--- a/models/mobileviclip_tiny.py
++++ b/models/mobileviclip_tiny.py
+@@ -10,7 +10,7 @@ import torchvision.transforms as transforms
+ from torchvision.transforms import InterpolationMode
+ 
+ import torch.utils.checkpoint as checkpoint
+-from .backbones.internvideo2 import InternVideo2, TextTransformer, ClipTokenizer
++from .backbones.internvideo2 import TextTransformer, ClipTokenizer
+ from .criterions import VTC_VTM_Loss
+ 
+ import copy

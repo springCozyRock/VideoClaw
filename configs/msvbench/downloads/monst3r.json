@@ -1,0 +1,9 @@
+{
+  "model": "Junyi42/MonST3R_PO-TA-S-W_ViTLarge_BaseDecoder_512_dpt",
+  "target": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/MotionQuality/tools/monst3r/checkpoints/MonST3R",
+  "status": "DOWNLOADED_NOT_INFERENCE_VERIFIED",
+  "revision": "1ea2a9eade23a10898ec73be3fd44b5aa4ea0255",
+  "attempt": 0,
+  "updated": 1792251486.4956694,
+  "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/MotionQuality/tools/monst3r/checkpoints/MonST3R"
+}

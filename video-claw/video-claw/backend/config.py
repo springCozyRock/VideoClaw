@@ -70,7 +70,7 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         "style": "realistic",
         "video_ratio": "16:9",
         "video_resolution": "720P",
-        "video_generation_mode": "first_frame",
+        "video_generation_mode": "keyframe2v",
     },
 }
 

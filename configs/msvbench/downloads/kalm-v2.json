@@ -1,0 +1,10 @@
+{
+  "model": "HIT-TMG/KaLM-embedding-multilingual-mini-instruct-v2",
+  "target": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/KaLM-embedding-multilingual-mini-instruct-v2",
+  "status": "DOWNLOADED_COMPONENT_VERIFIED",
+  "revision": "348e90d4084c1e2fbaac61f16a2d8c636192352a",
+  "attempt": 0,
+  "updated": 1792248916.08987,
+  "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/KaLM-embedding-multilingual-mini-instruct-v2",
+  "component_evidence": "experiments/msvbench_smoke/kalm_v2_component.json"
+}

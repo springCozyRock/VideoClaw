@@ -1,0 +1,229 @@
+{
+  "action_006": {
+    "clips": [
+      {
+        "clip_id": 1,
+        "start_sec": 0,
+        "end_sec": 18,
+        "description": "英雄发现红夹克目标正在右侧屋顶逃跑，立即追上，大声喊“别跑！”。远景交代相邻屋顶的空间，切到低机位跟拍，两人朝画面右方冲刺，英雄跃过低矮通风管，落地继续奔跑。旁白只说“追逐开始”。"
+      },
+      {
+        "clip_id": 2,
+        "start_sec": 18,
+        "end_sec": 42,
+        "description": "接上英雄追逐目标的动势。跟踪镜头与快速甩镜交替：逃跑者先跃过窄巷，英雄随后助跑、蹬地、腾空、落在同一对面屋顶，展示清楚起跳和落地。短暂侧面慢动作后恢复正常速度；目标绕过水箱，英雄沿同一路径逼近。不要瞬移或反转追逐方向。"
+      },
+      {
+        "clip_id": 3,
+        "start_sec": 42,
+        "end_sec": 67,
+        "description": "追逐来到屋顶铁栏杆与通风管之间。英雄拉近距离，低机位跟拍，越过最后一个障碍，安全抓住红夹克目标手臂，将其按住制服在屋顶。多角度快速切换但保持左右方位。以全景交代追逐终点和两名角色的清晰位置，紧张节奏逐渐平息。"
+      }
+    ],
+    "scenes": [
+      {
+        "scene_id": 1,
+        "start_sec": 0,
+        "end_sec": 67,
+        "description": "屋顶追逐与制服"
+      }
+    ],
+    "scene_boundaries_status": "predeclared screenplay units; model-generated internal cuts may differ. Narrative coda shares its final planned unit because the exact return-home cut is not known before rendering."
+  },
+  "cinematic_008": {
+    "clips": [
+      {
+        "clip_id": 1,
+        "start_sec": 0,
+        "end_sec": 18,
+        "description": "先展示无人的城市街道wide shot大全景，稳定镜头缓慢push-in向街道纵深推进。米色长风衣女性在中后段从右侧进入画面，缓慢走向固定路灯，结束在人物中景。"
+      },
+      {
+        "clip_id": 2,
+        "start_sec": 18,
+        "end_sec": 34,
+        "description": "同一女性在同一路灯旁停下，orbiting环绕镜头围绕人物平滑移动约180度，明确展示街道背景视差，保持黄金时刻光源与投影一致，人物轻轻转头。"
+      },
+      {
+        "clip_id": 3,
+        "start_sec": 34,
+        "end_sec": 48,
+        "description": "明确切换到Dutch angle荷兰角：摄影机横滚倾斜约20度，地平线明显斜置。女性从路灯旁向前行走，画面构图有张力，延续同一街道空间和夕阳照明。"
+      },
+      {
+        "clip_id": 4,
+        "start_sec": 48,
+        "end_sec": 62,
+        "description": "切换为handheld手持摄影，轻微自然摇晃跟随女性数步，不要过度抖动。最后保留手持质感缓慢后退拉远，人物走入街道远方，回归平静的街道全景。"
+      }
+    ],
+    "scenes": [
+      {
+        "scene_id": 1,
+        "start_sec": 0,
+        "end_sec": 62,
+        "description": "黄金时刻城市街道镜头语言"
+      }
+    ],
+    "scene_boundaries_status": "predeclared screenplay units; model-generated internal cuts may differ. Narrative coda shares its final planned unit because the exact return-home cut is not known before rendering."
+  },
+  "educational_008": {
+    "clips": [
+      {
+        "clip_id": 1,
+        "start_sec": 0,
+        "end_sec": 30,
+        "description": "开篇显示电网资源业务中台界面，左侧“直流输电线路建模”，右侧空白绘图区，上方标题“直流输电线路中台建模逻辑科普”，下方“真实业务场景还原，不改动任何业务规则”。缓慢展示模块。指定旁白：大家好，今天我们科普直流输电线路在电网资源业务中台的建模逻辑。带大家看懂极I、极II线路与主线的建模方式，以及不同网省的运维建模差异。"
+      },
+      {
+        "clip_id": 2,
+        "start_sec": 30,
+        "end_sec": 60,
+        "description": "同一客户端同一张图纸内，按顺序绘制红色极I、蓝色极II两条平行线路。在两条极线下分别出现杆塔和档距段示意，标注清楚；不要画成三条物理供电线。指定旁白：首先，在同源客户端的同一张图纸内，我们会先绘制两条核心线路——极I线路和极II线路。紧接着，在每条极线下方，分别绘制对应的输电设备，比如杆塔、档距段，完整还原直流线路的实际结构。"
+      },
+      {
+        "clip_id": 3,
+        "start_sec": 60,
+        "end_sec": 90,
+        "description": "继续同一图纸，汇聚红蓝极线生成黄色业务汇总主线，用虚线辅助标记强调主线起点终点与极I对齐，依次显示查询、统计图标。指定旁白：业务上，我们习惯将极I、极II算作一条线路，因此会汇聚这两条极线，生成一条主线，主线的起终点位置，默认和极I线路保持一致，这样能极大方便后续的查询和统计工作。"
+      },
+      {
+        "clip_id": 4,
+        "start_sec": 90,
+        "end_sec": 120,
+        "description": "长距离直流线路穿过多个不同颜色的网省区域。聚焦统一运维网省A，展示省级超高压公司与主线、极I、极II三条业务记录，明确是一套省内统一管理。指定旁白：我们都知道，直流输电线路的输电距离很长，往往会跨越多个网省。每个途经的网省，都会成立运维检修部，负责省内直流线路的运维工作。由于各省的管理模式不同，建模方式也会有差异：第一种是网省由省级超高压公司统一运维，这种情况下，会分别创建主线、极I、极II三条记录，统一管理省内全部直流线路。"
+      },
+      {
+        "clip_id": 5,
+        "start_sec": 120,
+        "end_sec": 150,
+        "description": "聚焦分段运维网省B，分成地市甲、地市乙，各自产生主线黄色、极I红色、极II蓝色三条记录；再用汇总箭头生成覆盖两市主线的全省统一主线，强调这是业务汇总。指定旁白：第二种是网省由省内地市公司分段运维，各地市公司会各自创建属于自己的主线、极I、极II三条记录，为了方便省内统计，还会再创建一条全省统一的主线，涵盖各地市创建的主线。"
+      },
+      {
+        "clip_id": 6,
+        "start_sec": 150,
+        "end_sec": 180,
+        "description": "左右分栏总结：左侧同源客户端同图纸建模，右侧跨网省运维建模，中间“建模逻辑延伸”箭头。按旁白逐项高亮核心短语，维持全部颜色和设备图例。指定旁白：最后，我们总结一下核心建模逻辑：第一，同源客户端同一张图纸，绘制极I、极II线路及对应杆塔、档距段，汇聚生成主线，主线起终点与极I一致；第二，跨网省线路，各省按运维模式建模，统一运维省份创建一套主线、极I、极II记录，分段运维省份各地市各建一套，再汇总生成省内总主线；核心目的都是为了方便查询、统计和运维管理。"
+      },
+      {
+        "clip_id": 7,
+        "start_sec": 180,
+        "end_sec": 210,
+        "description": "以完整逻辑流程图串联图纸绘制、设备挂接、极线汇聚、按省运维方式建模、业务查询统计。下方“直流输电线路中台建模——贴合真实业务，便捷运维统计”，右下角“科普完毕，感谢观看”，渐暗结束。指定旁白：以上就是直流输电线路在电网资源业务中台的完整建模逻辑，所有流程都贴合真实业务场景，尊重各省运维管理差异，核心是兼顾专业性与实用性，方便一线运维和后台统计工作。科普完毕，感谢观看。"
+      }
+    ],
+    "scenes": [
+      {
+        "scene_id": 1,
+        "start_sec": 0,
+        "end_sec": 30,
+        "description": "开场"
+      },
+      {
+        "scene_id": 2,
+        "start_sec": 30,
+        "end_sec": 90,
+        "description": "极线、设备与主线"
+      },
+      {
+        "scene_id": 3,
+        "start_sec": 90,
+        "end_sec": 150,
+        "description": "跨网省运维模式"
+      },
+      {
+        "scene_id": 4,
+        "start_sec": 150,
+        "end_sec": 180,
+        "description": "总结"
+      },
+      {
+        "scene_id": 5,
+        "start_sec": 180,
+        "end_sec": 210,
+        "description": "流程收尾"
+      }
+    ],
+    "scene_boundaries_status": "predeclared screenplay units; model-generated internal cuts may differ. Narrative coda shares its final planned unit because the exact return-home cut is not known before rendering."
+  },
+  "music_004": {
+    "clips": [
+      {
+        "clip_id": 1,
+        "start_sec": 0,
+        "end_sec": 20,
+        "description": "歌手从舞台暗处登场，灯带随120 BPM底鼓逐个点亮。镜头从全景推进到中近景，节拍上轻微跳切，展示歌手清晰口型。演唱原创歌词：“霓虹亮起，跟随心跳，穿过夜色，we own the night。”前奏逐步加入合成器和拍手声。"
+      },
+      {
+        "clip_id": 2,
+        "start_sec": 20,
+        "end_sec": 45,
+        "description": "相同舞台节奏爆发，120 BPM强底鼓、低音与明亮合成器进入高潮，舞者只在背景作为陪衬。动态轨道、低机位、环绕镜头在重拍切换，紫蓝霓虹灯墙脉冲与节拍对齐。歌手唱原创副歌：“跳动，跳动，点亮天空，feel the rhythm, let it go！”重复副歌形成连续律动，口型同步。"
+      },
+      {
+        "clip_id": 3,
+        "start_sec": 45,
+        "end_sec": 70,
+        "description": "延续同一120 BPM原创电子舞曲和女歌手，进入最后一轮高潮，镜头随底鼓切换近景与舞台全景，升起的灯墙在节拍上变化。歌手唱：“此刻闪耀，不再等候，one more beat, we steal the show！”末段音乐自然收束，最后重拍灯光齐闪，歌手定格，余响结束。"
+      }
+    ],
+    "scenes": [
+      {
+        "scene_id": 1,
+        "start_sec": 0,
+        "end_sec": 70,
+        "description": "原创电子音乐舞台"
+      }
+    ],
+    "scene_boundaries_status": "predeclared screenplay units; model-generated internal cuts may differ. Narrative coda shares its final planned unit because the exact return-home cut is not known before rendering."
+  },
+  "narrative_074": {
+    "clips": [
+      {
+        "clip_id": 1,
+        "start_sec": 0,
+        "end_sec": 10,
+        "description": "全景，暖光日系小公寓厨房，晴天。Q版企鹅女孩围粉色小围裙，踮脚站在小凳子上，搅动奶白色锅里的三文鱼粥，台面可见三文鱼和大米，小尾巴轻摇。女孩轻声哼“咕咕嘎嘎”，声音软萌，配轻柔日常环境声。"
+      },
+      {
+        "clip_id": 2,
+        "start_sec": 10,
+        "end_sec": 22,
+        "description": "同一厨房突然剧烈晃动，女孩放下勺子跑向右侧窗边。中景从女孩肩后看向窗外，天空变灰，巨型黑白奶牛猫走来，体型超过楼房，踩塌对面居民楼，猫爪逼近屋顶。表现惊讶和紧迫感；无对白，建筑破坏声。"
+      },
+      {
+        "clip_id": 3,
+        "start_sec": 22,
+        "end_sec": 34,
+        "description": "中景转特写，企鹅女孩坚定转身扯掉粉色围裙，摆变身姿势并喊“咕咕嘎嘎！”。亮蓝电光沿身体扩散，企鹅服变成带企鹅标识的黑色赛博风衣，战术眼镜和蓝色能量武器依次出现，同一张脸保持可辨认，身后碎裂的赛博城市光影。"
+      },
+      {
+        "clip_id": 4,
+        "start_sec": 34,
+        "end_sec": 48,
+        "description": "大动态全景，赛博企鹅少女冲破屋顶飞到空中，用蓝色能量光刃冲向同一只巨型奶牛猫，灵巧躲过拍打，光刃扫过带起彩色粒子和夸张日漫爆炸特效；无血腥。高速跟踪镜头清晰呈现少女和猫的位置，战斗电蓝高反差光。"
+      },
+      {
+        "clip_id": 5,
+        "start_sec": 48,
+        "end_sec": 60,
+        "description": "少女跳上巨型猫头，用能量光刃的平面轻敲猫脑袋，蓝光中巨猫缩成同花纹小奶猫。少女接住猫，落地摸猫，战衣消失变回原本企鹅女孩，甜甜说“咕咕嘎嘎~”。结尾回到原厨房，重新穿上粉围裙，把三文鱼粥盛入小碗喂猫，暖光安宁收尾。"
+      }
+    ],
+    "scenes": [
+      {
+        "scene_id": 1,
+        "start_sec": 0,
+        "end_sec": 34,
+        "description": "公寓日常、灾难与变身"
+      },
+      {
+        "scene_id": 2,
+        "start_sec": 34,
+        "end_sec": 60,
+        "description": "空中战斗与回归日常"
+      }
+    ],
+    "scene_boundaries_status": "predeclared screenplay units; model-generated internal cuts may differ. Narrative coda shares its final planned unit because the exact return-home cut is not known before rendering."
+  }
+}

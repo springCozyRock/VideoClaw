@@ -11,12 +11,19 @@ export interface ProviderGroup {
     models: ModelOption[];
 }
 
-export type VideoGenerationMode = 'first_frame' | 'start_end_frame' | 'reference';
+export type VideoGenerationMode = 'fflf2v' | 'grid2v' | 'multiref2v' | 'keyframe2v';
+
+export function normalizeVideoMode(value: string | undefined): VideoGenerationMode {
+    const aliases: Record<string, VideoGenerationMode> = { first_frame: 'keyframe2v', start_end_frame: 'fflf2v', reference: 'multiref2v' };
+    if (!value) return 'keyframe2v';
+    return aliases[value] || (['fflf2v', 'grid2v', 'multiref2v', 'keyframe2v'].includes(value) ? value as VideoGenerationMode : 'keyframe2v');
+}
 
 export const VIDEO_GENERATION_MODES: Array<{ id: VideoGenerationMode; label: string; ability: string; modelKey: string }> = [
-    { id: 'first_frame', label: '首帧生视频', ability: 'first_frame_i2v', modelKey: 'video_first_frame_model' },
-    { id: 'start_end_frame', label: '首尾帧生视频', ability: 'start_end_frame_i2v', modelKey: 'video_start_end_model' },
-    { id: 'reference', label: '参考图生视频', ability: 'reference_to_video', modelKey: 'video_reference_model' },
+    { id: 'fflf2v', label: '首尾帧 · fflf2v', ability: 'start_end_frame_i2v', modelKey: 'video_start_end_model' },
+    { id: 'grid2v', label: '联合分镜网格 · grid2v', ability: 'first_frame_i2v', modelKey: 'video_first_frame_model' },
+    { id: 'multiref2v', label: '人物/物件/场景参考 · multiref2v', ability: 'reference_to_video', modelKey: 'video_reference_model' },
+    { id: 'keyframe2v', label: '独立关键帧 · keyframe2v', ability: 'first_frame_i2v', modelKey: 'video_first_frame_model' },
 ];
 
 export function videoModeAbility(mode: string | undefined) {

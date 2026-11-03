@@ -1,0 +1,106 @@
+{
+  "status": "CODE_DATA_ALIGNED",
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "prefix": "/mnt/data/bts/repos/LongVideoMemory/.venvs/directorbench_public",
+  "base_prefix": "/mnt/data/bts/envs/vbench",
+  "source_module": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/directorbench_public/directorbench/__init__.py",
+  "dependencies": {
+    "pydantic": {
+      "available": true,
+      "version": "2.13.5",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/pydantic/__init__.py"
+    },
+    "openai": {
+      "available": true,
+      "version": "3.8.0",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/openai/__init__.py"
+    },
+    "langgraph": {
+      "available": true,
+      "version": "1.2.11",
+      "module_origin": null
+    },
+    "langchain_core": {
+      "available": true,
+      "version": "1.6.2",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/langchain_core/__init__.py"
+    },
+    "requests": {
+      "available": true,
+      "version": "2.34.2",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/requests/__init__.py"
+    },
+    "cv2": {
+      "available": true,
+      "version": "5.0.0.93",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/cv2/__init__.py"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.2.6",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/numpy/__init__.py"
+    },
+    "torch": {
+      "available": true,
+      "version": "2.5.1+cu121",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/torch/__init__.py"
+    },
+    "sentence_transformers": {
+      "available": true,
+      "version": "6.0.1",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/sentence_transformers/__init__.py"
+    },
+    "scenedetect": {
+      "available": true,
+      "version": "0.7.1",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/scenedetect/__init__.py"
+    }
+  },
+  "tools": {
+    "ffmpeg": "/usr/bin/ffmpeg",
+    "ffprobe": "/usr/bin/ffprobe"
+  },
+  "assets": {
+    "whisper_large_v3": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/.cache/faster-whisper-large-v3",
+      "ready": true
+    },
+    "sentence_bert": {
+      "path": "/mnt/data/bts/models/hf/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "ready": true
+    },
+    "mobileviclip_repo": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/third_party/mobileviclip",
+      "ready": true
+    },
+    "mobileviclip_weights": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/.cache/directorbench_public/models/mobileviclip_small.pt",
+      "ready": true
+    },
+    "mobileclip_s2_weights": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/.cache/directorbench_public/models/mobileclip_s2.pt",
+      "ready": true
+    },
+    "mobileviclip_verified_runtime": {
+      "ready": true,
+      "sha256": {
+        ".cache/directorbench_public/models/mobileviclip_small.pt": "d1d2b070e74a61522e6e0f10a3ac0c21fa275befc553980946302e3adb62d8f8",
+        ".cache/directorbench_public/models/mobileclip_s2.pt": "063a87b2a846791bcffafa9f7670ec3968d572a3e7f99e5e4b14348006631d6f",
+        "configs/mobileviclip/runtime-imports.patch": "ca8af144eed7ff740d9cfdeeeec9db137e4cbc825d3d5d39cfa580aef47d70eb",
+        "scripts/mobileviclip_runtime.py": "41695cc645259b45fa574625c49080c3e6dc9ca2360f02249eeea20d8344326f",
+        "third_party/mobileviclip/models/backbones/internvideo2/__init__.py": "8d0665a35b19f7df8d561b88a3f385c54e83403f5594842beb07bac24c4dc857",
+        "third_party/mobileviclip/models/mobileviclip_small.py": "a03f75693a1f2dddfee12678d40353df80937d521f0ee863320a956cdbf40ef8",
+        "third_party/mobileviclip/models/mobileviclip_tiny.py": "925152f2a75252ffef2f4db8af2c2a5c79ca001efadf7331f7d3ecd8086aa0fd"
+      },
+      "smoke_report": "/mnt/data/bts/repos/LongVideoMemory/experiments/mobileviclip/smoke/result.json",
+      "smoke_report_sha256": "070796141089e621d6845cdf355c2a1bd5450aea433f02e26ffac532e0308aff",
+      "num_frames": 8,
+      "precision": "fp32",
+      "device": "cpu (native DirectorBench scoring)",
+      "checkpoint_composition": "MobileCLIP-S2 base vision/text plus MobileViCLIP-Small trained parameters"
+    }
+  },
+  "all_optional_models_ready": true,
+  "no_api_calls": true,
+  "no_actual_metric_inference": true
+}

@@ -1,0 +1,11 @@
+{
+  "status": "DOWNLOADING",
+  "started": 1792244764.273646,
+  "models": [
+    {
+      "repo": "zhiqiulin/clip-flant5-xxl",
+      "revision": "89bad6fffe1126b24d4360c1e1f69145eb6103aa",
+      "status": "DOWNLOADING"
+    }
+  ]
+}

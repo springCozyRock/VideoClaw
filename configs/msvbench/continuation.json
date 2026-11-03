@@ -1,0 +1,153 @@
+{
+  "scope": "Only synthetic/public MSVBench fixtures; one-shot deployment continuation",
+  "tasks": {
+    "camera_control": {
+      "status": "FAILED",
+      "dependencies": [
+        "monst3r",
+        "sea-raft"
+      ],
+      "download_states": {
+        "monst3r": "DOWNLOADED_NOT_INFERENCE_VERIFIED",
+        "sea-raft": "DOWNLOADED_COMPONENT_VERIFIED"
+      },
+      "command": [
+        "bash",
+        "scripts/msvbench.sh",
+        "--method",
+        "public_reference_smoke",
+        "--story",
+        "01",
+        "--metric",
+        "camera_control",
+        "--videos",
+        "experiments/msvbench_smoke/public_pair/videos",
+        "--prompt",
+        "experiments/msvbench_smoke/public_pair/prompt.txt",
+        "--script",
+        "experiments/msvbench_smoke/public_pair/character_fixture.json",
+        "--camera",
+        "experiments/msvbench_smoke/public_pair/camera.txt",
+        "--output-root",
+        "experiments/msvbench_smoke/auto-20261017-233824-camera_control"
+      ],
+      "started": 1792251504.3025346,
+      "returncode": 1,
+      "evidence": "experiments/msvbench_smoke/auto-20261017-233824-camera_control/public_reference_smoke/01/camera_control/status.json",
+      "log": ".cache/msvbench/autoverify-camera_control.log",
+      "finished": 1792251573.6544342,
+      "reason": "Actual inference failed; score invalid. Inspect evidence/log."
+    },
+    "story_video_consistency": {
+      "status": "FAILED",
+      "dependencies": [
+        "kalm-v2",
+        "sharecaptioner"
+      ],
+      "download_states": {
+        "kalm-v2": "DOWNLOADED_COMPONENT_VERIFIED",
+        "sharecaptioner": "DOWNLOADED_NOT_INFERENCE_VERIFIED"
+      },
+      "command": [
+        "bash",
+        "scripts/msvbench.sh",
+        "--method",
+        "public_reference_smoke",
+        "--story",
+        "01",
+        "--metric",
+        "story_video_consistency",
+        "--videos",
+        "experiments/msvbench_smoke/public_pair/videos",
+        "--prompt",
+        "experiments/msvbench_smoke/public_pair/prompt.txt",
+        "--script",
+        "experiments/msvbench_smoke/public_pair/character_fixture.json",
+        "--camera",
+        "experiments/msvbench_smoke/public_pair/camera.txt",
+        "--output-root",
+        "experiments/msvbench_smoke/auto-20261018-095444-story_video_consistency"
+      ],
+      "started": 1792288484.3785927,
+      "returncode": 1,
+      "evidence": "experiments/msvbench_smoke/auto-20261018-095444-story_video_consistency/public_reference_smoke/01/story_video_consistency/status.json",
+      "log": ".cache/msvbench/autoverify-story_video_consistency.log",
+      "finished": 1792288534.17429,
+      "reason": "Actual inference failed; score invalid. Inspect evidence/log."
+    },
+    "background_consistency": {
+      "status": "FAILED",
+      "dependencies": [
+        "step1x"
+      ],
+      "download_states": {
+        "step1x": "DOWNLOADED_NOT_INFERENCE_VERIFIED"
+      },
+      "command": [
+        "bash",
+        "scripts/msvbench.sh",
+        "--method",
+        "public_reference_smoke",
+        "--story",
+        "01",
+        "--metric",
+        "background_consistency",
+        "--videos",
+        "experiments/msvbench_smoke/public_pair/videos",
+        "--prompt",
+        "experiments/msvbench_smoke/public_pair/prompt.txt",
+        "--script",
+        "experiments/msvbench_smoke/public_pair/character_fixture.json",
+        "--camera",
+        "experiments/msvbench_smoke/public_pair/camera.txt",
+        "--output-root",
+        "experiments/msvbench_smoke/auto-20261018-114840-background_consistency"
+      ],
+      "started": 1792295320.0305882,
+      "returncode": 1,
+      "evidence": "experiments/msvbench_smoke/auto-20261018-114840-background_consistency/public_reference_smoke/01/background_consistency/status.json",
+      "log": ".cache/msvbench/autoverify-background_consistency.log",
+      "finished": 1792295335.6699257,
+      "reason": "Actual inference failed; score invalid. Inspect evidence/log."
+    },
+    "vqa": {
+      "status": "FAILED",
+      "dependencies": [
+        "vqa"
+      ],
+      "download_states": {
+        "vqa": "DOWNLOADED_NOT_INFERENCE_VERIFIED"
+      },
+      "command": [
+        "bash",
+        "scripts/msvbench.sh",
+        "--method",
+        "public_reference_smoke",
+        "--story",
+        "01",
+        "--metric",
+        "vqa",
+        "--videos",
+        "experiments/msvbench_smoke/public_pair/videos",
+        "--prompt",
+        "experiments/msvbench_smoke/public_pair/prompt.txt",
+        "--script",
+        "experiments/msvbench_smoke/public_pair/character_fixture.json",
+        "--camera",
+        "experiments/msvbench_smoke/public_pair/camera.txt",
+        "--output-root",
+        "experiments/msvbench_smoke/auto-20261018-093233-vqa"
+      ],
+      "started": 1792287153.6471412,
+      "returncode": 1,
+      "evidence": "experiments/msvbench_smoke/auto-20261018-093233-vqa/public_reference_smoke/01/vqa/status.json",
+      "log": ".cache/msvbench/autoverify-vqa.log",
+      "finished": 1792287163.1844516,
+      "reason": "Actual inference failed; score invalid. Inspect evidence/log."
+    }
+  },
+  "pid": 2296483,
+  "status": "NEEDS_ATTENTION",
+  "started": 1792248951.9599924,
+  "updated": 1792295319.976623
+}

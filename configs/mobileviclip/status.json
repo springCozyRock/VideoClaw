@@ -1,0 +1,34 @@
+{
+  "status": "DEPLOYED_AND_INFERENCE_VERIFIED",
+  "date": "2026-10-18",
+  "upstream_repo": "https://github.com/MCG-NJU/MobileViCLIP",
+  "upstream_commit": "3706de2e69d30be05c08f8fb8a4ba0619f76ea43",
+  "official_weight_file_id": "1BWioaoo8WYYry_Vw72wI-bnpDUzNWRb5",
+  "base_weight_url": "https://docs-assets.developer.apple.com/ml-research/datasets/mobileclip/mobileclip_s2.pt",
+  "weights": {
+    "mobileviclip_small.pt": {
+      "bytes": 73853707,
+      "sha256": "d1d2b070e74a61522e6e0f10a3ac0c21fa275befc553980946302e3adb62d8f8"
+    },
+    "mobileclip_s2.pt": {
+      "bytes": 398067246,
+      "sha256": "063a87b2a846791bcffafa9f7670ec3968d572a3e7f99e5e4b14348006631d6f"
+    }
+  },
+  "runtime_sha256": {
+    "configs/mobileviclip/runtime-imports.patch": "ca8af144eed7ff740d9cfdeeeec9db137e4cbc825d3d5d39cfa580aef47d70eb",
+    "scripts/mobileviclip_runtime.py": "41695cc645259b45fa574625c49080c3e6dc9ca2360f02249eeea20d8344326f",
+    "third_party/mobileviclip/models/backbones/internvideo2/__init__.py": "8d0665a35b19f7df8d561b88a3f385c54e83403f5594842beb07bac24c4dc857",
+    "third_party/mobileviclip/models/mobileviclip_small.py": "a03f75693a1f2dddfee12678d40353df80937d521f0ee863320a956cdbf40ef8",
+    "third_party/mobileviclip/models/mobileviclip_tiny.py": "925152f2a75252ffef2f4db8af2c2a5c79ca001efadf7331f7d3ecd8086aa0fd"
+  },
+  "smoke_report": "experiments/mobileviclip/smoke/result.json",
+  "alignment_tests_passed": 13,
+  "installed_private_dependencies": {
+    "open_clip_torch": "2.32.0",
+    "spikingjelly": "0.0.0.0.14",
+    "snntorch": "0.9.4"
+  },
+  "no_paid_calls": true,
+  "historical_evaluations_rerun": false
+}

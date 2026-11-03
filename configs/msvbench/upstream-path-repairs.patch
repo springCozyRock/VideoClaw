@@ -1,0 +1,686 @@
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/__pycache__/__init__.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/__pycache__/__init__.cpython-310.pyc
+index 05c3434062c875201c40afdf0e1f140f7ee45962..b2e5d07e88f5a5fb94c45b2e16674dfacbb52772 100644
+GIT binary patch
+delta 91
+zcmcb>_>GY#pO=@50SI&oFK12UNpa58&&?~*Pf09E)K4lY)-Ose$S>CS$<Ip<%S=hl
+i_f5^sFRIi}O3h2o$W1KDF4oU2E(7!Qo#0{<dz}GmcOaSo
+
+delta 53
+zcmeyyc!7~8pO=@50SG?dv&)#slOpS(pORRTs9&5>sqY&c=9HS3oS_dUa}$fQCvJ8I
+E0J!cE*8l(j
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/datasets/__pycache__/__init__.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/datasets/__pycache__/__init__.cpython-310.pyc
+index 48cc62a73ba8d282d6f7fcb01200de0dd06e8de8..a3c12febc13897503dfaedb377ecd78973da682d 100644
+GIT binary patch
+delta 91
+zcmaFP*vrI|&&$ij00cUPm$N4F6gijc=jN5@rzDmn>L-;H>ldXK<QMDv<maV_Wu~O&
+i`=;jR7gg#frRF7P<R%tn7whL1mw|cuPH?e_vwZ+o1|W9;
+
+delta 53
+zcmeBWdd|p`&&$ij00f`!*=0=RDUuD;Pf09E)GyAc)b|Yzb4txi&d>*wxrs&D6A$_T
+E0IM4jv;Y7A
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/datasets/__pycache__/basic_datasets.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/datasets/__pycache__/basic_datasets.cpython-310.pyc
+index 1a657e60ad7674780825b7dd435e48c931237e9f..1f45d1c757460f2b57c5a125dad7fe84e0c85264 100644
+GIT binary patch
+delta 4449
+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
+
+delta 4398
+zcmb7Idr+L!73W*n1r|s`LI_}>EKulzJT)4ZAg~Y`9%2&`Q#Y-fb@u}{*$25FV8AvQ
+zZJlxIIKkUk#~GVU8><`p&~B@3GaBP7HpVnlbz;A%Y3wwa@xRt-XIiIYdw%Cz_FHzq
+zQkea5?z!il`#9%!&s{D)p`3g|$&VHk*fZ$oOl-&a^ZC=Z^4-k=-=wcu8=q;uZR8HO
+z8u5=eGlqR)fBX&GkVWyt*XHIZic3DSx?FCyzqjUAav(YYoq(?R#=NLf%8DXV#4Nf!
+zG8OiY3SU^&M7KPVe|Rl=b!#v(c|)7v@tyMKf@WJc9Q4XiL4(pGA1`?SOIt|cw23<C
+zy8y$0e!y)6dS*Bpp#E-obk*rRchX>|bht`3v{O4mA1#L<C&RAf<g6+d?X>VGyV-H3
+zp5qS%C%hpwl2|(#I<o{XV-LxuRurPiPzK2z53R9e)^8(uj6U@9*G|z#f1LRuZ6vRD
+zNIt%<F|oh++v~n#@vw2OX{=jELs8$Pu}xzPxzlYvZE|Kp6@%0e4VWO?SYIy`I{;q5
+zUVsm9cl^2H*OdK!$fJOyGjlTI^s<Gjjr+*??J!dTm<9(5`740!0G{S<NF#u>v)Cyw
+zmvpr4q8_Ir6d2qAIa}<8{8hl60FIBjEDlnshk72PkA_6#AldAWRqKUE9x8pv7Q(nt
+zyr67XW~-51q|kFIm&U?sWKyF;(}J_AXoDS}dn=?H0qs(j2b6&PXSutE_w!9?4*}Q}
+zTh5_*AD~O#RZ*rqAZIEnbEiq6D_(JrEZkJ0xZ|fPE?aC+lIEDhrEHhFV>WYZMuz;X
+zszpYds${IHRyi&&R-GW6s&1{=N5)QzFjs>tiDiivI2n<zSGTM=0@0lRewkHMRdyIk
+z2jBsK1yB#@mt8fr`&<xBr{IO2>8GsuHaZ>zj03s=I1fE{Qurd;L{w9qg&bDUE}$M1
+z-#~9sL{$Ucs0fY)Bfe0Aqq=4EphsS;Da$jq3|}MiA2m(uPeSA^JOzoFFfTWM@oz=o
+zQ_Ny4^?t|-k+P$9pdSYzasm4RVSs%B`a~4s1VPNw*B7%bnKJXRc@vaYg7V{9C*h&e
+z7THrbSj^tRaRH9AWAYh4QRlE^9UzT7erwU5VQ~<hGXy)uy@bw6Vdg>_Tg`xQPVreI
+zM+HX)TQee)4e48Qu&>S*fcUW7TVEoN_O1Rpmg`(+P-xj{*l*fgk0zZ<NZ$n<1#lQ1
+zgOo@}X=&J}jK#wZyDV#vScb(tkiIA1X)L!X5Rs)Do5Yil3jyB;90&XWz&eiMb<})`
+z#)z%5vuUL9hsj<xIgaLuq>e}Yh?-|G;%RxhX=Lu1WUo0QmeeKZcoid_h5p9?&I5#y
+z?u}L`egb$7igIxTvUx&$^3Ox}b3h#M3&3H5xuq$C?q32pST8_&5x|jkLE>4#BJnH0
+zax4<Rre5c2Bc{KBrMWQhs7IWF@+CkDXV82Za2oImpcrrlzz6jzBtD*bInwf0+iPfp
+zOX79F8vr(BV8b^__X*DNED5t4<wq?Wx~YJ9y~EC2gJ>oxn0L$!mT=w%<>)5jyaDv}
+ziQh80&dHZsoys{b?AEs3g-JgjUoi&8!)=F^B(DO)v&B6=|9CJmR!N0~uHiuCbTFVs
+zwN$EAEKjwY$g2?n4<rOqtbkx6^JJK~%$9fF3U55a%4rp^-}H&H$_(Ik@*$5@l{SeL
+zGNRr>lRhmE+`OZ4g^Xyxh-Ya;v;4y5)pLt!A+})?94M0+8w_UfLDAsExz$7BlF<)|
+zv)%zI8}I^vQ@;vQHJ}E-2V`db+&Gk70KOKH_RJP%K}zl;<5!aKEwFn9kW6?gi6@~*
+zDIe6VrhRC=B*^P;nQL4j2e#56aaMkCi?cGBs7C(3L!J_q<t<ERWcPXLa#btm<z22&
+zO4)$zLfMd4T*tgn5RuZV0%w!SdA>lBc{NN=T&p%k?<juaIP*T|?w6O_i*3e8`Dy!g
+zidz<M8M<?c4J<5*mJ_osRTlLEuh$>)X_{XRg}mOBYvNt(iSLRF^3)cGa)BBB=@y?7
+zjeo6UYm&k1d(!J-Sqh&P?^e$XhJ9nIHy9ZuesiL6W-V0#`<bAL+tRFniyeyO@rnOg
+z?c$w#soE8Fy{q&v8IlZjW(qz!J9bQWVusOViFM$UGmD-)SiJZtEPf{I-5Uqes>>g!
+zN6(v#3jg?YPzy#QTwrv&P<;U}52k0<beqQ(3`1qG>KNR;D37>H=Ufo$0E_F0o~<32
+zQq@^CwtVqmDtYYY`I;p}&kTmgjOwA2bB{HMmv4FzDa@eTeW8l9_B?ZAl0geEGHh?z
+zVsg$PQbF&gJbsP64P%2dm*i-#L%GEH^HlG)>;$vofA76Xsr`WLoFyq4!<Pw9_4)bH
+z$@!7EQOx|{;r~Zg{JU?D4e8*wNnb}veCo^BD|3s}!+c;E?+xSyr3{WTkqeOi2<_VR
+z_Xh9dL-g}g<1!=%;0mA(U<N%KO^SR&;+8dU)Q`~fXFy>R${@|l!TyI*?z+D~xm>+p
+zn@OE#r7}=cm~y$L1nR21eV|miN|#%?d~m>>zvx<fZ@{ho4(^!}e8E{$9x%L@<hc)v
+zi)6a+B{MBLzlWEkso;x-_r+Us%X<eqdsC-|`TGEK^XBDrjXH{HV_H55IT;qKMZs_J
+zzr;29*<ictVGO(h@FxP@7Et|B5zwvl&xDB?{!;6)Yy0`d(G-jt&q5Bwhf*7A>*46M
+uW4H&yty7c1kj9lr&+esva%k$L2%`HO;5^_0;1b{};2OP(Hpu@BZT~N=t+OWp
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/datasets/__pycache__/dover_datasets.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/datasets/__pycache__/dover_datasets.cpython-310.pyc
+index 365a95b6170364d4252f78a707e359248f17834e..8e33fad3fa5b12e6b265110088b8d36df0811c1d 100644
+GIT binary patch
+delta 417
+zcmcZ>@+X8RpO=@50SI&oFK2D!v1fO#)z8f<(N9S%Nz_j&Db_DaEyyp{_sP#o56etR
+z&G${s%`d9dPfE>8&d5zH$}ZN=EiMD|^qt^hn={zmxf!D-ZxCu^EZA%${F{lfWU`*v
+zQXqLnY%62I<Subd##@uOh{tkQ0<A7`1QF$%Wh82t*~)<ID$B_aBt<66%L-0DEUm-X
+zJo$rkJX;e;QOo8~nRrIFW(a$iY(0xq6lY>yUVeO9W=`rYZjiI%3yM<HGAoKYCI>6E
+z1FgBOwA^ePP{S?e{DP9A4v^OEAfg*cMDZ4+mK3Gt#3$!urskCt?EtA`bB1tsPTrxc
+z&ejQ1+cx>BvV$1N3Ab2MGLuVgG36KEVku9|$u6pzY^|cqxMOp?N-mQq*mSUtogi%>
+zD~j4SKU9ljlB)-4X3Z<jEvPI4x&IbdadsIfNcA%Fi>fEbYHF}GfRr~*?$%TShS56B
+F6##S6id_Hz
+
+delta 347
+zcmewpaxH`>pO=@50SG?dv&-1XW6v%duAh=vlBi#tQK|169Ojgomz<#wCUX;uvN!j!
+zyK^(%ntV;Dk+E=dgz#@B#?r|lVoQPKFR`tRg_AdkYcfVnz9k;ZT?I6>$Pq+TY<7~U
+zVP-6!yk9zuv1PKDOgvjNNW67(wM;xCTMLB!K(?L*XmWy*1Y_sqN~Lz7F^tN~&9(z&
+zZ!zZ=loWM>)a?Kf-9RFWw;;8oC^aWOIVUqUucT-vNFAFqgtKe%J!N&aE|A*x$=oUq
+zVj%l&v7}@sm)v5?FTTZ6o|uzeR6RLSMVWEu=2n$lCQ-2IU>&<a+CWwmwQpuuk7JT+
+x0BL5;E6pvaECM<97FTh0S!POVzFua2QO)FLO%1k2kn*O<8#R@HVQ@ur1ps2MZzuo&
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/__init__.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/__init__.cpython-310.pyc
+index 2b6b340b2a5040549fbc4812396e59eec8b3b335..b788ea505a9c3f2c68617de8c9311b30256c00f3 100644
+GIT binary patch
+delta 93
+zcmbQtx|5YBpO=@50SI&oFK2D!5o2;L)z8f<(N9S%Nz_j&Db_DaEyyp{_sP#o56etR
+k&G${s%`d9dPfE>8&d5zH$}ZN=EiMD|^qt^hlkJ&809?Bt$^ZZW
+
+delta 55
+zcmdnVI+>LxpO=@50SG?dv&-1XBgQ1_ub+}wlBi#tQK|169Ojgomz<#wCUX;uvL~l9
+Gg#ZAub`b{v
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/conv_backbone.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/conv_backbone.cpython-310.pyc
+index 95e5701da8a7f1d0435dcfdae9c0c5f0ab10ebab..18fb7a36c8072d372087f70e76410cab8be9bb69 100644
+GIT binary patch
+delta 96
+zcmZ3zjPc?!MxK0LUM>b8&?&r}wUOsJvvZYxZeEFgN@7W(eo{%Xeo<;cezCq!eqMT5
+oW=d+lZ)$FSQKf!TYF=_iZeme(v3_oG8JMT<1Q**Zz#{Dr07XP19smFU
+
+delta 58
+zcmcb(jB)icMxK0LUM>b8_<YYUV<XRVX4w$^l*E!m{o;&Dec#|Pr_{XU41F+}n^=^+
+J*^EWn9{@E#6I%cP
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/evaluator.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/evaluator.cpython-310.pyc
+index fce0e21bf1c79c60f051de5ecfbe6aeb58876b6f..74fb6817c62a5e591a30a8e963a66c55c488ba09 100644
+GIT binary patch
+delta 288
+zcmeCOSZ~3b&&$ij00di0FK3l)<o(CwT&AC!SE8SiSdyrpR8p*8lv<EqtnZVbmmZdx
+zlA7<Enwwu#sh^aZmz<HCSd?9?pIcl8=IJ}Z#Wrg&YqQq#r||YN*7D@Z)NrQ=WHS}j
+zmhh&)#Dsuif<UqM5<a*X2T)81DArrT-^2*U>?y)EoGBvW49!f83?%|J3=m!oPct(k
+zL!oF5ThWOcRu_g?rCQDuo?6}-&Kia+#xlmDwS|jI1SenOc*E#6c|WHVW60#2oHm=q
+rxPEf0F{Uu5u=Fz3FvPQ$u%#e)94QRJ44SNdZbfdu(AaDyc7+uH44PDc
+
+delta 238
+zcmZ2)(PhD#&&$ij00f`!*=3Y$<o(Aa8=#+(Sdyq;oKdOo8yx18nwOlR4<>UHi?TQS
+zF>AAi^Q7?hGS>3s$<%PC@Mkj>)t2z4z{G@rVgf+1_7Xn07za>H5GdAL!r#OQ#_TCV
+zHJmBJ;tb79j0`0LH4Gr$<O>|)j3Sd?aQu-DS;=^dtDq>gq$n{nFEu5KD>*-}EWS85
+zF(+pdmkp!aW*e@b-0I9JEGewLOf?Mg>?Ld|2p&fYLokCTn_ozg8_;WRo1?|9umS)9
+C)kLrW
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/head.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/head.cpython-310.pyc
+index c4315f7b3006a433ed1705dbb0691f536b90370c..289039f6f1a84bf523eb5fd94e350f818bc7cf9b 100644
+GIT binary patch
+delta 100
+zcmbOyeMFikpO=@50SI&oFK2D!QDbo~)X&W;(N9S%Nz_j&Db_DaEyyp{_sP#o56etR
+s&G${s%`d9dPfE>8&d5zH$}ZN=EiMD|^qt^hoBdgya4_DQY{Hub0B4{g{Qv*}
+
+delta 62
+zcmX>iJx`h^pO=@50SG?dv&-1XqsAiZt)G%ulBi#tQK|169Ojgomz<#wCUX;uvNxBq
+NJmFxBnjFQO1pr7G6W{;<
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/swin_backbone.cpython-310.pyc b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/__pycache__/swin_backbone.cpython-310.pyc
+index c62b794bf470f5485d8cff13b54fab5eab5d6072..45839daf2b5f46098668c096b5baa16dfe8e3eee 100644
+GIT binary patch
+delta 305
+zcmdmejq%|%MxK0LUM>b8&?&r}wUI}Z*||zTH?KrLC9xz?KdGcxzbLgJzgXWVKQBEj
+zGbJ_OH#IlEs8T;EH7_|MH?b(YSU<P849wGaf{SgoW0s6&ytO$ZE{9pxmXU$s7H3Fh
+zL8@y}QGSsobCEC5x}wh@!g2G%#Gg!z?wfC?2s1MJOn#r5D+p3w^dBS}1|obIC-=$9
+zOzuqk$QV4iI$f60ck;}1Sy4ZbDt{261X2|MVg*h<ovy|f0%C?u{+@oDF=F!N3>Bsb
+z#>pF<#3u7+Mhb@m<y=@87>a?IfrCMWu_%0Vb*3?+OfXmzkhsMaoLX3#npcvUm{SB&
+PUZgacF;RH(-K;nO_UK&e
+
+delta 235
+zcmaEOjdAxiMxK0LUM>b8_<YYUV<V3!vuucdN@7W(esM;nzHe}tQ)*svhCZ0gO)SdZ
+zoWd*_%^0=0E-r_e(Pr}NL}^Bc&Fo1(nHb$RGo}hNGI~!IP0JOqVPs$^`VTa<C=5h+
+zZ=RIK$H*8od11ONqtE31>9V4}AQgTfLJ6e8AH)in{4rgPEf~ZMoh+Min=yRy&kPkH
+z$(SZQxgdaLvT0_da2Qb9g@u8k7>F4-7(^J0!Zt6=G-ebJ0_y`3x442+3rkb;N-`63
+Liozzp&ME@{>=8oy
+
+diff --git a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/evaluator.py b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/evaluator.py
+index 2f20a1c..187b868 100644
+--- a/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/evaluator.py
++++ b/Benchmarks/EvalCrafter/metrics/DOVER/dover/models/evaluator.py
+@@ -78,7 +78,7 @@ class DOVER(nn.Module):
+             elif t_backbone_size == "swin_small":
+                 b = swin_3d_small(**backbone[key])
+             elif t_backbone_size == "conv_tiny":
+-                b = convnext_3d_tiny(pretrained=True)
++                b = convnext_3d_tiny(pretrained=False)
+             elif t_backbone_size == "conv_small":
+                 b = convnext_3d_small(pretrained=True)
+             elif t_backbone_size == "conv_femto":
+@@ -234,7 +234,7 @@ class MinimumDOVER(nn.Module):
+     def __init__(self):
+         super().__init__()
+         self.technical_backbone = VideoBackbone()
+-        self.aesthetic_backbone = convnext_3d_tiny(pretrained=True)
++        self.aesthetic_backbone = convnext_3d_tiny(pretrained=False)
+         self.technical_head = VQAHead(pre_pool=False, in_channels=768)
+         self.aesthetic_head = VQAHead(pre_pool=False, in_channels=768)
+ 
+diff --git a/Benchmarks/vistorybench/vistorybench/bench/style/csd/__pycache__/clip_model.cpython-310.pyc b/Benchmarks/vistorybench/vistorybench/bench/style/csd/__pycache__/clip_model.cpython-310.pyc
+index 16568b096bcabb5bb6260628fa3d67f3b6e647ee..857d95430ff594778ad0b4a28d3a1995f93363ea 100644
+GIT binary patch
+delta 4078
+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
+
+delta 3954
+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
+C{(;s2
+
+diff --git a/Benchmarks/vistorybench/vistorybench/bench/style/csd/__pycache__/csd_model.cpython-310.pyc b/Benchmarks/vistorybench/vistorybench/bench/style/csd/__pycache__/csd_model.cpython-310.pyc
+index 46f113fc502e16c42334f16fb780b7f3f646d170..916a59a7eafb19f6ffd76120bdd61f0a3cb07cf6 100644
+GIT binary patch
+delta 1042
+zcmY*X&rj4q6sEh~-FCYxAi+fh48{a%0u|I4j6aA(NDQ1r517!D>FiSMPV02KuwMKN
+zJWcfKnUgVG{SQ1DPQH`zZ_tBA6X(sMtUY{v^L~79-ka~!*pIPVQm<DB)HnD1c<+5}
+z)gVymM0DQ|GPejtA`ZYf;ANF?IKVOSXV+^p;e~++yd9BwoTf?UttYJYBnoM=LE8!M
+zdOMVn-FCpAWnMe$=#zK<pHIFr-Y!Cs(UxX*i`-Jo;Iw!U`bjR*TtK<^*FAgS$nC=J
+zcui&UAq2clA2>%}3Jqfz%(VyWkHKuwIEO-$fV9l32FNAz;^akDacF?;`y>vs%=b@-
+zk*Fba^Y!vLniB|<2w1?U6{ss-LfcjVcFL1IN(2r2+he#UAC_)E8b<Rh!U#e`M-)K)
+zq%om!{I|KD;xeW<2%`$HAj6GV1BKF=Uqf|1DnFMp0>w;(t_{^Fi&!QCMkpV{qVo!%
+zBoa<`!HifWVDKPNugLwJMa_h_eJJnKsI@D=+=+q=Doi<p*mn&u+WkYwcjXylLH;gG
+z9(^k}jFEFluLme%kAg@*PFW2HtdP=_Bxx7qvbA|rFXsj(-$Pi&<Z?(m5usZ)iKDcg
+zgf!-QPCc<6wjn=SfwzRoC6cht0-w`%D7q<ijo!*npIO(e$fx$#mrzmpf-(W6Omt)F
+z+8k+gV{U4aAWh>gzk^;}5>%TxBO*#z5QE*DKYBs=T@`aJ-AXN%De3vBZ7oc`rh;38
+zoOUSBsNbZ4$T{7rW%5Jy!W1~1sx$M$h=~3rV#}KRUR~L~rp(P%ejPm}1?rmrivudY
+zA0|YJ0hbJxQdUa2=<*dT(ORED>vRdHQdyL5oau>0q^<KSx?D?Op0S=RZpmY3eiq6b
+WNtnk}ON%cc8`ktu_8vsKwb?%fSPQxU
+
+delta 974
+zcmY*XyKdA#6phzjuf5KO5CU1EBm__%7Ld&YlmdzfL}*A65-6s?njKGKgEO|qvrCp1
+zi60nIqSPr-M9UvgP$5mpFHrH2VD4;C78hr(eD68;`J?%zIh;2d^&$8+Hj)p+o7P=a
+z>!$Qogv-!YHW7!)I^?eQ9}jU~KR>ryF&4O0CcW0y&a?ZJk)-v6W?0ZzezcBOk<IA7
+zVT3lXX$A`RIgX>eBZ`htZvQn}eW=T~m1Hu|k-Px_Sq7kf;@K0{dE`8L`1q-E_G#8p
+zl|6#wva@U<iJdFclbUgCDL;xxhRZUFPK7~eT)ubSZA^gK1h@<U1U{ufmpBc!rvdo|
+z&tFiY8yQRw?m+VDy`2#-&jE}Aj2n*z)i_N|XqNp;Zn~I(5Ew5X(*Q-3kjWdWR7ZY~
+zHu#vd-0}vpOA&{@s;6bjN`V=n{34JpX;4*>bCMt@WvM{&$ZgIdr=8*w)mY9Ca2AD@
+zvJM6-mS5ckYwqNad)vBm0d!2IHi%V3j@)iqc5tS=HYP9IIit!UdC@~&Ole^(nRvVF
+zW-cMnmjPCQ?#8s65{i71rNu!W(~O%IO|z!YarxcDt(!U+RY}geEBrbTtFh=6G_?BD
+zKHIS2tjRb2w*=L6yr4{|YAJdd4SfzWCNX!6ATElm$CuzQ%tzJtI*f=kXE;NCe;Vm)
+z%3InOdL|XBr%Yd61Se~5lCR6p_0<^^a4I^SMR7{R;Osy<kki3~=L_20-Q<h#rwWQb
+z|Nj6~EsElt=!L_4m8Y+#pj`C$8c@tV&w_Q<?b$iZ%TK}8sd?=V8~mDnlxNnw#8`jz
+fx8$#2X%V?wdECjUIUha;YQPzg>`z{94=?@&VAbR;
+
+diff --git a/Metrics/MotionQuality/ActionStrength.py b/Metrics/MotionQuality/ActionStrength.py
+index 5089ade..7bd53a7 100644
+--- a/Metrics/MotionQuality/ActionStrength.py
++++ b/Metrics/MotionQuality/ActionStrength.py
+@@ -9,8 +9,9 @@ import torch
+ from PIL import Image
+ import argparse
+ 
++sys.path.append(os.path.join(CURRENT_DIR, "tools", "RAFT"))
+ from raft import RAFT
+-from tools.RAFT.core.utils.utils import InputPadder
++from Metrics.MotionQuality.tools.RAFT.core.utils.utils import InputPadder
+ 
+ # Set target resolution
+ TARGET_WIDTH = 1280
+diff --git a/Metrics/MotionQuality/CameraControl.py b/Metrics/MotionQuality/CameraControl.py
+index 485cc5d..0d01db2 100644
+--- a/Metrics/MotionQuality/CameraControl.py
++++ b/Metrics/MotionQuality/CameraControl.py
+@@ -44,7 +44,7 @@ class CameraControl:
+             output_dir=output_dir,
+             silent=silent
+         )
+-        self.demo_data_dir = os.path.join(CURRENT_DIR, 'tools', 'monst3r', 'demo_data')
++        self.demo_data_dir = os.path.join(self.processor.output_dir, 'frames')
+         
+         # Initialize Gemini API with default settings
+         self.gemini_api = GeminiAPI(
+diff --git a/Metrics/StoryVideoAlignment/BlipBleuScore.py b/Metrics/StoryVideoAlignment/BlipBleuScore.py
+index 3729f98..6d8f04f 100644
+--- a/Metrics/StoryVideoAlignment/BlipBleuScore.py
++++ b/Metrics/StoryVideoAlignment/BlipBleuScore.py
+@@ -7,8 +7,8 @@ from transformers import AutoProcessor, Blip2ForConditionalGeneration
+ from pycocoevalcap.bleu.bleu import Bleu
+ from pathlib import Path
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+-BLIP2_MODEL_PATH = os.path.join(BASE_DIR, "StoryVideoAlignment", "checkpoints", "blip2-opt-2.7b")
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
++BLIP2_MODEL_PATH = os.path.join(BASE_DIR, "Metrics", "StoryVideoAlignment", "checkpoints", "blip2-opt-2.7b")
+ 
+ class BlipBleuScore:
+     def __init__(self, model_path=None):
+diff --git a/Metrics/StoryVideoAlignment/DetectionCountScore.py b/Metrics/StoryVideoAlignment/DetectionCountScore.py
+index 852ba9a..e1ba4e9 100644
+--- a/Metrics/StoryVideoAlignment/DetectionCountScore.py
++++ b/Metrics/StoryVideoAlignment/DetectionCountScore.py
+@@ -10,9 +10,9 @@ import time
+ from pathlib import Path
+ from typing import Dict, List, Any
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ TOOLS_DIR = os.path.join(BASE_DIR, "Tools")
+-OUTPUT_DIR = os.path.join(BASE_DIR, "StoryVideoAlignment", "gemini_detection_results")
++OUTPUT_DIR = os.path.join(BASE_DIR, "Metrics", "StoryVideoAlignment", "gemini_detection_results")
+ 
+ sys.path.append(TOOLS_DIR)
+ from gemini_api import GeminiAPI
+diff --git a/Metrics/StoryVideoAlignment/ShotPerspectiveAlignment.py b/Metrics/StoryVideoAlignment/ShotPerspectiveAlignment.py
+index 8740f60..682f388 100644
+--- a/Metrics/StoryVideoAlignment/ShotPerspectiveAlignment.py
++++ b/Metrics/StoryVideoAlignment/ShotPerspectiveAlignment.py
+@@ -51,7 +51,7 @@ class ShotPerspectiveAligner:
+         }
+ 
+         # Create results directory if it doesn't exist
+-        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+         self.results_dir = os.path.join(base_dir, "StoryVideoAlignment", "eval_res")
+         os.makedirs(self.results_dir, exist_ok=True)
+         self.results_file = os.path.join(self.results_dir, "ShotPerspectiveAlignment_results.json")
+diff --git a/Metrics/StoryVideoAlignment/StateShiftPersistence.py b/Metrics/StoryVideoAlignment/StateShiftPersistence.py
+index 7165d74..1e5b25d 100644
+--- a/Metrics/StoryVideoAlignment/StateShiftPersistence.py
++++ b/Metrics/StoryVideoAlignment/StateShiftPersistence.py
+@@ -2,9 +2,9 @@ import json
+ import sys
+ import os
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ TOOLS_DIR = os.path.join(BASE_DIR, "Tools")
+-EVAL_RES_DIR = os.path.join(BASE_DIR, "StoryVideoAlignment", "eval_res")
++EVAL_RES_DIR = os.path.join(BASE_DIR, "Metrics", "StoryVideoAlignment", "eval_res")
+ 
+ sys.path.append(TOOLS_DIR)
+ from gemini_api import GeminiAPI
+diff --git a/Metrics/StoryVideoAlignment/StoryVideoAlignment.py b/Metrics/StoryVideoAlignment/StoryVideoAlignment.py
+index a4d238a..2055ddb 100644
+--- a/Metrics/StoryVideoAlignment/StoryVideoAlignment.py
++++ b/Metrics/StoryVideoAlignment/StoryVideoAlignment.py
+@@ -6,7 +6,7 @@ import numpy as np
+ from typing import List, Dict, Any, Optional
+ import traceback
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ TOOLS_DIR = os.path.join(BASE_DIR, "Tools")
+ 
+ """
+@@ -792,11 +792,11 @@ if __name__ == "__main__":
+     # video_dir = "path/to/your/video_dir"  # Replace with an actual video directory.
+     # prompt_path = "path/to/your/prompt.txt"  # Replace with an actual prompt file.
+     # script_path = "path/to/your/script.json"  # Replace with an actual script file.
+-    # output_file = os.path.join(BASE_DIR, "StoryVideoAlignment", "eval_res", "results.json")
++    # output_file = os.path.join(BASE_DIR, "Metrics", "StoryVideoAlignment", "eval_res", "results.json")
+     video_dir = "path/to/your/video_dir"  # Replace with an actual video directory.
+     prompt_path = "path/to/your/prompt.txt"  # Replace with an actual prompt file.
+     script_path = "path/to/your/script.json"  # Replace with an actual script file.
+-    output_file = os.path.join(BASE_DIR, "StoryVideoAlignment", "eval_res", "msvbench_results.json")
++    output_file = os.path.join(BASE_DIR, "Metrics", "StoryVideoAlignment", "eval_res", "msvbench_results.json")
+     
+     try:
+         results = evaluator.evaluate(video_dir, prompt_path, script_path, output_file)
+diff --git a/Metrics/StoryVideoAlignment/StoryVideoConsistency.py b/Metrics/StoryVideoAlignment/StoryVideoConsistency.py
+index dfc0cb0..8be1468 100644
+--- a/Metrics/StoryVideoAlignment/StoryVideoConsistency.py
++++ b/Metrics/StoryVideoAlignment/StoryVideoConsistency.py
+@@ -1,17 +1,17 @@
+ import os
+-os.environ['HTTP_PROXY'] = 'YOUR_PROXY_URL'  # Set to empty string or remove if no proxy is needed
+-os.environ['HTTPS_PROXY'] = 'YOUR_PROXY_URL'  # Set to empty string or remove if no proxy is needed
++# Placeholder proxy removed: use caller environment  # Set to empty string or remove if no proxy is needed
++# Placeholder proxy removed: use caller environment  # Set to empty string or remove if no proxy is needed
+ import torch
+ import numpy as np
+ from sentence_transformers import SentenceTransformer
+ from tools.ShareGPT4Video.captioner.SimpleSlidingCaptioner import SimpleSlidingCaptioner
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ CAPTIONER_MODEL_PATH = os.path.join(
+-    BASE_DIR, "StoryVideoAlignment", "tools", "ShareGPT4Video", "captioner", "weights"
++    BASE_DIR, "Metrics", "StoryVideoAlignment", "tools", "ShareGPT4Video", "captioner", "weights"
+ )
+ KALM_MODEL_PATH = os.path.join(
+-    BASE_DIR, "StoryVideoAlignment", "tools", "KaLM-embedding-multilingual-mini-instruct-v2"
++    BASE_DIR, "Metrics", "StoryVideoAlignment", "tools", "KaLM-embedding-multilingual-mini-instruct-v2"
+ )
+ 
+ 
+@@ -37,7 +37,7 @@ class VideoPromptConsistency:
+                 KALM_MODEL_PATH,
+                 trust_remote_code=True,
+                 truncate_dim=None,
+-                model_kwargs={"torch_dtype": torch.bfloat16, "attn_implementation": "flash_attention_2"},
++                model_kwargs={"torch_dtype": torch.bfloat16, "attn_implementation": os.environ.get("MSVBENCH_KALM_ATTN", "sdpa")},
+             )
+             self.kalm_model.max_seq_length = 512
+         except Exception as e:
+diff --git a/Metrics/StoryVideoAlignment/StoryVideoConsistencyKaLMGemini.py b/Metrics/StoryVideoAlignment/StoryVideoConsistencyKaLMGemini.py
+index 9b060a0..b77b9ac 100644
+--- a/Metrics/StoryVideoAlignment/StoryVideoConsistencyKaLMGemini.py
++++ b/Metrics/StoryVideoAlignment/StoryVideoConsistencyKaLMGemini.py
+@@ -1,6 +1,6 @@
+ import os
+-os.environ['HTTP_PROXY'] = 'YOUR_PROXY_URL'  # Set to empty string or remove if no proxy is needed
+-os.environ['HTTPS_PROXY'] = 'YOUR_PROXY_URL'  # Set to empty string or remove if no proxy is needed
++# Placeholder proxy removed: use caller environment  # Set to empty string or remove if no proxy is needed
++# Placeholder proxy removed: use caller environment  # Set to empty string or remove if no proxy is needed
+ import torch
+ import numpy as np
+ from google import genai
+@@ -8,12 +8,12 @@ from google.genai import types
+ from sentence_transformers import SentenceTransformer
+ from tools.ShareGPT4Video.captioner.SimpleSlidingCaptioner import SimpleSlidingCaptioner
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ CAPTIONER_MODEL_PATH = os.path.join(
+-    BASE_DIR, "StoryVideoAlignment", "tools", "ShareGPT4Video", "captioner", "weights"
++    BASE_DIR, "Metrics", "StoryVideoAlignment", "tools", "ShareGPT4Video", "captioner", "weights"
+ )
+ KALM_MODEL_PATH = os.path.join(
+-    BASE_DIR, "StoryVideoAlignment", "tools", "KaLM-embedding-multilingual-mini-instruct-v2"
++    BASE_DIR, "Metrics", "StoryVideoAlignment", "tools", "KaLM-embedding-multilingual-mini-instruct-v2"
+ )
+ 
+ 
+diff --git a/Metrics/StoryVideoAlignment/VQAScore.py b/Metrics/StoryVideoAlignment/VQAScore.py
+index f068a31..a5e4a12 100644
+--- a/Metrics/StoryVideoAlignment/VQAScore.py
++++ b/Metrics/StoryVideoAlignment/VQAScore.py
+@@ -2,8 +2,8 @@ import os
+ #os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+ import sys
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+-T2V_METRICS_DIR = os.path.join(BASE_DIR, "StoryVideoAlignment", "tools", "t2v_metrics")
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
++T2V_METRICS_DIR = os.path.join(BASE_DIR, "Metrics", "StoryVideoAlignment", "tools", "t2v_metrics")
+ T2V_CACHE_DIR = os.path.join(T2V_METRICS_DIR, "weights", "clip-flant5-xxl")
+ TMP_FRAME_DIR = os.path.join(BASE_DIR, "Evaluation", "results", "tmp", "story_video_alignment")
+ 
+@@ -28,7 +28,7 @@ class VideoVQAScore:
+             cap.release()
+             return []
+         
+-        frame_interval = int(fps * interval_seconds)
++        frame_interval = max(1, int(fps * interval_seconds))
+         frames = []
+         
+         frame_indices = range(0, total_frames, frame_interval)
+@@ -57,7 +57,7 @@ class VideoVQAScore:
+         
+         try:
+             # Create temporary directory if it doesn't exist
+-            temp_dir = TMP_FRAME_DIR
++            temp_dir = os.path.join(os.environ['MSVBENCH_AUDIT_DIR'], 'vqa_frames') if os.environ.get('MSVBENCH_AUDIT_DIR') else TMP_FRAME_DIR
+             os.makedirs(temp_dir, exist_ok=True)
+             
+             # Save all frames temporarily and calculate scores
+diff --git a/Metrics/VideoConsistency/BackgroundConsistency.py b/Metrics/VideoConsistency/BackgroundConsistency.py
+index 4f477d0..1f9435a 100644
+--- a/Metrics/VideoConsistency/BackgroundConsistency.py
++++ b/Metrics/VideoConsistency/BackgroundConsistency.py
+@@ -14,7 +14,7 @@ class BackgroundConsistencyProcessor:
+                  num_steps=28,
+                  cfg_guidance=6.0,
+                  size_level=1024,
+-                 offload=False,
++                 offload=True,
+                  quantized=False,
+                  prompt="Remove all people(boy, girl, man, woman) and animals from the image",
+                  output_dir=os.path.join(CURRENT_DIR, "tools", "tmp"),
+@@ -31,12 +31,12 @@ class BackgroundConsistencyProcessor:
+         )
+         
+         self.prompt = prompt
+-        self.output_dir = output_dir
+-        self.result_path = result_path
++        self.output_dir = os.path.join(os.environ['MSVBENCH_AUDIT_DIR'], 'background_edits') if os.environ.get('MSVBENCH_AUDIT_DIR') else output_dir
++        self.result_path = os.path.join(self.output_dir, 'results_dreamsim.txt')
+         
+         # Initialize DreamSim model
+         device = "cuda"
+-        self.model, self.preprocess = dreamsim(pretrained=True, device=device)
++        self.model, self.preprocess = dreamsim(pretrained=True, device=device, cache_dir=os.environ.get("MSVBENCH_DREAMSIM_CACHE", "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim"))
+         self.device = device
+     
+     def process_images_and_calculate_similarity(self, image_path1, image_path2):
+diff --git a/Metrics/VideoConsistency/FaceConsistency.py b/Metrics/VideoConsistency/FaceConsistency.py
+index 077afad..bf21bad 100644
+--- a/Metrics/VideoConsistency/FaceConsistency.py
++++ b/Metrics/VideoConsistency/FaceConsistency.py
+@@ -14,7 +14,7 @@ from scipy.ndimage import binary_dilation
+ import re
+ from torchvision import datasets, transforms
+ from timm.models import create_model, load_checkpoint
+-from deepface import DeepFace
++from msvbench_face_bridge import DeepFaceProxy as DeepFace
+ 
+ # Add SAM and tracking paths
+ CURRENT_DIR = os.path.dirname(__file__)
+diff --git a/Metrics/VisualQuality/Dover.py b/Metrics/VisualQuality/Dover.py
+index 0bd7218..f0bea1d 100644
+--- a/Metrics/VisualQuality/Dover.py
++++ b/Metrics/VisualQuality/Dover.py
+@@ -1,7 +1,7 @@
+ import os
+ import sys
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+-DOVER_TOOL_DIR = os.path.join(BASE_DIR, "VisualQuality", "tools", "DOVER")
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
++DOVER_TOOL_DIR = os.path.join(BASE_DIR, "Benchmarks", "EvalCrafter", "metrics", "DOVER")
+ sys.path.append(DOVER_TOOL_DIR)
+ import torch
+ import pickle as pkl
+@@ -79,7 +79,7 @@ class DOVEREvaluator:
+         # Load DOVER model
+         self.evaluator = DOVER(**self.opt["model"]["args"]).to(self.device)
+         self.evaluator.load_state_dict(
+-            torch.load(self.opt["test_load_path"], map_location=self.device)
++            torch.load(os.path.join(BASE_DIR, "Metrics", "VisualQuality", "checkpoints", "DOVER", "DOVER.pth"), map_location=self.device)
+         )
+         
+         # Setup data options
+diff --git a/Metrics/VisualQuality/Musiq.py b/Metrics/VisualQuality/Musiq.py
+index d9b227f..b14218e 100644
+--- a/Metrics/VisualQuality/Musiq.py
++++ b/Metrics/VisualQuality/Musiq.py
+@@ -7,8 +7,8 @@ from pyiqa.archs.musiq_arch import MUSIQ
+ from PIL import Image
+ import datetime
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+-MUSIQ_MODEL_PATH = os.path.join(BASE_DIR, "VisualQuality", "checkpoints", "MusIQ", "musiq.pth")
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
++MUSIQ_MODEL_PATH = os.path.join(BASE_DIR, "Metrics", "VisualQuality", "checkpoints", "MusIQ", "musiq.pth")
+ 
+ 
+ class MusiqEvaluator:
+diff --git a/Metrics/VisualQuality/StyleConsistency.py b/Metrics/VisualQuality/StyleConsistency.py
+index a78a096..d416dc4 100644
+--- a/Metrics/VisualQuality/StyleConsistency.py
++++ b/Metrics/VisualQuality/StyleConsistency.py
+@@ -1,9 +1,9 @@
+ import os
+ import sys
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
+-CSD_CODE_DIR = os.path.join(BASE_DIR, "Benchmark", "vistorybench", "vistorybench", "bench", "style", "csd")
+-CSD_MODEL_PATH = os.path.join(BASE_DIR, "VisualQuality", "checkpoints", "CSD-ViT-L", "pytorch_model.bin")
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
++CSD_CODE_DIR = os.path.join(BASE_DIR, "Benchmarks", "vistorybench", "vistorybench", "bench", "style", "csd")
++CSD_MODEL_PATH = os.path.join(BASE_DIR, "Metrics", "VisualQuality", "checkpoints", "CSD-ViT-L", "pytorch_model.bin")
+ 
+ sys.path.append(CSD_CODE_DIR)
+ from csd_model import CSD_CLIP
+diff --git a/Metrics/VisualQuality/VisualQuality.py b/Metrics/VisualQuality/VisualQuality.py
+index cfa2995..78465ec 100644
+--- a/Metrics/VisualQuality/VisualQuality.py
++++ b/Metrics/VisualQuality/VisualQuality.py
+@@ -5,7 +5,7 @@ from pathlib import Path
+ import numpy as np
+ from typing import List, Dict, Any, Optional
+ 
+-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../.."))
++BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+ 
+ # Note: to reduce initialization overhead, evaluators are lazily loaded on demand
+ 
+@@ -510,9 +510,9 @@ if __name__ == "__main__":
+     evaluator = VisualQualityEvaluator()
+     
+     # video_dir = "path/to/your/video_dir"  # Replace with an actual video directory.
+-    # output_file = os.path.join(BASE_DIR, "VisualQuality", "results.json")
++    # output_file = os.path.join(BASE_DIR, "Metrics", "VisualQuality", "results.json")
+     video_dir = "path/to/your/video_dir"  # Replace with an actual video directory.
+-    output_file = os.path.join(BASE_DIR, "VisualQuality", "msvbench_results.json")
++    output_file = os.path.join(BASE_DIR, "Metrics", "VisualQuality", "msvbench_results.json")
+     
+     try:
+         results = evaluator.evaluate(video_dir, output_file)

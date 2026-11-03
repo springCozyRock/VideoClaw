@@ -1,0 +1,10 @@
+{
+  "model": "Lin-Chen/ShareCaptioner-Video",
+  "target": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/ShareGPT4Video/captioner/weights",
+  "status": "DOWNLOADED_NOT_INFERENCE_VERIFIED",
+  "revision": "b59e7f65811bf91150508bbfbb49ce7a59226ec9",
+  "attempt": 2,
+  "updated": 1792288466.6038036,
+  "error": "('Connection broken: IncompleteRead(5471410135 bytes read, 82424360 more expected)', IncompleteRead(5471410135 bytes read, 82424360 more expected))",
+  "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/ShareGPT4Video/captioner/weights"
+}

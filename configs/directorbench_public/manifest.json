@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "prepared_at": "2026-10-17T14:32:12.445999+00:00",
+  "source": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/directorbench_public",
+  "commit": "63174ef2a00df2ae839d74a9af7f91883c790f8b",
+  "raw_sha256": {
+    "datasets/directorbench_public/raw/profiles.jsonl": "c6b69ba9858685f29efc5b5b995492a32bb8213043a1d1abde436079526aa7c7",
+    "datasets/directorbench_public/raw/dataset_original.jsonl": "1b552f62fd27efd5c42e2928ba5bb4324fbb0530787d452a96e64d8ffd8c9528",
+    "datasets/directorbench_public/raw/dataset_cross_lingual.jsonl": "f938823a45a22baa3b9ad03bc7eab83ba5c3e3b77ddf914baf47933d9d3f1fe5",
+    "datasets/directorbench_public/raw/dataset_multilingual.jsonl": "e306e55a5e07ec4b068c30438754b0c8daf176289b838190b54d8ee4423d8bb4"
+  },
+  "normalized_sha256": {
+    "datasets/directorbench_public/normalized/cross_lingual.jsonl": "8082775b2ccfb59eabbc24a604225fee7a195c131b8a4c01069aac96e367c84b",
+    "datasets/directorbench_public/normalized/multilingual.jsonl": "6aa5564d8c7e561e8dca5f3a8035d2adda2d1e04c058423437b2091b60487f97",
+    "datasets/directorbench_public/normalized/profiles.jsonl": "6c66005406f8cd857b55cb210a4685ff2d061ba16f51929c1ce0cd175a58cb54",
+    "datasets/directorbench_public/normalized/original.jsonl": "574998bfc3357174ed6398d9e0632e4755fa707a5e76c80b21fc3a8a8b94fabd"
+  },
+  "index_sha256": "820f76564d79da510ab5aa2db60f5a50a73537132f4c3ba23bbb59196fb8fd36",
+  "protocol_sha256": "1c267987cafc47153a13d7b368d0d12ff4c30a8831ccbd693bb20f819b3ffa8d",
+  "registry_sha256": "c361b83ea3e966d72f4130aba3df5a3a705c097ad4c80b72721d23b5238226c1",
+  "counts": {
+    "original": 75,
+    "cross_lingual": 134,
+    "multilingual": 219
+  },
+  "total_variants": 428,
+  "profiles": 7,
+  "evaluation_pairs": 2996,
+  "warnings": {
+    "target_duration_missing": 144,
+    "script_durations_incomplete": 74,
+    "script_duration_differs": 226,
+    "text_visual_shot_ids_differ": 102
+  },
+  "data_status": "ALIGNED_PUBLIC_RELEASE",
+  "video_status": "NOT_GENERATED; explicit bindings required"
+}

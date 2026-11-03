@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { CheckCircle, Circle, Loader, Edit3, AlertCircle, Square, Zap, Settings2, ChevronDown } from 'lucide-react';
@@ -147,33 +147,33 @@ function ModelSelector({
   };
 
   const activeVideoModel =
-    config.video_generation_mode === 'start_end_frame'
+    config.video_generation_mode === 'fflf2v'
       ? config.video_start_end_model
-      : config.video_generation_mode === 'reference'
+      : config.video_generation_mode === 'multiref2v'
         ? config.video_reference_model
         : config.video_first_frame_model;
   const activeVideoProviders =
-    config.video_generation_mode === 'start_end_frame'
+    config.video_generation_mode === 'fflf2v'
       ? startEndVideoProviders
-      : config.video_generation_mode === 'reference'
+      : config.video_generation_mode === 'multiref2v'
         ? referenceVideoProviders
         : firstFrameVideoProviders;
   const activeVideoLabel = VIDEO_GENERATION_MODES.find(item => item.id === config.video_generation_mode)?.label || '首帧生视频';
 
   const updateVideoMode = (mode: VideoGenerationMode) => {
     const nextModel =
-      mode === 'start_end_frame'
+      mode === 'fflf2v'
         ? config.video_start_end_model
-        : mode === 'reference'
+        : mode === 'multiref2v'
           ? config.video_reference_model
           : config.video_first_frame_model;
     onChange({ ...config, video_generation_mode: mode, video_model: nextModel });
   };
 
   const updateActiveVideoModel = (model: string) => {
-    if (config.video_generation_mode === 'start_end_frame') {
+    if (config.video_generation_mode === 'fflf2v') {
       onChange({ ...config, video_start_end_model: model, video_model: model });
-    } else if (config.video_generation_mode === 'reference') {
+    } else if (config.video_generation_mode === 'multiref2v') {
       onChange({ ...config, video_reference_model: model, video_model: model });
     } else {
       onChange({ ...config, video_first_frame_model: model, video_model: model });

@@ -1,0 +1,236 @@
+--- a/AutomaticSkillOptimization/args.py
++++ b/AutomaticSkillOptimization/args.py
+@@ -5,8 +5,8 @@
+ WS_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+ _CONFIG_DIR = os.path.join(WS_ROOT, "AutomaticSkillOptimization", "configuration_files")
+ 
+-CODEX_WORKSPACE = os.path.join(WS_ROOT, "_codex_workspace")
+-CODEX_BIN = shutil.which("codex") or os.path.expanduser("~/.npm-global/bin/codex")
++CODEX_WORKSPACE = os.environ.get("LVM_VW_WORKSPACE", os.path.join(WS_ROOT, "_codex_workspace"))
++CODEX_BIN = os.environ.get("LVM_CODEX_BIN") or shutil.which("codex") or os.path.expanduser("~/.npm-global/bin/codex")
+ CODEX_SESSIONS_DIR = os.path.expanduser("~/.codex/sessions")
+ 
+ CLAUDE_BIN = shutil.which("claude") or os.path.expanduser("~/.npm-global/bin/claude")
+@@ -20,13 +20,13 @@
+     os.path.join(OPENCLAW_WORKSPACE, "composition_skills_expert"),
+ ]
+ 
+-FOUNDATION_SKILLS_DIR = os.path.join(WS_ROOT, "skills")
+-DATASET_DIR = os.path.join(WS_ROOT, "dataset")
++FOUNDATION_SKILLS_DIR = os.environ.get("LVM_VW_FOUNDATION", os.path.join(WS_ROOT, "skills"))
++DATASET_DIR = os.environ.get("LVM_VW_DATASET", os.path.join(WS_ROOT, "dataset"))
+ 
+-OUTPUT_DIR = os.path.join(WS_ROOT, "generate_materials")
++OUTPUT_DIR = os.environ.get("LVM_VW_OUTPUT", os.path.join(WS_ROOT, "generate_materials"))
+ HALF_STOPPED_DIR = OUTPUT_DIR + "_half_stopped"
+ FAILED_DIR = OUTPUT_DIR + "_failed"
+-RUNNING_DIR = os.path.join(os.path.dirname(OUTPUT_DIR), "running_logs")
++RUNNING_DIR = os.environ.get("LVM_VW_LOGS", os.path.join(os.path.dirname(OUTPUT_DIR), "running_logs"))
+ BACKUP_DIR = os.path.join(WS_ROOT, "backups")
+ BACKUP_ORIGINAL_CREATOR_PATH_EXPERT = os.path.join(BACKUP_DIR, "original_video-skill-creator")
+ BACKUP_ORIGINAL_CREATOR_PATH_VANILLA = os.path.join(BACKUP_DIR, "original_skill-creator")
+--- a/AutomaticSkillOptimization/codex_claude_pipeline_utils.py
++++ b/AutomaticSkillOptimization/codex_claude_pipeline_utils.py
+@@ -42,7 +42,7 @@
+     else:
+         for item in sorted(os.listdir(source_dir)):
+             src = os.path.join(source_dir, item)
+-            if os.path.isdir(src):
++            if os.path.isdir(src) and os.path.isfile(os.path.join(src, "SKILL.md")):
+                 source_items.append((item, src))
+ 
+     copied = []
+@@ -66,14 +66,17 @@
+     return {
+         item
+         for item in os.listdir(skill_dir)
+-        if os.path.isdir(os.path.join(skill_dir, item))
++        if os.path.isdir(os.path.join(skill_dir, item)) and os.path.isfile(os.path.join(skill_dir, item, "SKILL.md"))
+     }
+ 
+ 
+ def skill_exists_for_run(skill_name, skill_dir, args):
+     if args.use_existing_skill_dir and args.existing_skill_dir:
+         return skill_name in skill_names_in_dir(args.existing_skill_dir)
+-    return os.path.isdir(os.path.join(skill_dir, skill_name))
++    path = os.path.join(skill_dir, skill_name, "SKILL.md")
++    if not os.path.isfile(path): return False
++    with open(path, encoding="utf-8") as handle: text = handle.read()
++    return bool(text.strip()) and "[TODO" not in text
+ 
+ 
+ async def formalize_gen_output(session_name, args, session_ids=None):
+--- a/AutomaticSkillOptimization/configuration_files/codex/AGENTS.md
++++ b/AutomaticSkillOptimization/configuration_files/codex/AGENTS.md
+@@ -1,22 +1,6 @@
+-# Agent Reading Instructions
++# VideoWeaver Codex Composition Skill experiment
+ 
+-When working in this repository, agents should not read or inspect files under the following paths unless the user explicitly asks for one of them:
+-
+-- `<repo_root>/cc_deepseek/`
+-- `<repo_root>/cc_opus4.7/`
+-- `<repo_root>/cc_seed_result/`
+-- `<repo_root>/codex_gpt55/`
+-- `<repo_root>/output_eval/`
+-- `<repo_root>/VideoSkill/`
+-- `./<EXP_ID>/`                  (previous experiment archives)
+-- `./codex/`                      (this runner's runtime output dir)
+-- `./videos_failed/`
+-- `./videos_half_stopped/`
+-
+-Treat these paths as out of scope for routine context gathering, searching, and documentation review.
+-
+-## Output dir convention (codex)
+-
+-- 所有产物必须落到 `get-output-dir` 返回的目录下：`./codex/output/{thread_name}_{thread_id}/[<subdir>]`
+-- 与 Claude Code 的差异：codex 使用 `CODEX_THREAD_NAME` / `CODEX_THREAD_ID` env，而不是 `CLAUDE_CODE_SESSION_NAME` / `CLAUDE_CODE_SESSION_ID`
+-- 详细见 `.agents/skills/get-output-dir/SKILL.md`
++Use the provided foundation skills and the requested composition skill. Plan the concrete task, invoke actual generation tools, inspect outputs, and produce final.mp4 plus its plan and asset provenance.
++This is a Wan3/Qwen tool-adapted variant. Read each actual SKILL.md for its current capabilities. Use the private environment's Python (on PATH). Only write within the current runtime workspace and experiment output tree. Use get-output-dir for session outputs.
++Provider credentials are read internally by the tool adapter. Do not read, print, copy or change .env/auth files. Do not inspect old pilot results or other cases to build the current story. Creation sessions may inspect only foundation skill instructions and the category query; no real evaluation case inputs.
++Frozen source skills/configuration must stay unchanged. Keep task-specific plans, references and observations in the current session outputs. Do not install packages, change shared environments, delegate to other agents or evolve skills. If a paid submission has an unknown outcome, stop and preserve its state rather than issuing another request.
+--- a/AutomaticSkillOptimization/configuration_files/codex/config.toml
++++ b/AutomaticSkillOptimization/configuration_files/codex/config.toml
+@@ -1,2 +1,3 @@
+ [shell_environment_policy]
+-set = { OUTPUT_DIR = "{{OUTPUT_DIR}}" }
++inherit = "all"
++set = { OUTPUT_DIR = "{{OUTPUT_DIR}}", PATH = "/mnt/data/bts/repos/LongVideoMemory/.venvs/codex_composition/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin" }
+--- a/AutomaticSkillOptimization/inference_CodeX/codex_cli_tool.py
++++ b/AutomaticSkillOptimization/inference_CodeX/codex_cli_tool.py
+@@ -443,6 +443,7 @@
+         "total_tokens": total,
+         "cache_hit_rate": cached_for_rate / inp if inp > 0 else 0,
+         "model_context_window": usage.get("model_context_window"),
++        "cost_status": "UNPRICED: numeric zeros are upstream placeholders, not free usage",
+         "cost": {
+             "input": 0.0,
+             "output": 0.0,
+@@ -471,7 +472,7 @@
+     log_file=None,
+     overwrite_log=False,
+     model=None,
+-    sandbox="danger-full-access",
++    sandbox="workspace-write",
+ ):
+     """Run Codex CLI non-interactively.
+ 
+@@ -519,6 +520,14 @@
+         ]
+         if sandbox == "danger-full-access":
+             cmd.append("--dangerously-bypass-approvals-and-sandbox")
++        model = model or os.environ.get("LVM_CODEX_MODEL")
++        cmd.extend(["--ephemeral", "--ignore-user-config", "--disable", "memories", "--disable", "multi_agent",
++                    "-c", 'approval_policy="never"',
++                    "-c", "sandbox_workspace_write.network_access=true",
++                    "-c", "model_reasoning_effort=" + json.dumps(os.environ.get("LVM_CODEX_REASONING", "high"))])
++        runtime_root = os.environ.get("LVM_VW_RUN_ROOT")
++        if runtime_root:
++            cmd.extend(["--add-dir", runtime_root])
+         if model:
+             cmd.extend(["--model", model])
+         cmd.append(message)
+@@ -530,6 +539,8 @@
+             # Do not leak the parent Codex thread id into the child run. Codex
+             # should inject the child run's own CODEX_THREAD_ID for tools.
+             child_env.pop("CODEX_THREAD_ID", None)
++            for key in ("CODEX_API_KEY", "OPENAI_API_KEY", "OPENAI_BASE_URL"):
++                child_env.pop(key, None)
+ 
+             proc = await asyncio.create_subprocess_exec(
+                 *cmd,
+@@ -539,10 +550,21 @@
+                 start_new_session=True,
+             )
+             active_processes.add(proc)
++            async def read_live(stream, suffix):
++                root = os.environ.get("LVM_VW_LOGS", cwd)
++                os.makedirs(root, exist_ok=True)
++                filename = os.path.join(root, safe_segment(session_name) + "." + str(proc.pid) + suffix)
++                chunks = []
++                with open(filename, "wb") as live:
++                    while True:
++                        chunk = await stream.read(65536)
++                        if not chunk: break
++                        chunks.append(chunk); live.write(chunk); live.flush()
++                return b"".join(chunks)
+ 
+             try:
+                 stdout_data, stderr_data = await asyncio.wait_for(
+-                    proc.communicate(), timeout=timeout_seconds
++                    asyncio.gather(read_live(proc.stdout, ".events.live.jsonl"), read_live(proc.stderr, ".stderr.live.log")), timeout=timeout_seconds
+                 )
+             except asyncio.TimeoutError:
+                 await _stop_process_group(proc, _log, "timeout")
+@@ -576,8 +598,7 @@
+                 write_jsonl_records(events_path, records)
+ 
+             rollout_path = find_rollout_by_session_id(session_id) if session_id else None
+-            if session_id and not rollout_path:
+-                rollout_path = find_latest_rollout_after(start_time)
++            # Ephemeral runs use their own stdout events; never borrow another session rollout.
+             raw_path = rollout_path or events_path
+ 
+             if rollout_path:
+--- a/AutomaticSkillOptimization/inference_CodeX/pipeline.py
++++ b/AutomaticSkillOptimization/inference_CodeX/pipeline.py
+@@ -326,11 +326,11 @@
+         skill_creator_prefix = None
+         original_creator_path = None
+     elif args.skill_type == "vanilla":
+-        skill_dir = fixed_skill_dir
++        skill_dir = fixed_skill_dir if args.use_existing_skill_dir else os.environ.get("LVM_VW_SKILL_CREATE_DIR", fixed_skill_dir)
+         skill_creator_prefix = CODEX_VANILLA_SKILL_CREATOR_PREFIX
+         original_creator_path = CODEX_ORIGINAL_CREATOR_PATH_VANILLA
+     elif args.skill_type == "expert":
+-        skill_dir = fixed_skill_dir
++        skill_dir = fixed_skill_dir if args.use_existing_skill_dir else os.environ.get("LVM_VW_SKILL_CREATE_DIR", fixed_skill_dir)
+         skill_creator_prefix = CODEX_EXPERT_SKILL_CREATOR_PREFIX
+         original_creator_path = CODEX_ORIGINAL_CREATOR_PATH_EXPERT
+     else:
+@@ -437,7 +437,7 @@
+         else:
+             sync_composition_skills_to_fixed_dir(
+                 args.new_skill_path,
+-                fixed_skill_dir,
++                skill_dir,
+                 dry_run=args.dry_run,
+                 label="fixed Codex skill dir",
+             )
+@@ -572,6 +572,10 @@
+             try:
+                 res_skill_name, result = t.result()
+                 create_session_name = f"create_{res_skill_name}"
++                expected_skill = os.path.join(skill_dir, res_skill_name, "SKILL.md")
++                if result["success"] and not os.path.isfile(expected_skill):
++                    result["success"] = False
++                    result["error"] = "Creator returned without required SKILL.md"
+                 if not result["success"]:
+                     tqdm.write(f"Failed to create skill {res_skill_name}. Error: {result.get('error', 'Unknown')}")
+                     failed_to_create_skills.add(res_skill_name)
+--- a/AutomaticSkillOptimization/summary_txt.py
++++ b/AutomaticSkillOptimization/summary_txt.py
+@@ -94,7 +94,7 @@
+     return {"filepath": filepath, "status": "success", "out": out_filepath}
+ 
+ 
+-def summarize_react_process_txt(react_file_path, session_name=None):
++def _upstream_llm_summarize_react_process_txt(react_file_path, session_name=None):
+     label = f"[{session_name}] " if session_name else ""
+     if not os.path.isfile(react_file_path):
+         print(f"{label}Warning: ReAct_process.json not found: {react_file_path}")
+@@ -114,3 +114,13 @@
+     except Exception as e:
+         print(f"{label}Warning: Step3 summary error: {e}")
+         return False
++
++
++# LVM deterministic trace summary adapter
++def summarize_react_process_txt(react_file_path, session_name):
++    import json
++    from pathlib import Path
++    path = Path(react_file_path).with_suffix(".txt")
++    if not path.exists():
++        path.write_text(json.dumps(json.loads(Path(react_file_path).read_text()), ensure_ascii=False, indent=2))
++    return str(path)

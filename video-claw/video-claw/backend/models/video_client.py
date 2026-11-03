@@ -130,6 +130,12 @@ class VideoClient:
         if not model:
             model = "wan2.7-i2v"
 
+        from models.config_model import parse_api_model
+        model = parse_api_model(model, 'video')[1]
+        from core.generation_paradigms import validate_model
+        conditioning_mode = 'reference' if (reference_image_paths or reference_image_path or reference_video_paths) else 'start_end_frame' if last_image_path else 'first_frame'
+        validate_model(model, conditioning_mode, int(duration))
+
         # 确保 duration 是整数,视频模型通常要求整数秒
         duration = int(duration)
 

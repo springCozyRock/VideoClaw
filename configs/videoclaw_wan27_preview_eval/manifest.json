@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "case_id": "action_006",
+      "duration_sec": 67.0,
+      "shots": 3,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/videoclaw_wan27_preview_eval/inputs/action_006",
+      "video_sha256": "66a40b1601d96b7d3dbee0fc9aa2395bf4ee60aaa9e5a40825f68071a468939f"
+    },
+    {
+      "case_id": "cinematic_008",
+      "duration_sec": 62.0,
+      "shots": 4,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/videoclaw_wan27_preview_eval/inputs/cinematic_008",
+      "video_sha256": "87d91c487bd6c6a25a02bbfc911632248b1c51566cd6d90740c15e7117a0df00"
+    },
+    {
+      "case_id": "educational_008",
+      "duration_sec": 210,
+      "shots": 7,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/videoclaw_wan27_preview_eval/inputs/educational_008",
+      "video_sha256": "5c72ba98429d65fa79212637ff2e130d5d2005ed2d473f8448ad29f78d6e8390"
+    },
+    {
+      "case_id": "music_004",
+      "duration_sec": 70.0,
+      "shots": 3,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/videoclaw_wan27_preview_eval/inputs/music_004",
+      "video_sha256": "edf858bfbf2c7a8cb0d2a3f1269473b8afb50142fe2d7e805b6d3832b7930b39"
+    },
+    {
+      "case_id": "narrative_074",
+      "duration_sec": 60,
+      "shots": 5,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/videoclaw_wan27_preview_eval/inputs/narrative_074",
+      "video_sha256": "01122c6b9c375e91b75f5f3f0eb6d37c82a874aef48b21283d4bf7b2d006482b"
+    }
+  ],
+  "total_duration_sec": 469,
+  "total_shots": 22,
+  "selected_families": [
+    "directorbench",
+    "vbench",
+    "vistorybench"
+  ],
+  "judge": "qwen3.5-omni-plus",
+  "short_drama": "SKIPPED_BY_USER"
+}

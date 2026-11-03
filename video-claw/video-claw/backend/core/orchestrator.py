@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 核心编排器 / 工作流引擎
 管理六阶段状态机，协调各智能体执行，支持用户在任意阶段介入
@@ -65,6 +65,7 @@ SESSION_META_KEYS = (
     "video_first_frame_model",
     "video_start_end_model",
     "video_reference_model",
+    "generation_paradigm",
     "video_generation_mode",
     "video_style",
     "enable_concurrency",
@@ -260,6 +261,22 @@ class WorkflowEngine:
                 raise KeyError(f"Session not found: {session_id}")
             if not state.meta:
                 state.meta = {}
+            from core.generation_paradigms import resolve_paradigm
+            next_meta = {**state.meta, **{k: v for k, v in updates.items() if k in allowed_keys}}
+            if 'video_generation_mode' in updates and 'generation_paradigm' not in updates:
+                next_meta.pop('generation_paradigm', None)
+            resolve_paradigm(next_meta)
+            visual_keys = {'generation_paradigm', 'video_generation_mode', 'image_t2i_model', 'image_it2i_model', 'style', 'video_ratio'}
+            changed = {k for k in allowed_keys if k in updates and updates[k] != state.meta.get(k)}
+            downstream = ('reference_generation', 'video_generation', 'post_production') if changed & visual_keys else ('video_generation', 'post_production') if changed & {'video_model', 'video_first_frame_model', 'video_start_end_model', 'video_reference_model', 'video_resolution'} else ()
+            if downstream and session_id in self._active_sessions:
+                raise ValueError('Stop the running workflow before changing generation settings')
+            for name in downstream:
+                state.artifacts.pop(name, None)
+                state.status[name] = 'pending'
+                state.stage_progress.pop(name, None)
+            if 'video_generation_mode' in updates and 'generation_paradigm' not in updates:
+                state.meta.pop('generation_paradigm', None)
             for key in allowed_keys:
                 if key in updates:
                     state.meta[key] = updates[key]
@@ -631,8 +648,17 @@ class WorkflowEngine:
                     has_pending = True
             elif s_val == "reference_generation":
                 scenes = art.get("scenes", [])
-                if not scenes or any(not s.get("selected") for s in scenes):
+                if not scenes:
                     has_pending = True
+                for scene in scenes:
+                    if scene.get('generation_paradigm'):
+                        from core.generation_paradigms import conditioning
+                        try:
+                            conditioning(scene, scene['generation_paradigm'])
+                        except (ValueError, FileNotFoundError):
+                            has_pending = True
+                    elif not scene.get('selected'):
+                        has_pending = True
             elif s_val == "video_generation":
                 clips = art.get("clips", [])
                 if not clips or any(not c.get("selected") for c in clips):
@@ -786,9 +812,22 @@ class WorkflowEngine:
             input_data["_session_meta"] = copy.deepcopy(state.meta)
             input_data["_session_artifacts"] = copy.deepcopy(state.artifacts)
 
+        if stage == WorkflowStage.VIDEO_GENERATION:
+            with self._state_lock:
+                state.artifacts.pop('post_production', None)
+                state.status['post_production'] = 'pending'
+        if stage == WorkflowStage.REFERENCE_GENERATION:
+            with self._state_lock:
+                for name in ('video_generation', 'post_production'):
+                    state.artifacts.pop(name, None)
+                    state.status[name] = 'pending'
         agent = self.agent_factories[stage]()
         active_registered = False
         background_item_regeneration = self._is_background_item_regeneration(stage, intervention)
+        from core.generation_paradigms import PARADIGMS
+        if (input_data.get('generation_paradigm') or input_data.get('video_generation_mode') in PARADIGMS) and stage in (WorkflowStage.REFERENCE_GENERATION, WorkflowStage.VIDEO_GENERATION):
+            # A grid regeneration changes sibling cells as one transaction.
+            background_item_regeneration = False
 
         # 合并会话级停止信号与请求级取消检查
         session_stop = self.get_stop_event(state.session_id)
@@ -852,6 +891,11 @@ class WorkflowEngine:
                             item.get("versions"),
                             asset_update.get("versions"),
                         )
+                    for key in ('unit_id', 'generation_paradigm', 'conditioning_mode', 'first_frame',
+                                'last_frame', 'references', 'source_hash', 'source_shot_ids',
+                                'grid_source', 'grid_cell', 'grid_box', 'grid_layout', 'visual_prompt'):
+                        if key in asset_update:
+                            item[key] = copy.deepcopy(asset_update[key])
                     if "rewrite_result" in asset_update:
                         item["rewrite_result"] = copy.deepcopy(asset_update["rewrite_result"])
                     return
@@ -864,6 +908,7 @@ class WorkflowEngine:
             }
             if "rewrite_result" in asset_update:
                 new_item["rewrite_result"] = copy.deepcopy(asset_update["rewrite_result"])
+            new_item.update({k: copy.deepcopy(v) for k, v in asset_update.items() if k != "type"})
             items.append(new_item)
 
         def wrapped_progress_callback(phase: str, step: str, percent: float, data: dict = None):
@@ -1084,7 +1129,15 @@ class WorkflowEngine:
             if not state:
                 raise KeyError(f"Session not found: {session_id}")
 
+            downstream = {'character_design': ('reference_generation', 'video_generation', 'post_production'),
+                          'storyboard': ('reference_generation', 'video_generation', 'post_production'),
+                          'reference_generation': ('video_generation', 'post_production'),
+                          'video_generation': ('post_production',)}.get(stage, ())
             self._apply_artifact_update(state, stage, body if isinstance(body, dict) else {})
+            for name in downstream:
+                state.artifacts.pop(name, None)
+                state.status[name] = 'pending'
+                state.stage_progress.pop(name, None)
             self._recalculate_all_statuses(state)
             self.save_session_to_disk(session_id)
             return {

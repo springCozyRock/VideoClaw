@@ -1,0 +1,7 @@
+{
+  "repo": "openai/clip-vit-large-patch14-336",
+  "revision": "ce19dc912ca5cd21c8a653c79e251e808ccabcd1",
+  "config": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/sharecaptioner-vision/config.json",
+  "config_sha256": "51b1c14aabcdf639c4a0370eeda1010b773bbe1df78319c7d0f5882c22ac0ac0",
+  "protocol": "Instantiate full CLIP vision architecture from official config; all final vision tensors must load from complete ShareCaptioner checkpoint; fail on any missing/unexpected model key"
+}

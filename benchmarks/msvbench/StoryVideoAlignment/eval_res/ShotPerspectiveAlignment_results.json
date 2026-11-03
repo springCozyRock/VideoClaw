@@ -1,0 +1,538 @@
+{
+  "intermediate_steps": {
+    "gemini_shot_generation_attempt_1": {
+      "attempt": 1,
+      "prompt": "\n        Based on the following script and character/environment descriptions, generate appropriate shot distance and angle information for each clip.\n\n        \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n        \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n        Script Data:\n        {\n  \"characters\": [\n    {\n      \"id\": 1,\n      \"name\": \"Consort Jiang\",\n      \"description\": \"A young woman from ancient China with black hair and black eyes, approximately 18-19 years old, frail in stature with a pale complexion. She wears extravagant palace attire but always carries an air of melancholy and listlessness.\",\n      \"short\": \"a young woman from.\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Emperor\",\n      \"description\": \"A young man from ancient China with black hair and black eyes, approximately in his 20s, tall and handsome with a commanding presence. His eyes, however, hint at a cold and calculating nature. He wears imperial robes, exuding both authority and unpredictability.\",\n      \"short\": \"a young man from.\"\n    },\n    {\n      \"id\": 3,\n      \"name\": \"Lady Jiang\",\n      \"description\": \"Consort Jiang's mother, a middle-aged woman from ancient China with black eyes and salt-and-pepper hair, approximately in her 40s. Her well-maintained appearance is offset by a sharp, shrewd gaze. She dresses in noblewoman attire.\",\n      \"short\": \"consort jiang's mother, a.\"\n    }\n  ],\n  \"environments\": [\n    {\n      \"id\": 1,\n      \"name\": \"early morning Jiang courtyard\",\n      \"description\": \"Early morning, the Jiang family courtyard. A gentle breeze rustles the leaves, and a clear pond lies at the center, surrounded by weeping willows. Sunlight filters through the leaves, casting dappled shadows. The air carries a faint floral fragrance.\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"dusk Jiang residence gate\",\n      \"description\": \"Dusk, outside the Jiang residence gate. A carriage waits, servants bustling to load luggage. The family plaque looms heavily under the setting sun. The streets are quiet, the air thick with farewell.\"\n    },\n    {\n      \"id\": 3,\n      \"name\": \"daylight palace courtyard\",\n      \"description\": \"Afternoon, the palace courtyard. The winding veranda stretches out, a lone plum blossom blooms in the corner, dewdrops clinging to its petals. Soft sunlight filters through the clouds, the air carrying a faint plum fragrance.\"\n    },\n    {\n      \"id\": 4,\n      \"name\": \"night palace bedchamber\",\n      \"description\": \"Evening, the palace bedchamber. Candlelight flickers, bed curtains hang softly. A bowl of steaming medicine rests on the table, the air tinged with its bitter scent.\"\n    },\n    {\n      \"id\": 5,\n      \"name\": \"daylight palace bedchamber\",\n      \"description\": \"Afternoon, the palace bedchamber. Sunlight streams through the windows, yet the room feels chilly. Delicate pastries sit untouched on the table, the air lightly scented with tea.\"\n    }\n  ],\n  \"script\": [\n    {\n      \"scene\": 1,\n      \"environment\": 1,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"Since childhood, I have been frail and sickly, my face as pale as paper, my body as slender as a willow, as if a gust of wind could knock me over.. Setting: Early morning, the Jiang family courtyard. A gentle breeze rustles the leaves, and a clear pond lies at the center, surrounded by weeping willows. Sunlight filters through the leaves, casting dappled shadows. The air carries a faint floral fragrance.. Camera: Medium shot, eye level shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 2,\n      \"environment\": 2,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"In my father's eyes, I was nothing more than a useless chess piece, a pawn to be discarded at will. Thus, I was sent into that gilded yet heartless palace, becoming Consort Jiang.. Setting: Dusk, outside the Jiang residence gate. A carriage waits, servants bustling to load luggage. The family plaque looms heavily under the setting sun. The streets are quiet, the air thick with farewell.. Camera: Full shot, high-angle shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 3,\n      \"environment\": 3,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"In the depths of the palace, I had no hope for the future, merely drifting through each day in a haze. I often sat alone on the veranda, gazing at a solitary plum blossom in the corner, overwhelmed by boundless sorrow.. Setting: Afternoon, the palace courtyard. The winding veranda stretches out, a lone plum blossom blooms in the corner, dewdrops clinging to its petals. Soft sunlight filters through the clouds, the air carrying a faint plum fragrance.. Camera: Medium long shot, eye level shot.\"\n        },\n        {\n          \"id\": 2,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"That day, lost in thought on the veranda, I unconsciously recited a poem while gazing at the plum blossom: 'By the wall, a few branches of plum, braving the cold alone in bloom. From afar, I know it's not snow, for a subtle fragrance comes.'. Setting: Afternoon, the palace courtyard. Sunlight dapples the veranda, the corner plum blossom sways gently in the breeze, petals scattering. The air carries a faint plum fragrance.. Camera: Medium close up, eye level shot.\"\n        },\n        {\n          \"id\": 3,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"Suddenly, a deep, authoritative voice rang out: 'Consort Jiang seems lost in thought\\u2014missing someone?' Startled, I turned to see the Emperor standing not far away, his piercing gaze fixed on me.. Setting: Afternoon, the palace courtyard. The Emperor stands at the end of the veranda, clad in imperial robes, commanding yet cold. Sunlight casts a long shadow behind him.. Camera: Medium shot, side shot.\"\n        },\n        {\n          \"id\": 4,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"The Emperor smiled faintly, his words layered with meaning: 'Since you\\u2019ve entered the palace, you should content yourself by my side. It\\u2019s best to let go of futile longings.'. Setting: Afternoon, the palace courtyard. The Emperor approaches Consort Jiang on the veranda. A breeze stirs, plum petals drift down, the air faintly scented with plum blossoms.. Camera: Medium close up, eye level shot.\"\n        },\n        {\n          \"id\": 5,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"The Emperor ordered someone to pluck the plum blossom and hand it to me, saying meaningfully: 'Pluck the blossom while you may, don\\u2019t wait till branches bare you sigh.'. Setting: Afternoon, the palace courtyard. The plum branch is snapped off, petals scattered. Sunlight filters through leaves, casting dappled light.. Camera: Close up, eye level shot.\"\n        },\n        {\n          \"id\": 6,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"Baffled by his meaning, I suddenly felt dizzy. Darkness swallowed my vision, and I collapsed.. Setting: Afternoon, the palace courtyard. The plum branch slips from Consort Jiang\\u2019s hand, petals scattering. Sunlight remains gentle, the air faintly fragrant.. Camera: Medium shot, low-angle shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 4,\n      \"environment\": 4,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"When I awoke, the Emperor was seated at my bedside, gazing at me gently.. Setting: Evening, the palace bedchamber. Candlelight flickers, bed curtains hang softly. A bowl of steaming medicine rests on the table, the air tinged with its bitter scent.. Camera: Close up, eye level shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 5,\n      \"environment\": 3,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"He proposed that I join him each morning for exercise to strengthen my body. Though reluctant, I couldn\\u2019t refuse his decree.. Setting: Early morning, the palace courtyard. Mist lingers, dew glistens on grass. Birds chirp in the distance, the air crisp and fresh.. Camera: Full shot, high-angle shot.\"\n        },\n        {\n          \"id\": 2,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"For days afterward, I collapsed each time from exhaustion. The Emperor, however, seemed amused, as if observing a diverting game.. Setting: Early morning, the palace courtyard. Consort Jiang lies on the grass, pale and breathless. The Emperor stands nearby, entertained, sunlight filtering through the mist.. Camera: Medium shot, side shot.\"\n        },\n        {\n          \"id\": 3,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"Only on the fifth day did he mercifully end this 'torment.'. Setting: Early morning, the palace courtyard. The mist has lifted, sunlight bright. The grass is dry, maids murmur in the distance, the air fresh.. Camera: Medium long shot, eye level shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 6,\n      \"environment\": 5,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"3\"\n          ],\n          \"description\": \"That day, my mother, Lady Jiang, visited me in the palace. Her demeanor was as cold as ever, as if we were strangers.. Setting: Afternoon, the palace bedchamber. Sunlight streams through the windows, yet the room feels chilly. Delicate pastries sit untouched on the table, the air lightly scented with tea.. Camera: Medium shot, eye level shot.\"\n        },\n        {\n          \"id\": 2,\n          \"characters\": [\n            \"1\",\n            \"3\"\n          ],\n          \"description\": \"She mentioned my pre-palace arrangement with the Prince of Xiangyang, her tone laced with threat. I denied it, but Mother sneered, 'Do you think you can deceive me? Remember, your life is still in my hands.'. Setting: Afternoon, the palace bedchamber. Sunlight slants through the lattice, casting shadows. The pastries remain untouched, the air thick with tension.. Camera: Medium close up, eye level shot.\"\n        },\n        {\n          \"id\": 3,\n          \"characters\": [\n            \"1\",\n            \"3\",\n            \"2\"\n          ],\n          \"description\": \"Just then, the Emperor appeared unexpectedly. Having overheard us, his face darkened as he interrogated Mother about the Prince of Xiangyang.. Setting: Afternoon, the palace bedchamber. The Emperor throws the door open, sunlight haloing him. The room freezes, the air crackling with tension.. Camera: Medium shot, side shot.\"\n        },\n        {\n          \"id\": 4,\n          \"characters\": [\n            \"1\",\n            \"3\",\n            \"2\"\n          ],\n          \"description\": \"Mother turned deathly pale, kneeling to beg for mercy. My heart clenched, and I too knelt, pleading with the Emperor to spare her.. Setting: Afternoon, the palace bedchamber. The plush carpet muffles sound. Sunlight filters through the lattice, the room tense to the breaking point.. Camera: Medium close up, eye level shot.\"\n        },\n        {\n          \"id\": 5,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"The Emperor cast a frigid glance at Mother but ultimately let her go. Then he demanded an explanation about the Prince of Xiangyang.. Setting: Afternoon, the palace bedchamber. With Lady Jiang gone, the room feels cavernous. Sunlight still slants through the lattice, the air heavy.. Camera: Medium shot, eye level shot.\"\n        },\n        {\n          \"id\": 6,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"I took a deep breath and confessed the affair between the Prince of Xiangyang and my elder sister. The Emperor\\u2019s expression softened slightly, and he revealed he\\u2019d kept the Prince alive merely for sport. Then he ordered punishments for both the Prince and my sister.. Setting: Afternoon, the palace bedchamber. Sunlight brightens the room, the mood easing slightly. The pastries remain untouched, the air complex.. Camera: Medium close up, eye level shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 7,\n      \"environment\": 3,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"I felt vindicated by the Emperor\\u2019s actions, and my resentment toward him faded somewhat.. Setting: Evening, the palace courtyard. The sun sets, painting the sky in vivid hues. A breeze stirs the leaves, the air sweet with flowers.. Camera: Medium long shot, high-angle shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 8,\n      \"environment\": 4,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"That night, the Emperor dined in my chambers and stayed over. I braced for the worst, but he merely held me quietly as we slept.. Setting: Night, the palace bedchamber. Candlelight flickers, bed curtains drawn. Exquisite dishes adorn the table, the air rich with food.. Camera: Medium shot, eye level shot.\"\n        }\n      ]\n    },\n    {\n      \"scene\": 9,\n      \"environment\": 5,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"The next morning, I discovered the jade pendant the Emperor had left behind, and an indescribable emotion welled up inside me.. Setting: Early morning, the palace bedchamber. Sunlight streams through the lattice, the bed curtains soft. An exquisite jade pendant rests on the table, the air faintly fragrant.. Camera: Close up, eye level shot.\"\n        }\n      ]\n    }\n  ]\n}\n\n        For each clip, analyze the content and suggest the most appropriate:\n        1. Shot Distance (Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, Extreme Close-Up)\n        2. Camera Angle (Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, Perspective Compression)\n\n        Return the result in JSON format with shot_distance and camera_angle fields added to each clip. Keep all original fields and just add the new ones.\n        \n        Example format:\n        {\n            \"characters\": [...],\n            \"environments\": [...],\n            \"script\": [\n                {\n                    \"scene\": 1,\n                    \"environment\": 1,\n                    \"clips\": [\n                        {\n                            \"id\": 1,\n                            \"characters\": [\"1\"],\n                            \"description\": \"...\",\n                            \"shot_distance\": \"Close-Up\",\n                            \"camera_angle\": \"Eye Level Shot\"\n                        }\n                    ]\n                }\n            ]\n        }\n        ",
+      "response": "```json\n{\n  \"characters\": [\n    {\n      \"id\": 1,\n      \"name\": \"Consort Jiang\",\n      \"description\": \"A young woman from ancient China with black hair and black eyes, approximately 18-19 years old, frail in stature with a pale complexion. She wears extravagant palace attire but always carries an air of melancholy and listlessness.\",\n      \"short\": \"a young woman from.\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"Emperor\",\n      \"description\": \"A young man from ancient China with black hair and black eyes, approximately in his 20s, tall and handsome with a commanding presence. His eyes, however, hint at a cold and calculating nature. He wears imperial robes, exuding both authority and unpredictability.\",\n      \"short\": \"a young man from.\"\n    },\n    {\n      \"id\": 3,\n      \"name\": \"Lady Jiang\",\n      \"description\": \"Consort Jiang's mother, a middle-aged woman from ancient China with black eyes and salt-and-pepper hair, approximately in her 40s. Her well-maintained appearance is offset by a sharp, shrewd gaze. She dresses in noblewoman attire.\",\n      \"short\": \"consort jiang's mother, a.\"\n    }\n  ],\n  \"environments\": [\n    {\n      \"id\": 1,\n      \"name\": \"early morning Jiang courtyard\",\n      \"description\": \"Early morning, the Jiang family courtyard. A gentle breeze rustles the leaves, and a clear pond lies at the center, surrounded by weeping willows. Sunlight filters through the leaves, casting dappled shadows. The air carries a faint floral fragrance.\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"dusk Jiang residence gate\",\n      \"description\": \"Dusk, outside the Jiang residence gate. A carriage waits, servants bustling to load luggage. The family plaque looms heavily under the setting sun. The streets are quiet, the air thick with farewell.\"\n    },\n    {\n      \"id\": 3,\n      \"name\": \"daylight palace courtyard\",\n      \"description\": \"Afternoon, the palace courtyard. The winding veranda stretches out, a lone plum blossom blooms in the corner, dewdrops clinging to its petals. Soft sunlight filters through the clouds, the air carrying a faint plum fragrance.\"\n    },\n    {\n      \"id\": 4,\n      \"name\": \"night palace bedchamber\",\n      \"description\": \"Evening, the palace bedchamber. Candlelight flickers, bed curtains hang softly. A bowl of steaming medicine rests on the table, the air tinged with its bitter scent.\"\n    },\n    {\n      \"id\": 5,\n      \"name\": \"daylight palace bedchamber\",\n      \"description\": \"Afternoon, the palace bedchamber. Sunlight streams through the windows, yet the room feels chilly. Delicate pastries sit untouched on the table, the air lightly scented with tea.\"\n    }\n  ],\n  \"script\": [\n    {\n      \"scene\": 1,\n      \"environment\": 1,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"Since childhood, I have been frail and sickly, my face as pale as paper, my body as slender as a willow, as if a gust of wind could knock me over.. Setting: Early morning, the Jiang family courtyard. A gentle breeze rustles the leaves, and a clear pond lies at the center, surrounded by weeping willows. Sunlight filters through the leaves, casting dappled shadows. The air carries a faint floral fragrance.. Camera: Medium shot, eye level shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 2,\n      \"environment\": 2,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"In my father's eyes, I was nothing more than a useless chess piece, a pawn to be discarded at will. Thus, I was sent into that gilded yet heartless palace, becoming Consort Jiang.. Setting: Dusk, outside the Jiang residence gate. A carriage waits, servants bustling to load luggage. The family plaque looms heavily under the setting sun. The streets are quiet, the air thick with farewell.. Camera: Full shot, high-angle shot.\",\n          \"shot_distance\": \"Full Shot\",\n          \"camera_angle\": \"High Angle Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 3,\n      \"environment\": 3,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"In the depths of the palace, I had no hope for the future, merely drifting through each day in a haze. I often sat alone on the veranda, gazing at a solitary plum blossom in the corner, overwhelmed by boundless sorrow.. Setting: Afternoon, the palace courtyard. The winding veranda stretches out, a lone plum blossom blooms in the corner, dewdrops clinging to its petals. Soft sunlight filters through the clouds, the air carrying a faint plum fragrance.. Camera: Medium long shot, eye level shot.\",\n          \"shot_distance\": \"Medium Long Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 2,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"That day, lost in thought on the veranda, I unconsciously recited a poem while gazing at the plum blossom: 'By the wall, a few branches of plum, braving the cold alone in bloom. From afar, I know it's not snow, for a subtle fragrance comes.'. Setting: Afternoon, the palace courtyard. Sunlight dapples the veranda, the corner plum blossom sways gently in the breeze, petals scattering. The air carries a faint plum fragrance.. Camera: Medium close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 3,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"Suddenly, a deep, authoritative voice rang out: 'Consort Jiang seems lost in thought—missing someone?' Startled, I turned to see the Emperor standing not far away, his piercing gaze fixed on me.. Setting: Afternoon, the palace courtyard. The Emperor stands at the end of the veranda, clad in imperial robes, commanding yet cold. Sunlight casts a long shadow behind him.. Camera: Medium shot, side shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 4,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"The Emperor smiled faintly, his words layered with meaning: 'Since you’ve entered the palace, you should content yourself by my side. It’s best to let go of futile longings.'. Setting: Afternoon, the palace courtyard. The Emperor approaches Consort Jiang on the veranda. A breeze stirs, plum petals drift down, the air faintly scented with plum blossoms.. Camera: Medium close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 5,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"The Emperor ordered someone to pluck the plum blossom and hand it to me, saying meaningfully: 'Pluck the blossom while you may, don’t wait till branches bare you sigh.'. Setting: Afternoon, the palace courtyard. The plum branch is snapped off, petals scattered. Sunlight filters through leaves, casting dappled light.. Camera: Close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 6,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"Baffled by his meaning, I suddenly felt dizzy. Darkness swallowed my vision, and I collapsed.. Setting: Afternoon, the palace courtyard. The plum branch slips from Consort Jiang’s hand, petals scattering. Sunlight remains gentle, the air faintly fragrant.. Camera: Medium shot, low-angle shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Low Angle Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 4,\n      \"environment\": 4,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"When I awoke, the Emperor was seated at my bedside, gazing at me gently.. Setting: Evening, the palace bedchamber. Candlelight flickers, bed curtains hang softly. A bowl of steaming medicine rests on the table, the air tinged with its bitter scent.. Camera: Close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 5,\n      \"environment\": 3,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"He proposed that I join him each morning for exercise to strengthen my body. Though reluctant, I couldn’t refuse his decree.. Setting: Early morning, the palace courtyard. Mist lingers, dew glistens on grass. Birds chirp in the distance, the air crisp and fresh.. Camera: Full shot, high-angle shot.\",\n          \"shot_distance\": \"Full Shot\",\n          \"camera_angle\": \"High Angle Shot\"\n        },\n        {\n          \"id\": 2,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"For days afterward, I collapsed each time from exhaustion. The Emperor, however, seemed amused, as if observing a diverting game.. Setting: Early morning, the palace courtyard. Consort Jiang lies on the grass, pale and breathless. The Emperor stands nearby, entertained, sunlight filtering through the mist.. Camera: Medium shot, side shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 3,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"Only on the fifth day did he mercifully end this 'torment.'. Setting: Early morning, the palace courtyard. The mist has lifted, sunlight bright. The grass is dry, maids murmur in the distance, the air fresh.. Camera: Medium long shot, eye level shot.\",\n          \"shot_distance\": \"Medium Long Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 6,\n      \"environment\": 5,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"3\"\n          ],\n          \"description\": \"That day, my mother, Lady Jiang, visited me in the palace. Her demeanor was as cold as ever, as if we were strangers.. Setting: Afternoon, the palace bedchamber. Sunlight streams through the windows, yet the room feels chilly. Delicate pastries sit untouched on the table, the air lightly scented with tea.. Camera: Medium shot, eye level shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 2,\n          \"characters\": [\n            \"1\",\n            \"3\"\n          ],\n          \"description\": \"She mentioned my pre-palace arrangement with the Prince of Xiangyang, her tone laced with threat. I denied it, but Mother sneered, 'Do you think you can deceive me? Remember, your life is still in my hands.'. Setting: Afternoon, the palace bedchamber. Sunlight slants through the lattice, casting shadows. The pastries remain untouched, the air thick with tension.. Camera: Medium close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 3,\n          \"characters\": [\n            \"1\",\n            \"3\",\n            \"2\"\n          ],\n          \"description\": \"Just then, the Emperor appeared unexpectedly. Having overheard us, his face darkened as he interrogated Mother about the Prince of Xiangyang.. Setting: Afternoon, the palace bedchamber. The Emperor throws the door open, sunlight haloing him. The room freezes, the air crackling with tension.. Camera: Medium shot, side shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 4,\n          \"characters\": [\n            \"1\",\n            \"3\",\n            \"2\"\n          ],\n          \"description\": \"Mother turned deathly pale, kneeling to beg for mercy. My heart clenched, and I too knelt, pleading with the Emperor to spare her.. Setting: Afternoon, the palace bedchamber. The plush carpet muffles sound. Sunlight filters through the lattice, the room tense to the breaking point.. Camera: Medium close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 5,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"The Emperor cast a frigid glance at Mother but ultimately let her go. Then he demanded an explanation about the Prince of Xiangyang.. Setting: Afternoon, the palace bedchamber. With Lady Jiang gone, the room feels cavernous. Sunlight still slants through the lattice, the air heavy.. Camera: Medium shot, eye level shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        },\n        {\n          \"id\": 6,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"I took a deep breath and confessed the affair between the Prince of Xiangyang and my elder sister. The Emperor’s expression softened slightly, and he revealed he’d kept the Prince alive merely for sport. Then he ordered punishments for both the Prince and my sister.. Setting: Afternoon, the palace bedchamber. Sunlight brightens the room, the mood easing slightly. The pastries remain untouched, the air complex.. Camera: Medium close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 7,\n      \"environment\": 3,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"I felt vindicated by the Emperor’s actions, and my resentment toward him faded somewhat.. Setting: Evening, the palace courtyard. The sun sets, painting the sky in vivid hues. A breeze stirs the leaves, the air sweet with flowers.. Camera: Medium long shot, high-angle shot.\",\n          \"shot_distance\": \"Medium Long Shot\",\n          \"camera_angle\": \"High Angle Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 8,\n      \"environment\": 4,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\",\n            \"2\"\n          ],\n          \"description\": \"That night, the Emperor dined in my chambers and stayed over. I braced for the worst, but he merely held me quietly as we slept.. Setting: Night, the palace bedchamber. Candlelight flickers, bed curtains drawn. Exquisite dishes adorn the table, the air rich with food.. Camera: Medium shot, eye level shot.\",\n          \"shot_distance\": \"Medium Shot\",\n          \"camera_angle\": \"Eye Level Shot\"\n        }\n      ]\n    },\n    {\n      \"scene\": 9,\n      \"environment\": 5,\n      \"clips\": [\n        {\n          \"id\": 1,\n          \"characters\": [\n            \"1\"\n          ],\n          \"description\": \"The next morning, I discovered the jade pendant the Emperor had left behind, and an indescribable emotion welled up inside me.. Setting: Early morning, the palace bedchamber. Sunlight streams through the lattice, the bed curtains soft. An exquisite jade pendant rests on the table, the air faintly fragrant.. Camera: Close up, eye level shot.\",\n          \"shot_distance\": \"Close-Up\",\n          \"camera_angle\": \"Eye Level Shot\"\n        }\n      ]\n    }\n  ]\n}\n```",
+      "timestamp": "2026-10-21T15:31:33.500709"
+    },
+    "shot_generation_success": {
+      "parsed_successfully": true,
+      "shots_added": 21,
+      "attempt": 1,
+      "timestamp": "2026-10-21T15:31:33.503147"
+    },
+    "shot_1_analysis_attempt_1": {
+      "filename": "01.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 1,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 1,\n    \"shot_distance\": \"Close-Up\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A close-up shot of a young woman in traditional attire standing by a pond with lotus flowers and willow trees. The camera is positioned at her eye level, focusing on her face and upper body while the background remains visible but slightly blurred.\"\n}\n```",
+      "timestamp": "2026-10-21T15:31:43.529860"
+    },
+    "shot_2_analysis_attempt_1": {
+      "filename": "02.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 2,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 2,\n    \"shot_distance\": \"Close-Up\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot focuses on the character from the chest up, capturing her facial expression and detailed costume while keeping the background visible but secondary.\"\n}\n```",
+      "timestamp": "2026-10-21T15:31:48.560418"
+    },
+    "parsed_video_analysis": {
+      "total_shots_analyzed": 21,
+      "total_shots_attempted": 21,
+      "success_rate": 1.0,
+      "timestamp": "2026-10-21T15:33:13.767582"
+    },
+    "alignment_calculation": {
+      "average_distance_score": 4.095238095238095,
+      "average_angle_score": 4.428571428571429,
+      "average_combined_score": 4.261904761904762,
+      "total_shots": 21,
+      "success_rate": 1.0,
+      "timestamp": "2026-10-21T15:33:13.770317"
+    },
+    "shot_3_analysis_attempt_1": {
+      "filename": "03.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 3,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 3,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot frames the character from the waist up, allowing for a clear view of her expression and traditional attire while still including significant background elements like the cherry blossom tree and courtyard architecture. The camera is positioned directly at the subject's eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:31:54.189325"
+    },
+    "shot_4_analysis_attempt_1": {
+      "filename": "04.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 4,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 4,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The video shows a medium shot of an animated female character in traditional attire sitting in a courtyard with cherry blossoms. The camera is positioned at her eye level, capturing her from the waist up.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:00.407792"
+    },
+    "shot_5_analysis_attempt_1": {
+      "filename": "05.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 5,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 5,\n    \"shot_distance\": \"Close-Up\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A close-up shot of a male character in traditional attire from the chest up, with the camera positioned at his eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:04.274367"
+    },
+    "shot_6_analysis_attempt_1": {
+      "filename": "06.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 6,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 6,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot frames two characters from the waist up as they stand close together in a courtyard setting.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:08.890143"
+    },
+    "shot_7_analysis_attempt_1": {
+      "filename": "07.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 7,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 7,\n    \"shot_distance\": \"Close-Up\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A close-up shot at eye level showing a man and a woman in traditional attire standing together. The man holds a branch of pink blossoms between them as they look at each other.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:14.365751"
+    },
+    "shot_8_analysis_attempt_1": {
+      "filename": "08.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 8,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 8,\n    \"shot_distance\": \"Close-Up\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot frames the character from the chest up, focusing on her facial expressions and upper body details while keeping the background visible but secondary. The camera is positioned directly at the subject's eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:18.564696"
+    },
+    "shot_9_analysis_attempt_1": {
+      "filename": "09.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 9,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 9,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot captures two characters in traditional attire from the waist up as they sit together at a table with candles and food.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:21.925363"
+    },
+    "shot_10_analysis_attempt_1": {
+      "filename": "10.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 10,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 10,\n    \"shot_distance\": \"Full Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot captures the full bodies of two characters standing in a garden with traditional architecture in the background.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:25.903259"
+    },
+    "shot_11_analysis_attempt_1": {
+      "filename": "11.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 11,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 1,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot frames two characters from the waist up in a garden setting. The camera is positioned at their eye level, capturing their expressions and upper bodies clearly while keeping the background visible but slightly out of focus.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:29.977919"
+    },
+    "shot_12_analysis_attempt_1": {
+      "filename": "12.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 12,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 1,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot frames two characters from the waist up, focusing on their interaction and expressions while keeping the palace background visible but slightly out of focus.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:32.853526"
+    },
+    "shot_13_analysis_attempt_1": {
+      "filename": "13.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 13,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 13,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"Two characters in traditional attire are framed from the waist up, with the camera positioned at their eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:37.013874"
+    },
+    "shot_14_analysis_attempt_1": {
+      "filename": "14.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 14,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 14,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The camera frames two characters from the waist up, capturing their facial expressions and upper body language within a traditional room setting. The perspective is straight on, aligning with the subjects' eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:42.547765"
+    },
+    "shot_15_analysis_attempt_1": {
+      "filename": "15.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 15,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 15,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The camera captures the characters from the waist up at eye level, focusing on their interaction and facial expressions while showing some of the surrounding environment.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:46.905177"
+    },
+    "shot_16_analysis_attempt_1": {
+      "filename": "16.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 16,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 16,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The scene begins with a medium shot showing three characters in a room, then transitions to a closer view of two women standing side by side.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:51.037344"
+    },
+    "shot_17_analysis_attempt_1": {
+      "filename": "17.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 17,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 17,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"Two characters in traditional attire are shown from the waist up, seated at a table with tea and pastries. The camera is positioned at their eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:32:55.381108"
+    },
+    "shot_18_analysis_attempt_1": {
+      "filename": "18.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 18,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 18,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"Two characters in traditional attire are shown from the waist up, seated at a table. The camera is positioned directly at their eye level.\"\n}\n```",
+      "timestamp": "2026-10-21T15:33:01.997178"
+    },
+    "shot_19_analysis_attempt_1": {
+      "filename": "19.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 19,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 19,\n    \"shot_distance\": \"Close-Up\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A medium close-up shot of an anime-style female character in traditional clothing, framed from the chest up. The camera is positioned at her eye level, capturing her facial expression and upper body against a background of a palace and cherry blossom trees.\"\n}\n```",
+      "timestamp": "2026-10-21T15:33:05.485434"
+    },
+    "shot_20_analysis_attempt_1": {
+      "filename": "20.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 20,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 20,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"The shot frames two characters seated at a table from the waist up, capturing their interaction and the food in front of them while maintaining a camera position level with their eyes.\"\n}\n```",
+      "timestamp": "2026-10-21T15:33:10.108946"
+    },
+    "shot_21_analysis_attempt_1": {
+      "filename": "21.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 21,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 21,\n    \"shot_distance\": \"Medium Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A medium shot of an animated female character in traditional clothing sitting in a room. The camera is at her eye level and frames her from the waist up, showing her holding a jade pendant while capturing some of the surrounding environment.\"\n}\n```",
+      "timestamp": "2026-10-21T15:33:13.762330"
+    },
+    "shot_22_analysis_attempt_1": {
+      "filename": "22.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 22,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 22,\n    \"shot_distance\": \"Long Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A wide view of the bedroom showing two rabbits tucking into bed, capturing their full bodies and the surrounding environment including the window and wall decorations.\"\n}\n```",
+      "timestamp": "2026-10-19T09:56:47.042545"
+    },
+    "shot_23_analysis_attempt_1": {
+      "filename": "23.mp4",
+      "prompt": "\n            Analyze this single video shot and identify its shot distance and camera angle.\n\n            \n        Shot Distance Descriptions\n        • Long Shot: Shows the relationship between characters and their environment, typically used to display the scene or environment.\n        • Full Shot: Shows the full body of a character, commonly used to display movement or the full scene.\n        • Medium Long Shot: Starts from above the character's knees, capturing part of the environment.\n        • Medium Shot: Captures the character from the waist up.\n        • Close-Up: Captures the character from the chest up.\n        • Extreme Close-Up: Focuses on the character's head or face, with the background and environment typically blurred or not visible.\n        \n\n            \n        Angle Descriptions\n        • Eye Level Shot: The camera is positioned at the subject's eye level.\n        • Low Angle Shot: The camera is positioned below eye level, shooting upward, emphasizing the character's power or size.\n        • High Angle Shot: The camera is positioned above eye level, shooting downward, often minimizing the subject's significance.\n        • Bird's Eye View: Camera shot taken from directly above, providing an overview of the scene.\n        • Tilted Shot: The camera is intentionally tilted to create a sense of imbalance or tension.\n        • Perspective Compression: A technique that emphasizes depth and the relationship between foreground and background through perspective.\n        \n\n            For this shot, determine:\n            1. Shot Distance: Long Shot, Full Shot, Medium Long Shot, Medium Shot, Close-Up, or Extreme Close-Up\n            2. Camera Angle: Eye Level Shot, Low Angle Shot, High Angle Shot, Bird's Eye View, Tilted Shot, or Perspective Compression\n\n            Return your analysis in JSON format as a single object:\n            {\n                \"shot_number\": 23,\n                \"shot_distance\": \"XXX Shot\",\n                \"camera_angle\": \"XXX Shot\",\n                \"description\": \"Brief description of what you see\"\n            }\n            ",
+      "response": "```json\n{\n    \"shot_number\": 23,\n    \"shot_distance\": \"Long Shot\",\n    \"camera_angle\": \"Eye Level Shot\",\n    \"description\": \"A wide view of a cozy bedroom at night showing two rabbits on a bed. The shot captures the full environment, including the window with a moonlit landscape, wall decorations, and items on the floor, establishing the relationship between the characters and their surroundings.\"\n}\n```",
+      "timestamp": "2026-10-19T09:56:49.795674"
+    }
+  },
+  "final_results": {
+    "shot_comparisons": [
+      {
+        "shot_number": 1,
+        "filename": "01.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 2,
+        "filename": "02.mp4",
+        "expected": {
+          "shot_distance": "Full Shot",
+          "camera_angle": "High Angle Shot"
+        },
+        "actual": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 1,
+          "angle_score": 2,
+          "combined_score": 1.5
+        }
+      },
+      {
+        "shot_number": 3,
+        "filename": "03.mp4",
+        "expected": {
+          "shot_distance": "Medium Long Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 4,
+        "filename": "04.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 5,
+        "filename": "05.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 6,
+        "filename": "06.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 7,
+        "filename": "07.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 5,
+          "combined_score": 5.0
+        }
+      },
+      {
+        "shot_number": 8,
+        "filename": "08.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Low Angle Shot"
+        },
+        "actual": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 2,
+          "combined_score": 3.0
+        }
+      },
+      {
+        "shot_number": 9,
+        "filename": "09.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 10,
+        "filename": "10.mp4",
+        "expected": {
+          "shot_distance": "Full Shot",
+          "camera_angle": "High Angle Shot"
+        },
+        "actual": {
+          "shot_distance": "Full Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 2,
+          "combined_score": 3.5
+        }
+      },
+      {
+        "shot_number": 11,
+        "filename": "11.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 5,
+          "combined_score": 5.0
+        }
+      },
+      {
+        "shot_number": 12,
+        "filename": "12.mp4",
+        "expected": {
+          "shot_distance": "Medium Long Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 13,
+        "filename": "13.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 5,
+          "combined_score": 5.0
+        }
+      },
+      {
+        "shot_number": 14,
+        "filename": "14.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 15,
+        "filename": "15.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 5,
+          "combined_score": 5.0
+        }
+      },
+      {
+        "shot_number": 16,
+        "filename": "16.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 17,
+        "filename": "17.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 5,
+          "combined_score": 5.0
+        }
+      },
+      {
+        "shot_number": 18,
+        "filename": "18.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      },
+      {
+        "shot_number": 19,
+        "filename": "19.mp4",
+        "expected": {
+          "shot_distance": "Medium Long Shot",
+          "camera_angle": "High Angle Shot"
+        },
+        "actual": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 2,
+          "angle_score": 2,
+          "combined_score": 2.0
+        }
+      },
+      {
+        "shot_number": 20,
+        "filename": "20.mp4",
+        "expected": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 5,
+          "angle_score": 5,
+          "combined_score": 5.0
+        }
+      },
+      {
+        "shot_number": 21,
+        "filename": "21.mp4",
+        "expected": {
+          "shot_distance": "Close-Up",
+          "camera_angle": "Eye Level Shot"
+        },
+        "actual": {
+          "shot_distance": "Medium Shot",
+          "camera_angle": "Eye Level Shot"
+        },
+        "scores": {
+          "distance_score": 4,
+          "angle_score": 5,
+          "combined_score": 4.5
+        }
+      }
+    ],
+    "summary": {
+      "total_shots_analyzed": 21,
+      "total_expected_shots": 21,
+      "success_rate": 1.0,
+      "average_distance_score": 4.095238095238095,
+      "average_angle_score": 4.428571428571429,
+      "overall_alignment_score": 4.261904761904762
+    },
+    "completion_timestamp": "2026-10-21T15:33:13.772929"
+  }
+}

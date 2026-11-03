@@ -279,6 +279,7 @@ export async function startProject(params: {
   video_first_frame_model?: string;
   video_start_end_model?: string;
   video_reference_model?: string;
+  generation_paradigm?: string;
   video_generation_mode?: string;
   scene_number?: number;
   enable_concurrency?: boolean;

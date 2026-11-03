@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "case_id": "action_006",
+      "category": "action",
+      "case_folder": "006",
+      "duration_sec": 67.0,
+      "source_sha256": "a7b5baa27b3c15460f0c35fb852d65d1230e6190fbe49c056bffef6363efdcab",
+      "requirements_sha256": "11327ae62b5784e2565b7d3e9634838c7721d40c176cc90fdee27f157ce26bd1",
+      "skill_name": "lvm-action-wan3",
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/inputs/action_006"
+    },
+    {
+      "case_id": "cinematic_008",
+      "category": "cinematic",
+      "case_folder": "008",
+      "duration_sec": 62.0,
+      "source_sha256": "d53e65e6f90e818480bb5a8f1ba9ff07aa6f09fd9ca23e484504b2ce96d7986f",
+      "requirements_sha256": "cc6484c011535ff292bcd3f02eb4e80f90deee974307292d975a3028501a6f07",
+      "skill_name": "lvm-cinematic-wan3",
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/inputs/cinematic_008"
+    },
+    {
+      "case_id": "educational_008",
+      "category": "educational",
+      "case_folder": "008",
+      "duration_sec": 210,
+      "source_sha256": "2335ec7cd55da4b0c9b9452d90c9740064c2dfbd136ef3915a1e4163d43ae191",
+      "requirements_sha256": "2f295d4cbc0cb3976c75d42d62b85c3610155171609a76b625476431c181abbd",
+      "skill_name": "lvm-educational-wan3",
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/inputs/educational_008"
+    },
+    {
+      "case_id": "music_004",
+      "category": "music",
+      "case_folder": "004",
+      "duration_sec": 70.0,
+      "source_sha256": "f473b45780ef7fe7b47d245b2cc4f3a993cf34e8c45508fc1e73d5e2d6b1d67e",
+      "requirements_sha256": "f6cf685dd43962ab7db9d6d802e2934181ed5ff15446b688e8ffac611fe8cb8b",
+      "skill_name": "lvm-music-wan3",
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/inputs/music_004"
+    },
+    {
+      "case_id": "narrative_074",
+      "category": "narrative",
+      "case_folder": "074",
+      "duration_sec": 60,
+      "source_sha256": "c92f3ba19571e76da8ca4cb586b5c2c06e6bb7d77ba2775be3f2b9d8ed8173e3",
+      "requirements_sha256": "53c7f06b03127e059f28609654d84e78e9821ff1cd5c09740007c87a533f0522",
+      "skill_name": "lvm-narrative-wan3",
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/inputs/narrative_074"
+    }
+  ],
+  "evaluation": {
+    "judge": "qwen3.5-omni-plus",
+    "judge_override_authorized": true
+  },
+  "total_duration_sec": 469.0
+}

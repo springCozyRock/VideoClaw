@@ -1,0 +1,95 @@
+{
+  "version": "figure10_aligned_v2",
+  "paper": "https://arxiv.org/abs/2605.22144",
+  "settings": {
+    "opening_seconds": 10.0,
+    "scene_ending_seconds": 10.0,
+    "middle_fraction": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "transition_tail_seconds": 5.0,
+    "transition_head_seconds": 5.0,
+    "video_sampling_fps": 1.0,
+    "frame_max_width": 448,
+    "continuity_frame_max_width": 768,
+    "continuity_frames_per_side": 3,
+    "continuity_spacing": "consecutive_decoded_frames",
+    "audio": "original aligned audio; mono 16 kHz PCM16, no BGM separation",
+    "temperature": 0.1,
+    "max_tokens": 2048
+  },
+  "disclosures": {
+    "source": "https://arxiv.org/html/2605.22144v1#A13.F10",
+    "scope_choice": "Figure 10 primary; Section 3.2 describes scene-level opening/coherence differently. No claim of author-resolved equivalence.",
+    "paper_specified": [
+      "8 metrics and native rubrics",
+      "integer 1-5 score plus evidence-based analysis",
+      "Figure 10 drama opening first 10 seconds",
+      "adjacent pre-assembly clip tail 3 + head 3 frames"
+    ],
+    "implementation_choices_not_paper_requirements": [
+      "last 10 seconds of each scene for end_hook",
+      "middle third of each scene for escalation_effect",
+      "5 seconds either side of scene transitions",
+      "1 FPS for audiovisual units",
+      "consecutive spacing of the 3+3 continuity frames",
+      "frame resize/JPEG and audio encoding",
+      "temperature, token cap, retries",
+      "unit mean within case, then equal weight across cases"
+    ],
+    "judge_variant": "Qwen3.5-Omni-Plus only, user selected; not original three-judge ensemble",
+    "dataset_variant": "Metrics transferred to existing project samples, not paper 50-prompt reproduction",
+    "scene_boundary_limit": "Uses declared input scene boundaries; actual semantic cuts require separately verified annotation",
+    "transitions": "Includes entire explicitly annotated transition if provided. No invented bridge clip."
+  },
+  "status": "DEPLOYED_AND_VALIDATED_FULL_REEVALUATION_PENDING",
+  "prior_results_preserved": true,
+  "skipped_experiments_remain_skipped": true,
+  "updated_at": "2026-10-17T21:41:19.745196+08:00",
+  "fixes": [
+    "scene ending windows instead of full scenes",
+    "middle portions instead of full scenes",
+    "scene boundary windows instead of full scene pairs",
+    "versioned evidence and content fingerprints",
+    "strict JSON object parsing; optional single enclosing Markdown fence recorded",
+    "no calls for declared non-applicable metrics",
+    "partial unit coverage never reported as complete metric",
+    "status/watcher/audit read aligned output, not legacy scores"
+  ],
+  "validation": {
+    "protocol_regression_tests_passed": 5,
+    "preflight_samples": 10,
+    "preflight_passed": 10,
+    "real_smoke": [
+      {
+        "path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/short_drama_figure10_aligned_v2/action_006/runs/0e029987586b0a833e4c/end_hook/scene_01/result.json",
+        "status": "SCORED",
+        "score": 4,
+        "model_response_id": "chatcmpl-8ab65f07-7345-9708-bb9a-ea8a9ff5d208",
+        "markdown_fence_removed": false
+      }
+    ],
+    "same_request_cache_verified_without_network": true
+  },
+  "files": {
+    "baselines/codex/evaluation/eval_short_drama.py": "bae11db3a238f14a88e57ee0d148b2cb4a2eff7d8011263a24a0a1cd91c84044",
+    "baselines/codex/evaluation/short_drama_protocol.py": "7aaad0fe2fa8d3af8dab9c1471865450c19197b4ff3f426e04309a7608954362",
+    "baselines/codex/evaluation/test_short_drama_protocol.py": "018e88a35de53fcc65107acad3975a10d822404fd2c11ffa9854ea74b07d473c",
+    "baselines/codex/evaluation/audit_validity.py": "915e269cbe7c60091a801ed383e295674f6e29307591ccacd2120d9eb1fd9539",
+    "baselines/codex/operations/evaluate_watch.py": "1bbdb0821ac333af076483ebf0abd9782f1abde8a143c601175e984e0d3677f2",
+    "scripts/status.py": "23179a6d1a588f9effece7278c1966605e5918ab0c62448fb8b9d70f8f4222b6"
+  },
+  "full_reevaluation_started": false,
+  "remaining_limits": [
+    "single Qwen judge, not three-judge ensemble",
+    "existing project samples, not 50 paper prompts",
+    "declared scene boundaries have not been manually verified against semantic cuts",
+    "window lengths and 1 FPS are disclosed implementation choices, not author-specified parameters"
+  ],
+  "commands": {
+    "prepare_one": "/mnt/data/bts/envs/directorbench/bin/python baselines/codex/evaluation/eval_short_drama.py --case action_006 --prepare",
+    "score_one": "/mnt/data/bts/envs/directorbench/bin/python baselines/codex/evaluation/eval_short_drama.py --case action_006",
+    "status": "/mnt/data/bts/envs/directorbench/bin/python scripts/status.py --json"
+  }
+}

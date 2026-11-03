@@ -30,7 +30,8 @@ VIDEO_MODE_TO_MODEL_FIELD = {
 
 
 def _active_video_model(values: dict) -> str:
-    mode = values.get("video_generation_mode") or "first_frame"
+    from core.generation_paradigms import MODES, resolve_paradigm
+    mode = MODES[resolve_paradigm(values)]
     model_field = VIDEO_MODE_TO_MODEL_FIELD.get(mode, "video_first_frame_model")
     default_attr = {
         "video_first_frame_model": "VIDEO_FIRST_FRAME_MODEL",
@@ -43,7 +44,11 @@ def _active_video_model(values: dict) -> str:
 
 def _require_model_fields(values: dict) -> None:
     missing = [field for field in REQUIRED_MODEL_FIELDS if not values.get(field)]
-    if not _active_video_model(values):
+    try:
+        model = _active_video_model(values)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
+    if not model:
         missing.append("video_model")
     if missing:
         raise HTTPException(
@@ -73,6 +78,7 @@ async def start_project(req: ProjectStartRequest):
         "video_first_frame_model": req.video_first_frame_model or req.video_model or getattr(settings, "VIDEO_FIRST_FRAME_MODEL", ""),
         "video_start_end_model": req.video_start_end_model or getattr(settings, "VIDEO_START_END_MODEL", ""),
         "video_reference_model": req.video_reference_model or getattr(settings, "VIDEO_REFERENCE_MODEL", ""),
+        "generation_paradigm": req.generation_paradigm,
         "video_generation_mode": req.video_generation_mode or getattr(settings, "VIDEO_GENERATION_MODE", "first_frame"),
         "video_model": req.video_model,
         "enable_concurrency": req.enable_concurrency if req.enable_concurrency is not None else True,
@@ -96,6 +102,7 @@ async def start_project(req: ProjectStartRequest):
             "video_first_frame_model": meta["video_first_frame_model"],
             "video_start_end_model": meta["video_start_end_model"],
             "video_reference_model": meta["video_reference_model"],
+            "generation_paradigm": meta.get("generation_paradigm"),
             "video_generation_mode": meta["video_generation_mode"],
             "video_model": meta["video_model"],
             "episodes": meta["episodes"],
@@ -162,6 +169,8 @@ async def get_project_status_from_disk(session_id: str):
 async def get_artifact(session_id: str, stage: str):
     try:
         artifact = workflow_engine.get_artifact_snapshot(session_id, stage)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
     except KeyError:
         raise HTTPException(404, "Session not found")
 
@@ -183,6 +192,7 @@ async def update_models(session_id: str, request: Request):
         "video_first_frame_model",
         "video_start_end_model",
         "video_reference_model",
+        "generation_paradigm",
         "video_generation_mode",
         "video_ratio",
         "video_resolution",
@@ -191,6 +201,8 @@ async def update_models(session_id: str, request: Request):
     )
     try:
         return workflow_engine.update_session_meta(session_id, body if isinstance(body, dict) else {}, allowed_keys)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
     except KeyError:
         raise HTTPException(404, "Session not found")
 

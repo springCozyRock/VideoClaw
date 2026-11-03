@@ -1,0 +1,179 @@
+{
+  "upstream_repository": "https://github.com/HITsz-TMG/MSVBench",
+  "upstream_commit": "309318bf29594fe21a487d4fd78284faef0d777b",
+  "judge": "qwen3.5-omni-plus",
+  "original_judge": "gemini-2.5-flash",
+  "full_benchmark_ready": false,
+  "data": {
+    "stories": 20,
+    "character_reference_images": 136,
+    "shot_reference_images": 276,
+    "character_definitions_across_stories": 73
+  },
+  "metrics": {
+    "dover": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verified-dover/deployment_smoke/01/dover/status.json"
+      ]
+    },
+    "musiq": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-local-v1/deployment_smoke/01/musiq/status.json"
+      ]
+    },
+    "visual_attribute_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/evaluation/deployment_smoke/01/visual_attribute_consistency/status.json"
+      ]
+    },
+    "style_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-local-v1/deployment_smoke/01/style_consistency/status.json"
+      ]
+    },
+    "vqa": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/vqa_cache_v2/public_reference_smoke/01/vqa/status.json"
+      ],
+      "scope": "Public reference fixtures; adapted protocol, not formal benchmark scores"
+    },
+    "detection_count": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-qwen-v1/public_reference_smoke/01/detection_count/status.json",
+        "experiments/msvbench_smoke/verify-qwen-v2/public_reference_smoke/01/detection_count/status.json"
+      ]
+    },
+    "shot_perspective_alignment": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-qwen-v2/public_reference_smoke/01/shot_perspective_alignment/status.json"
+      ]
+    },
+    "state_shift_persistence": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-qwen-v2/public_reference_smoke/01/state_shift_persistence/status.json"
+      ]
+    },
+    "story_video_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_repair_20261019/smoke-caption-v1/public_reference_smoke/01/story_video_consistency/status.json"
+      ],
+      "scope": "Public fixture end-to-end passed after restoring sentencepiece==0.2.0. Current full-story backend uses official flash-attn==2.7.2.post1 and legacy model capability flag; scale validation tracked in experiments/msvbench_repair_20261019/full_story_flash_gate.json."
+    },
+    "face_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/native_face_v1/public_reference_smoke/01/face_consistency/status.json"
+      ],
+      "scope": "Public reference test. Face: animation route plus independent VGG-Face component. Action: overall route plus independent SAM2 crop component."
+    },
+    "character_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/native_tracking_v3/public_reference_smoke/01/character_consistency/status.json"
+      ],
+      "scope": "Public reference test. Face: animation route plus independent VGG-Face component. Action: overall route plus independent SAM2 crop component."
+    },
+    "background_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_repair_20261019/smoke-background-v2/public_reference_smoke/01/background_consistency/status.json"
+      ],
+      "scope": "Actual two-image edits and DreamSim comparison; matching official Step1X commit a0faf7859dee06ab7b1182f1aef466cca45698c6; strict full checkpoint load; original seed/steps/cfg/size; offload and torch/SDPA adaptations"
+    },
+    "clothes_color_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-qwen-v2/public_reference_smoke/01/clothes_color_consistency/status.json"
+      ]
+    },
+    "relative_size_consistency": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-qwen-v2/public_reference_smoke/01/relative_size_consistency/status.json"
+      ]
+    },
+    "action_recognition": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/native_action_v2/public_reference_smoke/01/action_recognition/status.json"
+      ],
+      "scope": "Public reference test. Face: animation route plus independent VGG-Face component. Action: overall route plus independent SAM2 crop component."
+    },
+    "action_strength": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verified/deployment_smoke/01/action_strength/status.json"
+      ]
+    },
+    "camera_control": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_repair_20261019/smoke-camera-guard-v2/public_reference_smoke/01/camera_control/status.json"
+      ],
+      "scope": "Actual finite camera trajectories, nonempty native analyses and judge scores; absolute output path fix and audited empty-inlier flow-loss guard. Reconstructed interface, not exact author implementation."
+    },
+    "physical_plausibility": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/native_qwen/public_reference_smoke/01/physical_plausibility/status.json"
+      ]
+    },
+    "physical_interaction_accuracy": {
+      "status": "SMOKE_VERIFIED",
+      "evidence": [
+        "experiments/msvbench_smoke/verify-qwen-v2/public_reference_smoke/01/physical_interaction_accuracy/status.json"
+      ]
+    }
+  },
+  "protocol_differences": [
+    "Qwen replaces Gemini per user instruction",
+    "Video input is 1fps JPEG frame sequences with 768px maximum side, max 240 seconds; not native Gemini video upload",
+    "PyTorch 2.5.1+cu121 reused rather than upstream torch2.4; transformers4.49 and timm1.0.13 override conflicting transitive metadata",
+    "Native formulas/rubrics preserved; exceptions invalidate scores; no overall score while metrics are incomplete",
+    "Unpublished GroundedSAM2Tracker, SimpleSlidingCaptioner, and MonST3RProcessor interfaces reconstructed using local/official source, not claimed author originals",
+    "Action tracking: GroundingDINO Swin-T OGC, SAM2.1-Large; first-frame highest-confidence box at box0.25/text0.30; temporal-union crop with10% margin; independently component-tested",
+    "Step1X original i1258 weights,28steps,1024size,cfg6 retained; CPU/GPU offload enabled for40GB GPU; local source uses SDPA",
+    "KaLM exact v2 retained; attention backend SDPA instead of upstream flash_attention_2; override MSVBENCH_KALM_ATTN supported",
+    "MonST3R official source, CroCo pinned; official default batchified geometry alignment, same300steps/flow and temporal objectives; wrapper sampling and quaternion export recorded per run",
+    "Real DeepFace/VGG-Face uses separate Python3.11 TensorFlow2.15.1 worker with original verify args/results; animation full metric and real model component verified",
+    "One-shot continuation validates only public fixture videos; successful smoke tests do not constitute complete20-story benchmarking",
+    "ShareCaptioner uses its original eager attention backend instead of FlashAttention2; final complete checkpoint must match all942 model tensors including389 vision tensors; initialization does not fetch redundant CLIP weights",
+    "ShareCaptioner official checkpoint omits CLIP pooled-output post_layernorm; replace unused pooled-only norm with Identity to match942 checkpoint tensors. Captioner exclusively uses pre-pool hidden_states[-1] patch features; those are unchanged."
+  ],
+  "sensitive_upload_policy": "No user project video uploaded in this deployment. Synthetic and public MSVBench reference fixtures only.",
+  "verified_named_metrics": 16,
+  "asset_hashes": {
+    "benchmarks/msvbench/Metrics/VisualQuality/checkpoints/instruction.txt": "bf86497d2d07cc0a3a7598aa2d780296d7df4bc3277e03bf8d09add795691fc4",
+    "benchmarks/msvbench/Metrics/VisualQuality/checkpoints/DOVER/DOVER.pth": "f4a42c0bbc94c94dd7409e7f40887d44c5c30314d1d09e7edf03cc35813b4838",
+    "benchmarks/msvbench/Metrics/VisualQuality/checkpoints/CSD-ViT-L/pytorch_model.bin": "2e4f463ac52e889bc39247060a3243d0eafff6b757e4e8e44a1830c20ab5af41",
+    "benchmarks/msvbench/Metrics/VisualQuality/checkpoints/MusIQ/musiq.py": "9013a3b62a4b5e429fdaee09bf237e92a1e683d16f6bfa9385e6c1279b1013dd",
+    "benchmarks/msvbench/Metrics/VisualQuality/checkpoints/MusIQ/musiq.pth": "e95806b9eae5f3814c410f574ba8e552362bd5bc63d758ed5b97860f5d6185aa"
+  },
+  "local_reuse_inventory": "configs/msvbench/reused-models.json",
+  "all_metric_smoke_tests_passed": false,
+  "updated": "2026-10-19T10:51:05.374851",
+  "continuation_state": "configs/msvbench/continuation.json",
+  "component_evidence": [
+    "experiments/msvbench_smoke/dreamsim_component.json",
+    "experiments/msvbench_smoke/runtime_components.json",
+    "experiments/msvbench_smoke/action_tracking_component.json",
+    "experiments/msvbench_smoke/sharecaptioner_architecture.json",
+    "experiments/msvbench_smoke/kalm_v2_component.json"
+  ],
+  "all_metric_smoke_verified": true,
+  "strict_original_reproduction": false,
+  "readiness": {
+    "all_19_metric_entrypoints_sample_verified": true,
+    "strict_original_reproduction": false,
+    "formal_story_scale_validation": "See full_story_flash_gate.json; no claim of all formal-case completion"
+  }
+}

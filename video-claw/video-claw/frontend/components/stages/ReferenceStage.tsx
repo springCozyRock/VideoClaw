@@ -20,6 +20,10 @@ interface SceneItem {
   versions: string[];     // 所有历史版本路径
   status?: 'pending' | 'done' | 'failed' | 'running';
   rewrite_result?: RewriteResult;
+  generation_paradigm?: string;
+  last_frame?: string;
+  grid_source?: string;
+  references?: Array<{kind: string; name: string; path: string}>;
 }
 
 /* ─── 水平滚动图片画廊 ─── */
@@ -167,7 +171,7 @@ function SceneRow({
   const isRunning = scene.status === 'running' || isRegenerating;
   const isPending = scene.status === 'pending';
   const isFailed = scene.status === 'failed' && !isRegenerating;
-  const hasImage = Boolean(getSelected(scene)) || scene.versions.length > 0;
+  const hasImage = Boolean(getSelected(scene)) || scene.versions.length > 0 || (scene.generation_paradigm === 'multiref2v' && Boolean(scene.references?.length));
   const canGenerateMissing = Boolean(allowMissingGenerate) && !hasImage && !isRunning && !isRegenerating;
   const canShowRegenerate = !isRunning && !isPending && (hasImage || isFailed || canGenerateMissing);
   const hasChanges = editDesc !== scene.description;
@@ -324,12 +328,20 @@ function SceneRow({
           </div>
         ) : (
           <div className="relative w-full">
-            <ImageGallery
+            {scene.generation_paradigm && (
+          <div className="flex flex-wrap gap-3 mb-3 text-xs text-gray-500">
+            <span>{scene.generation_paradigm}</span>
+            {scene.last_frame && <a href={assetUrl(scene.last_frame)} target="_blank" rel="noreferrer">尾帧<img src={assetUrl(scene.last_frame)} alt="当前片段尾帧" className="h-24 rounded" /></a>}
+            {scene.grid_source && <a href={assetUrl(scene.grid_source)} target="_blank" rel="noreferrer">原始分镜网格<img src={assetUrl(scene.grid_source)} alt="联合分镜网格" className="h-24 rounded" /></a>}
+            {scene.references?.map(ref => <a key={ref.path} href={assetUrl(ref.path)} target="_blank" rel="noreferrer">{ref.name}<img src={assetUrl(ref.path)} alt={ref.name} className="h-24 rounded" /></a>)}
+          </div>
+        )}
+        {scene.generation_paradigm !== 'multiref2v' && <ImageGallery
               versions={scene.versions}
               selected={getSelected(scene)}
               onSelect={onSelectVersion}
               showPlaceholder={isRunning}
-            />
+            />}
             {isFailed && (
               <button
                 onClick={onRegenerate}

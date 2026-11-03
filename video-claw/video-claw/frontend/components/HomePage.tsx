@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, Play, Settings2, Clock, ArrowRight, Zap, CheckCircle, Trash2, X, Lock, Globe, ListOrdered, Upload, Loader2 } from 'lucide-react';
@@ -9,6 +9,7 @@ import {
   VIDEO_RATIOS,
   VIDEO_RESOLUTIONS,
   VIDEO_GENERATION_MODES,
+  normalizeVideoMode,
   type ProviderGroup,
   type VideoGenerationMode,
 } from '@/config/models';
@@ -77,7 +78,7 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
   const [selectedFirstFrameVideo, setSelectedFirstFrameVideo] = useState('');
   const [selectedStartEndVideo, setSelectedStartEndVideo] = useState('');
   const [selectedReferenceVideo, setSelectedReferenceVideo] = useState('');
-  const [selectedVideoMode, setSelectedVideoMode] = useState<VideoGenerationMode>('first_frame');
+  const [selectedVideoMode, setSelectedVideoMode] = useState<VideoGenerationMode>('keyframe2v');
   const [selectedRatio, setSelectedRatio] = useState('');
   const [selectedResolution, setSelectedResolution] = useState('720P');
   const [configLoading, setConfigLoading] = useState(true);
@@ -105,9 +106,9 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
   const [startEndVideoProviders, setStartEndVideoProviders] = useState<ProviderGroup[]>([]);
   const [referenceVideoProviders, setReferenceVideoProviders] = useState<ProviderGroup[]>([]);
   const activeVideoModel =
-    selectedVideoMode === 'start_end_frame'
+    selectedVideoMode === 'fflf2v'
       ? selectedStartEndVideo
-      : selectedVideoMode === 'reference'
+      : selectedVideoMode === 'multiref2v'
         ? selectedReferenceVideo
         : selectedFirstFrameVideo;
   const modelConfigReady = Boolean(selectedLLM && selectedVLM && selectedT2I && selectedI2I && activeVideoModel && selectedRatio && selectedResolution);
@@ -154,8 +155,8 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
         const firstFrameModel = models.video_first_frame || models.video;
         const startEndModel = models.video_start_end || 'wan2.7-i2v';
         const referenceModel = models.video_reference || 'wan2.7-r2v';
-        const videoMode = (generation.video_generation_mode || 'first_frame') as VideoGenerationMode;
-        const selectedModel = videoMode === 'start_end_frame' ? startEndModel : videoMode === 'reference' ? referenceModel : firstFrameModel;
+        const videoMode = normalizeVideoMode(generation.video_generation_mode);
+        const selectedModel = videoMode === 'fflf2v' ? startEndModel : videoMode === 'multiref2v' ? referenceModel : firstFrameModel;
         if (!models.llm || !models.vlm || !models.image_t2i || !models.image_it2i || !selectedModel) {
           throw new Error('backend/config.yaml 缺少主流程默认模型');
         }
@@ -196,16 +197,16 @@ export default function HomePage({ onStartProject, onResumeProject, onDeleteSess
   };
 
   const activeVideoProviders =
-    selectedVideoMode === 'start_end_frame'
+    selectedVideoMode === 'fflf2v'
       ? startEndVideoProviders
-      : selectedVideoMode === 'reference'
+      : selectedVideoMode === 'multiref2v'
         ? referenceVideoProviders
         : firstFrameVideoProviders;
 
   const setActiveVideoModel = (value: string) => {
-    if (selectedVideoMode === 'start_end_frame') {
+    if (selectedVideoMode === 'fflf2v') {
       setSelectedStartEndVideo(value);
-    } else if (selectedVideoMode === 'reference') {
+    } else if (selectedVideoMode === 'multiref2v') {
       setSelectedReferenceVideo(value);
     } else {
       setSelectedFirstFrameVideo(value);

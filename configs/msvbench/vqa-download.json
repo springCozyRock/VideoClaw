@@ -1,0 +1,29 @@
+{
+  "status": "DOWNLOADED_NOT_INFERENCE_VERIFIED",
+  "started": 1792248952.1264546,
+  "models": [
+    {
+      "repo": "zhiqiulin/clip-flant5-xxl",
+      "revision": "89bad6fffe1126b24d4360c1e1f69145eb6103aa",
+      "status": "DOWNLOADED",
+      "attempt": 1,
+      "error": "('Connection broken: IncompleteRead(8635332287 bytes read, 381880756 more expected)', IncompleteRead(8635332287 bytes read, 381880756 more expected))",
+      "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/t2v_metrics/weights/clip-flant5-xxl/models--zhiqiulin--clip-flant5-xxl/snapshots/89bad6fffe1126b24d4360c1e1f69145eb6103aa"
+    },
+    {
+      "repo": "google/flan-t5-xxl",
+      "revision": "ae7c9136adc7555eeccc78cdd960dfd60fb346ce",
+      "status": "DOWNLOADED",
+      "attempt": 0,
+      "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/t2v_metrics/weights/clip-flant5-xxl/models--google--flan-t5-xxl/snapshots/ae7c9136adc7555eeccc78cdd960dfd60fb346ce"
+    },
+    {
+      "repo": "openai/clip-vit-large-patch14-336",
+      "revision": "ce19dc912ca5cd21c8a653c79e251e808ccabcd1",
+      "status": "DOWNLOADED",
+      "attempt": 0,
+      "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/StoryVideoAlignment/tools/t2v_metrics/weights/clip-flant5-xxl/models--openai--clip-vit-large-patch14-336/snapshots/ce19dc912ca5cd21c8a653c79e251e808ccabcd1"
+    }
+  ],
+  "pid": 2296482
+}

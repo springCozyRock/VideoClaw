@@ -1,0 +1,108 @@
+{
+  "method": "example_baseline",
+  "status": "WAITING_FOR_VIDEO",
+  "case": {
+    "annotation_warnings": [
+      "SCRIPT_DURATION_DIFFERS_FROM_TARGET"
+    ],
+    "base_case_key": "original/DB_001",
+    "canonical_video_type": "action",
+    "case_key": "original/DB_001",
+    "content_language": "zh",
+    "input_hashes": {
+      "metadata_path": "a7b5baa27b3c15460f0c35fb852d65d1230e6190fbe49c056bffef6363efdcab",
+      "prompt_path": "93b8816b10c8dc2c630c0dce7edd2ae0768ce2bf6f9d1b91440c8e1e8612245f",
+      "reference_snippets_path": "46c03406075ea4c566454257aca36a1a22e639a7160d134318ddd5ee687e12fa",
+      "storyboard_path": "48dd894ccc6fed7a9576b0e6cef942bf609652db59d62e46c4a92ba21d7f77f1"
+    },
+    "instruction_language": "zh",
+    "meta_id": "action_006",
+    "metadata_path": "datasets/directorbench_public/cases/original/DB_001/metadata.json",
+    "prompt_path": "datasets/directorbench_public/cases/original/DB_001/evaluation_prompt.txt",
+    "published_script_duration_sec": 18.0,
+    "published_script_shots": 1,
+    "published_visual_shots": 1,
+    "reference_snippets_path": "datasets/directorbench_public/cases/original/DB_001/reference_snippets.txt",
+    "sample_id": "DB_001",
+    "source": {
+      "path": "datasets/directorbench_public/raw/dataset_original.jsonl",
+      "record_ordinal_1based": 1,
+      "record_sha256": "2c6fbe9e4f0e12b444d57cd1372dd1955ab9f4a60f614e08d45c23a709b6ddd4"
+    },
+    "split": "original",
+    "storyboard_path": "datasets/directorbench_public/cases/original/DB_001/published_storyboard.json",
+    "target_duration_sec": 67.0,
+    "variant_id": "DB_001"
+  },
+  "profile": {
+    "name": "Sync Perfectionist",
+    "personalization": {
+      "expertise_level": "expert",
+      "expression_style": "precise",
+      "hard_constraints": [
+        "perfect_lip_sync",
+        "text_visual_match"
+      ],
+      "priority_weights": {
+        "audio_emotion": 0.2,
+        "cross_modal_sync": 0.4,
+        "text_story_arc": 0.2,
+        "visual_camera": 0.2
+      },
+      "user_taste": {
+        "focus": "sync_important",
+        "lip_sync": "must",
+        "text_visual_alignment": "critical",
+        "wants_bgm": true,
+        "wants_lip_sync": true
+      }
+    },
+    "profile_id": 4
+  },
+  "video_binding": null,
+  "reference_mode": "reference-free",
+  "user_prompt_path": "/mnt/data/bts/repos/LongVideoMemory/datasets/directorbench_public/cases/original/DB_001/evaluation_prompt.txt",
+  "script_text_path": null,
+  "storyboard_path": null,
+  "protocol": {
+    "id": "directorbench_public_63174ef_qwen35_no_bgm_v1",
+    "upstream_commit": "63174ef2a00df2ae839d74a9af7f91883c790f8b",
+    "judge": "qwen3.5-omni-plus",
+    "reference_mode_default": "reference-free",
+    "BGM": "SKIPPED_BY_USER; original data/weights/registry preserved; native remaining aggregation",
+    "personalized_generation_prompts": "Not supplied by this release; no synthetic LLM-generated replacements created",
+    "evaluation_prompt": "Published main_instruction plus verbatim modality requirements; generation prompt must be recorded separately when binding a video",
+    "profile_transformations": [
+      {
+        "profile_id": 4,
+        "changes": [
+          {
+            "path": "personalization.user_taste.wants_lip_sync",
+            "source": "lip_sync",
+            "source_value": "must",
+            "value": true
+          }
+        ]
+      }
+    ],
+    "paper_vs_release": {
+      "paper_task_count": 80,
+      "published_original_count": 75,
+      "registered_checkpoint_metrics": 9,
+      "registered_checkpoints": 40,
+      "README_metric_count": 14,
+      "code_additional_metrics": [
+        "overall_multimodal_harmony",
+        "script_video_fidelity",
+        "text_audio_consistency",
+        "transition_quality",
+        "user_demand_fulfillment",
+        "user_requirement_consistency"
+      ],
+      "stability_aggregation": "Native implementation uses visual_camera weight for both video and stability"
+    },
+    "fallback_policy": "Persist native results with explicit degraded/failed validity; no claim of full protocol coverage when tools fail",
+    "historical_results": "Separate legacy modified code and experiments; not imported or re-scored"
+  },
+  "no_api_calls": true
+}

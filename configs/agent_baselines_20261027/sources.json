@@ -1,0 +1,32 @@
+{
+  "captured_at": 1793091834.8160384,
+  "vimax": {
+    "source_url": "https://github.com/HKUDS/ViMax",
+    "download": "https://codeload.github.com/HKUDS/ViMax/tar.gz/refs/heads/main",
+    "archive_sha256": "4639d8b5c29e46607c4fb45e2b508ac6dbe61a63df34863289f7fa3c9145812e",
+    "observed_main_commit": "fd4b72e7731be6e5f88486206d25ea59849b0285",
+    "commit_note": "API observation after archive download; file hashes identify the exact executed snapshot"
+  },
+  "scriptagent": {
+    "source_url": "https://github.com/Tencent/digitalhuman/tree/main/ScriptAgent",
+    "local_adaptation_source": "/mnt/data/bts/repos/ScriptAgent/code",
+    "files": {
+      "baselines/scriptagent/code/env_utils.py": "42aca953bf6e1e0b94f80bfbdfda9bee9c8c4aedcb103b6ba00b26ded0d1df33",
+      "baselines/scriptagent/code/script_agent.py": "a5135aa971054d65915a1fed1e20f1ad92112ae7ee93fad2eda39f3b92b0e82e",
+      "baselines/scriptagent/code/director_agent.py": "19cef7015569a77f01e30e5367ec94b18adfc80264ecf36a0579eb7a786a46a6"
+    },
+    "variant": "API generic planner based on the existing Pixelle baseline integration; not paper-trained ScripterAgent",
+    "source_archive": "experiments/agent_baselines_20261027/sources/scriptagent_api_source_20261027.tar.gz",
+    "source_archive_sha256": "e837e3814a76f37c1b9c7b4d71353e6fe8d352d05ef243250cd6b1428acb2af1"
+  },
+  "reference_implementation": "/mnt/data/bts/repos/Pixelle-Video/pixelle_video/services/api_services",
+  "memory_enabled": false,
+  "runtime": {
+    "scriptagent": "/mnt/data/bts/repos/ScriptAgent/.venv/bin/python",
+    "vimax": "/mnt/data/bts/repos/LongVideoMemory/.venvs/vimax_api/bin/python",
+    "reuse": "vimax_api/reused_scriptagent.pth reuses the existing ScriptAgent site-packages; missing orchestration dependencies are installed in an isolated overlay",
+    "upstream_python_requirement": ">=3.12",
+    "executed_python": "3.11.15",
+    "compatibility": "All executed ViMax agents/pipelines/interfaces/tools/utils compiled successfully under 3.11; native Script2Video imported successfully. This is a recorded runtime deviation."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "scripts/msvbench_agents_prepare.py": "827967e0a3825f1b80370a6e1a419dc0bdf38090af9d0bd31211dedb7cefe394",
+  "scripts/msvbench_agents_run.py": "3b24da19f03f78676a6190ca7d26256ec5b3098cee00aa9a01da42636eb234aa",
+  "scripts/msvbench_agents_status.py": "0a65800b2d089b464faeb0c1190b9106e65a11c8be2352f7ff7f059142d9996e",
+  "scripts/msvbench_videoclaw_runtime.py": "7e609854b3ce43fb160110d0dc6ce0d37b5441048b7b0df4f72b75c2493dbf6c",
+  "scripts/msvbench_videoclaw_resume.py": "0b6ea0ca82e32d034e76ac6187adc827cd637472e460f1b41996f2140dc48c3b"
+}

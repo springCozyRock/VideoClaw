@@ -1,0 +1,62 @@
+[
+  {
+    "run": "codex_original_720p",
+    "case_id": "action_006",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"action_006\", \"planned_units\": 9, \"applicable_units\": 9, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/short_drama_figure10_aligned_v2/action_006/runs/505f728ce3f656c29d96/plan.json\"}\n"
+  },
+  {
+    "run": "codex_original_720p",
+    "case_id": "cinematic_008",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"cinematic_008\", \"planned_units\": 11, \"applicable_units\": 11, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/short_drama_figure10_aligned_v2/cinematic_008/runs/2bd6338a34c7d491fc06/plan.json\"}\n"
+  },
+  {
+    "run": "codex_original_720p",
+    "case_id": "educational_008",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"educational_008\", \"planned_units\": 33, \"applicable_units\": 27, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/short_drama_figure10_aligned_v2/educational_008/runs/5f10c56a5bae5e87a0dc/plan.json\"}\n"
+  },
+  {
+    "run": "codex_original_720p",
+    "case_id": "music_004",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"music_004\", \"planned_units\": 9, \"applicable_units\": 9, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/short_drama_figure10_aligned_v2/music_004/runs/9791aad5190aae148758/plan.json\"}\n"
+  },
+  {
+    "run": "codex_original_720p",
+    "case_id": "narrative_074",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"narrative_074\", \"planned_units\": 17, \"applicable_units\": 17, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/short_drama_figure10_aligned_v2/narrative_074/runs/1b9d0bb1221d2d6ca9ce/plan.json\"}\n"
+  },
+  {
+    "run": "codex_composition_wan3_720p",
+    "case_id": "action_006",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"action_006\", \"planned_units\": 21, \"applicable_units\": 21, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/evaluation/short_drama_figure10_aligned_v2/action_006/runs/16ab8d9e4d7c4d806d93/plan.json\"}\n"
+  },
+  {
+    "run": "codex_composition_wan3_720p",
+    "case_id": "cinematic_008",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"cinematic_008\", \"planned_units\": 21, \"applicable_units\": 21, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/evaluation/short_drama_figure10_aligned_v2/cinematic_008/runs/0c9e45b85e29fed62c98/plan.json\"}\n"
+  },
+  {
+    "run": "codex_composition_wan3_720p",
+    "case_id": "educational_008",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"educational_008\", \"planned_units\": 49, \"applicable_units\": 35, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/evaluation/short_drama_figure10_aligned_v2/educational_008/runs/882ede65a5420a342d3a/plan.json\"}\n"
+  },
+  {
+    "run": "codex_composition_wan3_720p",
+    "case_id": "music_004",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"music_004\", \"planned_units\": 33, \"applicable_units\": 33, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/evaluation/short_drama_figure10_aligned_v2/music_004/runs/507c4daa9bee01388492/plan.json\"}\n"
+  },
+  {
+    "run": "codex_composition_wan3_720p",
+    "case_id": "narrative_074",
+    "exit_code": 0,
+    "output": "{\"status\": \"PREPARED_NO_API_CALLS\", \"case_id\": \"narrative_074\", \"planned_units\": 29, \"applicable_units\": 29, \"plan\": \"/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/evaluation/short_drama_figure10_aligned_v2/narrative_074/runs/77953768854dbc919a1e/plan.json\"}\n"
+  }
+]

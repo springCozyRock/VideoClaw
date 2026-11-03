@@ -1,4 +1,6 @@
-﻿'use client';
+'use client';
+
+import { normalizeVideoMode } from '@/config/models';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -1186,7 +1188,7 @@ export default function WorkflowPanel() {
           vlm_model: s.vlm_model || '',
           image_t2i_model: s.image_t2i_model || '',
           image_it2i_model: s.image_it2i_model || '',
-          video_generation_mode: s.video_generation_mode || 'first_frame',
+          video_generation_mode: normalizeVideoMode(s.generation_paradigm || s.video_generation_mode),
           video_first_frame_model: restoredFirstFrameVideoModel,
           video_start_end_model: s.video_start_end_model || 'wan2.7-i2v',
           video_reference_model: s.video_reference_model || 'wan2.7-r2v',
@@ -1237,12 +1239,25 @@ export default function WorkflowPanel() {
   };
 
   // ── 模型配置变更处理 ──
-  const handleModelConfigChange = (config: ModelConfig) => {
-    setProjectParams(prev => prev ? { ...prev, ...config } : null);
-    // 同步到后端会话元数据
-    if (sessionId) {
-      const payload: Record<string, any> = { ...config };
-      updateModels(sessionId, payload).catch(console.error);
+  const handleModelConfigChange = async (config: ModelConfig) => {
+    try {
+      if (sessionId) await updateModels(sessionId, { ...config });
+      const visualChanged = projectParams && ['video_generation_mode', 'image_t2i_model', 'image_it2i_model', 'video_ratio'].some(key =>
+        (projectParams as unknown as Record<string, unknown>)[key] !== (config as unknown as Record<string, unknown>)[key]);
+      const videoChanged = projectParams && ['video_model', 'video_first_frame_model', 'video_start_end_model', 'video_reference_model', 'video_resolution'].some(key =>
+        (projectParams as unknown as Record<string, unknown>)[key] !== (config as unknown as Record<string, unknown>)[key]);
+      setProjectParams(prev => prev ? { ...prev, ...config } : null);
+      if (visualChanged || videoChanged) {
+        setStageStates(prev => {
+          const next = { ...prev };
+          const stages = visualChanged ? ['reference_generation', 'video_generation', 'post_production'] : ['video_generation', 'post_production'];
+          for (const stage of stages) next[stage] = { ...next[stage], status: 'pending', artifact: null, error: null, progress: 0 };
+          return next;
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      window.alert(error instanceof Error ? error.message : '无法保存生成设置');
     }
   };
 
@@ -1254,7 +1269,7 @@ export default function WorkflowPanel() {
         image_t2i_model: projectParams.image_t2i_model,
         image_it2i_model: projectParams.image_it2i_model,
         // Legacy session compatibility: projectParams may come from an old session with only video_model.
-        video_generation_mode: projectParams.video_generation_mode || 'first_frame',
+        video_generation_mode: normalizeVideoMode(projectParams.video_generation_mode),
         video_first_frame_model: projectParams.video_first_frame_model || projectParams.video_model,
         video_start_end_model: projectParams.video_start_end_model || 'wan2.7-i2v',
         video_reference_model: projectParams.video_reference_model || 'wan2.7-r2v',
@@ -1338,7 +1353,7 @@ export default function WorkflowPanel() {
       hasPendingItems = chars.some((c: any) => !c.selected) || sets.some((s: any) => !s.selected);
     } else if (activeStage === 'reference_generation') {
       const scenes = state?.artifact?.scenes || [];
-      hasPendingItems = scenes.some((s: any) => !s.selected);
+      hasPendingItems = scenes.some((s: any) => s.generation_paradigm === 'multiref2v' ? !s.references?.length : !s.selected);
     } else if (activeStage === 'video_generation') {
       const clips = state?.artifact?.clips || [];
       // 检查是否有未选中的 clips

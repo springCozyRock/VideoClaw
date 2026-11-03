@@ -1,0 +1,334 @@
+{
+  "files": [
+    {
+      "path": "api_throttle.py",
+      "sha256": "c287ae1f474c35c7396a21f73807417a0c69f8a72054dc32cb6be86b88946228"
+    },
+    {
+      "path": "bootstrap_vistory.py",
+      "sha256": "b1046c5fbf68b7d2352d49552cba399f42836258f728ac07ff58fa80b30a3a39"
+    },
+    {
+      "path": "configure_eval.py",
+      "sha256": "aba307b36a7dc2fde201f5d2fc890a159cae1169d8f47de6369fc80d6a2ca4f2"
+    },
+    {
+      "path": "dependency_watch.py",
+      "sha256": "ebd76fbb19ec89d81544bf5d4dc4a33a16a8f4ba72c8d99c755d1f661afb78b6"
+    },
+    {
+      "path": "eval_director.py",
+      "sha256": "01465f37bac24c66b74867659033fb410fcfce0f7e0ca9486bc98d780e60f921"
+    },
+    {
+      "path": "eval_media.py",
+      "sha256": "4e8a5c7733b4b711c77c6d9dcb0129c2bbc8d1917729eaf8cd4e6cafd58007de"
+    },
+    {
+      "path": "eval_short_drama.py",
+      "sha256": "ee2b7752374204540457ae148cef0569c3b652972492b672cdf9da8459341db6"
+    },
+    {
+      "path": "eval_vistory.py",
+      "sha256": "37505f6d27b698216bbf665500d8cdb390df57c15b29d15efc78983f88aecb2e"
+    },
+    {
+      "path": "evaluate_watch.py",
+      "sha256": "20896c486483277b9d22d77a7bbeb5362aeeda1a1cdf6ab75f9e0b5b71b73da8"
+    },
+    {
+      "path": "finalize_setup.py",
+      "sha256": "75bc94cc451d21c4fccddb7d8473d3556066d7c7f7fdd5ba17356930a6cd59dd"
+    },
+    {
+      "path": "prepare.py",
+      "sha256": "4af084be17454fcaee5500f2a788606e45fd8a666e07440bdd3b2339212b0a02"
+    },
+    {
+      "path": "prepare_asr.py",
+      "sha256": "55135819f8f955bc4eafce3246df05b7b05d119d2ab9bd937d89aabe59eea57b"
+    },
+    {
+      "path": "prepare_human.py",
+      "sha256": "a4c4bc8ad71eb05ece6d16426ff8c665b4773ccfc0b17ffd2fac0180d5aa9656"
+    },
+    {
+      "path": "runner.py",
+      "sha256": "78344e387adbe42e04a6b285aff85dbd8edfa19e6e5c79017beab9b998da340a"
+    },
+    {
+      "path": "transport_smoke.py",
+      "sha256": "6bffcc101eb1051b058affa16d2156e8f0fec4dba6794f211681cc3b64600f79"
+    },
+    {
+      "path": "vbench_full.py",
+      "sha256": "8200e2f125aa58cb947a23f5c0dd25d1ab1a44db0751a94dd1152cb1540feb93"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/base_evaluator.py",
+      "sha256": "399f9ea61e2a325fb35590dd6044f1630392aac179010f70dcab316449e8ce93"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/config.py",
+      "sha256": "062ca9894b9980292867545f043e47c4ac518b70c54ebd5a649eaaca5cecb636"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/convert.py",
+      "sha256": "73f4c729d17849ae54d0f8a180053dc991e9e73334595fc536200795beb2d0de"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/data.py",
+      "sha256": "37fb54b23312f8ed4309a79a6b5a7bf6deb622e917cceea99634f19117ca0794"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/dataset/augmenter.py",
+      "sha256": "11261b906544e2cb2a72b9975738a7bbeecbfe15b832f3d9053090fa55b81273"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/dataset/five_validation_dataset.py",
+      "sha256": "c7c68ab9ada03889a4651ab9bf4f60d450e2278308fc2d10d84f94476b4d4e18"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/dataset/image_folder_dataset.py",
+      "sha256": "b5826d3735496031a81579027ac3f1907c83adb7470b49a74aaa1020e3ee5c9c"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/dataset/record_dataset.py",
+      "sha256": "df2e91b529e730e54a987c78eb15b8ed2a66f3f6108f113afa3ff961f7babe9e"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/evaluate_utils.py",
+      "sha256": "568c8f702ad77bd06fa518e1c3faf217584d09659642de25f3ba60ee45102dd3"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/align.py",
+      "sha256": "eb25a903c24cca9a4756f728d7ac097387f20e29ff5fe961a29f53b2aff1d356"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn.py",
+      "sha256": "fd59f67f5c2a1a04ece8d031bc5aff48553cb7e4ceb7564ffd2d995e47c68770"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/extract_weights_from_caffe_models.py",
+      "sha256": "38f86464fbd1d54ddddc97f9951347663c3d94dbc34d81c060ccb431a0f34ddd"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/__init__.py",
+      "sha256": "4f31c685face3db8fde923ccc7c85e15454a8c5a6e43b94cc167eef043d5a387"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/align_trans.py",
+      "sha256": "30f31e4301a2409698fbbe836bd38699f86e9756b9d3bab8da9def898671505d"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/box_utils.py",
+      "sha256": "a132749ddd488927891b2a1a26b7869da7df9dee2ce3588531c5a0722a00851c"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/detector.py",
+      "sha256": "14a3bb0160d3a2318f465deef8d1ff393b29cfae250950150ac4edd2944ca468"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/first_stage.py",
+      "sha256": "937ed86f8e6128e4cf93e6579c5ee1aa0c9e5c6ce100b2c0e581c802f42df268"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/get_nets.py",
+      "sha256": "94828612204d7f99510ef9457d685340f7487475c2fd0960707c18509927a9cd"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/matlab_cp2tform.py",
+      "sha256": "688d50078fe3a0bc4a4ffd8130231274545baaf32a30b0d2e05a49f84c25e217"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/face_alignment/mtcnn_pytorch/src/visualization_utils.py",
+      "sha256": "5cd0909ba2de4cefe525efe63972d3a0ade0567c98221bcfa8a2e433d15a0e10"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/head.py",
+      "sha256": "ba3c7482736d6f912db8c9351cc6d210e74243cc9915ee4eb06945a153583d41"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/inference.py",
+      "sha256": "5c0758cb3218ccf8c5ebfcaea71aca59da7332e94c0c2a57dbe87bc21b4f8cfa"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/main.py",
+      "sha256": "a92a927c1ff109998cf1b0d07e9caf08ffbd552b4b1ac1f2ae99d4161a57af9b"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/net.py",
+      "sha256": "b4db4eb0174a385fd29e5f616391b50d443f455990c8b88dcab1f8021af8ba4c"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/train_val.py",
+      "sha256": "ba3bb6f45caa856a1c6552c16cc708810bb5ba61e7bc1f9c28751ea274e0a599"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/utils.py",
+      "sha256": "00c09aee5605f5c9c728e568e1d6b29201cfb8855dd1d186706c673dc9437ebe"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/PFE/ijbs.py",
+      "sha256": "9cf8cdf96a7df5aa83ea71d0368a33ac1604c2a968a5c6bd3c391a8fd8a6f4fc"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/PFE/utils.py",
+      "sha256": "247758f946d668d84a7d42110891fce3e7cd5c931005de74dca0e72011cf0fd8"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/data_utils.py",
+      "sha256": "d2949e1a0f7867f78c23a2a54d87074daa37c8df436293d2152d8c89feddd514"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/evaluate_helper.py",
+      "sha256": "8ee3aaa6824b254ce8395018e64e9fdb77d7438213eb72ea3fb97fd1a2524cc6"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/tinyface_helper.py",
+      "sha256": "bad392ad5677ce71ce0ef102e83fc838b3cc46e99f7ed638457d27a87f434616"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/validate_IJB_S.py",
+      "sha256": "b7b8442791b8548445c441d1845ab6fe4ed388b49afd7452e5fe06660ebf2778"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_lq/validate_tinyface.py",
+      "sha256": "acb72c7f97057c35593a0b6c34dd1fe3aa4cbb21c01e191ed593e16a813e5092"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/dataloader.py",
+      "sha256": "b4a5a60a5b48c4bf14794ca7761a681eb323f390abf3c538fedd85e91e3e69fa"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/eval_helper.py",
+      "sha256": "73ce3f68094ff4068081b61aba265646cfba52a36032b95ef5d57ac9ac922247"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/eval_helper_all_proto.py",
+      "sha256": "a7ab1be80452b5214ce2ddf1bd30624028565243503d9e8a1ecb12e232c3c97c"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/eval_helper_identification.py",
+      "sha256": "25a65f22ba766ffaa39672a09b72f265032199ce38818175b5dd06a2aa002d2f"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/infer_helper.py",
+      "sha256": "d27c902797cca6c254c1591066d2a27c5bbf7cae1c3beb315f84d558d31dd06d"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/recognition/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/recognition/embedding.py",
+      "sha256": "d9b9fbe7f89a1bc632800b33a364c18e4a58b43a5d08c7d8517efdbdd0aca4c0"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/recognition/embedding_pytorch.py",
+      "sha256": "2c261d8c41419a2cd121fd890bdcdf37950cca668eb6021c8ee5e5ab44916561"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/insightface_ijb_helper/recognition/fp16_grad.py",
+      "sha256": "d1da966ea90878ae9e9bf1d2c62bc66f9279816bcd5d4c0fd9c0779d48239521"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/AdaFace/validation_mixed/validate_IJB_BC.py",
+      "sha256": "029cd4129fef4a6b63b301f54e6289aa47b5b7677dd73ed7e14e9365bbf400dc"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/GroundingDINO_SwinT_OGC.py",
+      "sha256": "ebe84f20f428b5ec44572291303d7fdb45b5c5dad68db786b9596ccfc95ae138"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/cids_evaluator.py",
+      "sha256": "ba240bdad6543097af3985a6aade28e6e77aedb42961a19d23cf8ee9088be131"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/groundingdino_util.py",
+      "sha256": "7231b1b42275536dcc398d270101ff69a46193bbc98f95c669c781e9d3955a50"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/content/inception_resnet_v1.py",
+      "sha256": "64eac5c45dbac6a8fcd67098a72fbeeb3c6680c677d74c2b5e2401549c555b6a"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/diversity/diversity_evaluator.py",
+      "sha256": "6cead1ecb3791b1abfec3cc3552d9474ddda1f3111b9373b80e7e0e3696b8df3"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/diversity/inception_score.py",
+      "sha256": "2b1da1c3c042c3528fd2eef8d5346eed4f47f664121c4df02cbf9a99f070c3d7"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/prompt_align/gptv_utils.py",
+      "sha256": "64901622fb683a33eb8a984418774f4f0f4b7653f2dae8cbd80e733608d511f0"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/prompt_align/prompt_align_evaluator.py",
+      "sha256": "40f376b14bfe8ecbed310c57525b37b6f9562e68662dbacf288678e8358dfd17"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/quality/aesthetic/aesthetic-predictor-v2-5/hubconf.py",
+      "sha256": "0086ec4bb73f61076c217fee41a39a379f0efa730e4ddb8552d8e1ca6f7d6258"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/quality/aesthetic/aesthetic-predictor-v2-5/model.py",
+      "sha256": "c5f64f93ee754b12ab15dd9e21fff7f3bac7b1a832d36b036a1d8c8442d2a89f"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/quality/aesthetic_evaluator.py",
+      "sha256": "5cbba71197c9da3a4d1cfb8fdcd4b4529d2c36cdd4e80fa41d9cb3f21733f46a"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/style/csd/clip_model.py",
+      "sha256": "92f8dd6fc710bbe7c4b0eafe90be860e7e2f47fd5e84693859a1e1ff8424276a"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/style/csd/csd_model.py",
+      "sha256": "c6f41ac27e1a2c5422d51bbc47029444b266db7f65575bec92848071f5a84bd2"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/bench/style/csd_evaluator.py",
+      "sha256": "6ad025c345ec200ad82f95d82ef40b4b91f933b7c395dae4b90b5de4e825da8f"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/dataset_loader/dataset_load.py",
+      "sha256": "faf0ad87cf0d67cebbcd8687a13d5badace58bbf2d7933354825f9efe68ff9ab"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/dataset_loader/read_outputs.py",
+      "sha256": "1958dde830c3620a2be70d31d178da3077d070aca6b4fd2ee03919ffab56d1cb"
+    },
+    {
+      "path": "deps/vistorybench/vistorybench/result_management/manager.py",
+      "sha256": "9c67ea5f55b5e6630b6d066081f17231bef904a460f46b8994f9e631032d95f2"
+    }
+  ],
+  "repositories": {
+    "VBench": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/VBench",
+      "commit": "fd18b3d055cb0fc6f066ca90fe2c3c8cbb698490",
+      "working_tree_status": ""
+    },
+    "DirectorBench": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/DirectorBench",
+      "commit": "63174ef2a00df2ae839d74a9af7f91883c790f8b",
+      "working_tree_status": " M directorbench/llm_utils.py\n M directorbench/main.py\n"
+    },
+    "ViStoryBench_original": {
+      "path": "/mnt/data/bts/repos/vistorybench",
+      "commit": "b44ec9108668cc2bcc8c5280886b235e9fb8bea9",
+      "working_tree_status": " M config.yaml\n M vistorybench/bench/content/cids_evaluator.py\n M vistorybench/bench/prompt_align/prompt_align_evaluator.py\n"
+    }
+  },
+  "note": "Shared repositories may contain prior user modifications. Exact copied ViStoryBench sources and project adapters are identified by SHA256; no shared checkout is reset."
+}

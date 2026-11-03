@@ -1,0 +1,58 @@
+{
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "prefix": "/mnt/data/bts/repos/LongVideoMemory/.venvs/directorbench_public",
+  "base_prefix": "/mnt/data/bts/envs/vbench",
+  "dependencies": {
+    "pydantic": {
+      "available": true,
+      "version": "2.13.5",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/pydantic/__init__.py"
+    },
+    "openai": {
+      "available": true,
+      "version": "3.8.0",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/openai/__init__.py"
+    },
+    "langgraph": {
+      "available": true,
+      "version": "1.2.11",
+      "module_origin": null
+    },
+    "langchain_core": {
+      "available": true,
+      "version": "1.6.2",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/langchain_core/__init__.py"
+    },
+    "requests": {
+      "available": true,
+      "version": "2.34.2",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/requests/__init__.py"
+    },
+    "cv2": {
+      "available": true,
+      "version": "5.0.0.93",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/cv2/__init__.py"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.2.6",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/numpy/__init__.py"
+    },
+    "torch": {
+      "available": true,
+      "version": "2.5.1+cu121",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/torch/__init__.py"
+    },
+    "sentence_transformers": {
+      "available": true,
+      "version": "6.0.1",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/sentence_transformers/__init__.py"
+    },
+    "scenedetect": {
+      "available": true,
+      "version": "0.7.1",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/scenedetect/__init__.py"
+    }
+  },
+  "shared_dependency_path": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages"
+}

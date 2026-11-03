@@ -1,0 +1,53 @@
+diff --git a/directorbench/llm_utils.py b/directorbench/llm_utils.py
+index 1c8bb02..06837ea 100644
+--- a/directorbench/llm_utils.py
++++ b/directorbench/llm_utils.py
+@@ -163,13 +163,19 @@ def _build_client(config: LLMConfig, proxy: str | bool | None = None):
+         return client, model, True
+     else:
+         from openai import OpenAI
+-        client = OpenAI(
+-            api_key=config.api_key or os.getenv("OPENAI_API_KEY", ""),
+-            base_url=config.base_url,
++        # Passing base_url=None skips OPENAI_BASE_URL env lookup (DashScope).
++        api_key = config.api_key or os.getenv("OPENAI_API_KEY") or os.getenv("DASHSCOPE_API_KEY", "")
++        base_url = config.base_url or os.getenv("OPENAI_BASE_URL") or os.getenv("DASHSCOPE_BASE_URL")
++        client_kwargs = {
++            "api_key": api_key,
+             **proxy_kwargs,
+-        )
++        }
++        if base_url:
++            client_kwargs["base_url"] = base_url
++        client = OpenAI(**client_kwargs)
+         logger.info(
+             f"[LLMClient] Using standard OpenAI: model={config.model}, "
++            f"base_url={base_url or 'default'}, "
+             f"proxy={'on' if proxy_kwargs else 'off'}"
+         )
+         return client, config.model, False
+diff --git a/directorbench/main.py b/directorbench/main.py
+index cc7a668..fa94c57 100644
+--- a/directorbench/main.py
++++ b/directorbench/main.py
+@@ -308,7 +308,11 @@ def main():
+         help="Path to profiles.jsonl file (default: data/profiles.jsonl)"
+     )
+     parser.add_argument("--output-dir", default="./eval_outputs", help="Output directory")
+-    parser.add_argument("--model", default="gpt-4o", help="LLM model name")
++    parser.add_argument(
++        "--model",
++        default=os.environ.get("DIRECTORBENCH_MODEL", "qwen3.7-plus"),
++        help="LLM/VLM model name (default: $DIRECTORBENCH_MODEL or qwen3.7-plus)",
++    )
+     parser.add_argument("--verbose", action="store_true", default=True)
+     parser.add_argument("--quiet", action="store_true")
+     parser.add_argument(
+@@ -349,6 +353,7 @@ def main():
+     # Build config
+     config = EvalConfig()
+     config.llm.model = args.model
++    config.llm.base_url = os.environ.get("OPENAI_BASE_URL") or os.environ.get("DASHSCOPE_BASE_URL")
+     config.output_dir = args.output_dir
+ 
+     # Run evaluation

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "strategy": "composition_skill_frozen",
+  "upstream_commit": "0184d8fdce1acf44c59f411e0bd6df57d5798cca",
+  "codex_bin": "/mnt/data/bts/repos/LongVideoMemory/baselines/codex/composition/codex_provider.py",
+  "codex_version": "0.154.0",
+  "codex_model": "qwen3.8-max-0902",
+  "reasoning_effort": "xhigh",
+  "video_model": "wan3.0-video",
+  "image_model": "wan2.7-image",
+  "understanding_model": "qwen3.5-omni-plus",
+  "resolution": "720P",
+  "ratio": "16:9",
+  "audio": true,
+  "prompt_extend": false,
+  "seed": 20261016,
+  "max_concurrency": 2,
+  "task_max_retries": 1,
+  "timeout_seconds": 21600,
+  "add_task_cases_in_creating_skills": false,
+  "skill_evolution": false,
+  "memory_plugin": false,
+  "cases": [
+    "action_006",
+    "cinematic_008",
+    "educational_008",
+    "music_004",
+    "narrative_074"
+  ],
+  "protocol_variant": "VideoWeaver Codex + Wan3/Qwen tools on five DirectorBench inputs",
+  "paper_agent_model": "gpt-5.5",
+  "agent_model_deviation": "User selected Qwen3.8-Max snapshot instead of paper GPT-5.5",
+  "agent_provider": "lvm_qwen",
+  "agent_base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "concurrency_note": "Two independent cases concurrently; creation medium and production xhigh; user requested faster results",
+  "creation_reasoning_effort": "medium",
+  "image_model_revision": {
+    "changed_at": "2026-10-16T11:49:53.187953+00:00",
+    "previous_model": "qwen-image-2.0",
+    "reason": "User requested wan2.7-image; generation restarted with clean task workspaces; prior calls retained for cost accounting",
+    "history": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_composition_wan3_720p/model_changes/wan27_image"
+  }
+}

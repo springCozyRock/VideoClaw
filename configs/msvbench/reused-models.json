@@ -1,0 +1,210 @@
+{
+  "status": "LOCAL_REFERENCES_WITH_COMPONENT_AND_NATIVE_EVIDENCE",
+  "items": [
+    {
+      "metric": "face_consistency,character_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/ckpt/sam_vit_b_01ec64.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Tools/Segment-and-Track-Anything/ckpt/sam_vit_b_01ec64.pth",
+      "bytes": 375042383,
+      "verification": "Actual native metric or tracking model inference passed; see deployment.json evidence",
+      "sha256": "ec2df62732614e57411cdcf32a23ffdf28910380d03139ee0f4fcbe91eb8c912",
+      "checkpoint_structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "image_encoder.neck.0.weight",
+          "image_encoder.neck.1.weight",
+          "image_encoder.neck.1.bias",
+          "image_encoder.neck.2.weight",
+          "image_encoder.neck.3.weight",
+          "image_encoder.neck.3.bias"
+        ]
+      }
+    },
+    {
+      "metric": "face_consistency,character_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/ckpt/R50_DeAOTL_PRE_YTB_DAV.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Tools/Segment-and-Track-Anything/ckpt/R50_DeAOTL_PRE_YTB_DAV.pth",
+      "bytes": 236513959,
+      "verification": "Actual native metric or tracking model inference passed; see deployment.json evidence",
+      "sha256": "7e8a8d83310739bac02817f6bf48b6bbe2bbd7d5325722f1084088eb3aee1e06",
+      "checkpoint_structure_error": "UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, \u001b[1mdo those steps only if you t"
+    },
+    {
+      "metric": "tracking",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/ckpt/groundingdino_swint_ogc.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Tools/Segment-and-Track-Anything/ckpt/groundingdino_swint_ogc.pth",
+      "bytes": 693997677,
+      "verification": "Actual native metric or tracking model inference passed; see deployment.json evidence",
+      "sha256": "3b3ca2563c77c69f651d7bd133e97139c186df06231157a64c507099c52bc799",
+      "checkpoint_structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "model"
+        ]
+      }
+    },
+    {
+      "metric": "action_recognition",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/VideoMAE/vit-base-p16_videomaev2-vit-g-dist-k710-pre_16x4x1_kinetics-400_20230510-3e7f93b2.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/MotionQuality/checkpoints/VideoMAE/vit-base-p16_videomaev2-vit-g-dist-k710-pre_16x4x1_kinetics-400_20230510-3e7f93b2.pth",
+      "bytes": 173101070,
+      "verification": "Actual native metric or tracking model inference passed; see deployment.json evidence",
+      "sha256": "3e7f93b2be64c7c1cbe4587a1561d7c7a277eab3bad7f87dad7a4b52ec76f367",
+      "checkpoint_structure": {
+        "type": "OrderedDict",
+        "top_level_keys": [
+          "backbone.patch_embed.projection.weight",
+          "backbone.patch_embed.projection.bias",
+          "backbone.blocks.0.norm1.weight",
+          "backbone.blocks.0.norm1.bias",
+          "backbone.blocks.0.attn.q_bias",
+          "backbone.blocks.0.attn.v_bias"
+        ]
+      }
+    },
+    {
+      "metric": "action_recognition",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/clip-vit-base-patch32",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/MotionQuality/checkpoints/clip-vit-base-patch32",
+      "bytes": 608872212,
+      "verification": "Actual native metric or tracking model inference passed; see deployment.json evidence"
+    },
+    {
+      "metric": "face_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/vgg_face_weights.h5",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/deepface/.deepface/weights/vgg_face_weights.h5",
+      "bytes": 580085408,
+      "verification": "VGG-Face actual component inference passed; cartoon native metric passed",
+      "sha256": "759266b9614d0fd5d65b97bf716818b746cc77ab5944c7bffc937c6ba9455d8c"
+    },
+    {
+      "metric": "action_recognition; SAM2.1 candidate, match tracker config before use",
+      "source": "/mnt/data/lzy/remote/dense-img/Models/sam2.1_hiera_large.pt",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/sam2/sam2.1_hiera_large.pt",
+      "bytes": 898083611,
+      "verification": "Official SAM2.1-Large loaded; actual video propagation/crop passed; optional CUDA extension compiled",
+      "sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+      "checkpoint_structure": {
+        "type": "dict",
+        "top_level_keys": [
+          "model"
+        ]
+      }
+    },
+    {
+      "metric": "dover",
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/DOVER/pretrained_weights/DOVER.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/VisualQuality/checkpoints/DOVER/DOVER.pth",
+      "bytes": 239729097,
+      "verification": "Actual native metric or tracking model inference passed; see deployment.json evidence",
+      "sha256": "f4a42c0bbc94c94dd7409e7f40887d44c5c30314d1d09e7edf03cc35813b4838",
+      "checkpoint_structure": {
+        "type": "OrderedDict",
+        "top_level_keys": [
+          "technical_backbone.patch_embed.proj.weight",
+          "technical_backbone.patch_embed.proj.bias",
+          "technical_backbone.patch_embed.norm.weight",
+          "technical_backbone.patch_embed.norm.bias",
+          "technical_backbone.layers.0.blocks.0.norm1.weight",
+          "technical_backbone.layers.0.blocks.0.norm1.bias"
+        ]
+      }
+    },
+    {
+      "metric": "background_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/models/clip_vitb16_pretrain.pth.tar",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/clip_vitb16_pretrain.pth.tar",
+      "bytes": 344825295,
+      "verification": "DreamSim ensemble offline component inference passed",
+      "sha256": "21bb58dddc9747d635638eaef19a50404fa71ef62b837c4181c92568a5d78779"
+    },
+    {
+      "metric": "background_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/models/open_clip_vitb16_pretrain.pth.tar",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/open_clip_vitb16_pretrain.pth.tar",
+      "bytes": 344829345,
+      "verification": "DreamSim ensemble offline component inference passed",
+      "sha256": "963c665c8ba6edd6ef7a7549f3f72fe20586494223300030f5b2efbe36f04319"
+    },
+    {
+      "metric": "background_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/models/dino_vitb16_pretrain.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/dino_vitb16_pretrain.pth",
+      "bytes": 871077689,
+      "verification": "DreamSim ensemble offline component inference passed",
+      "sha256": "491ec6200b350dd7d532cea1b040846cbc1b4ae038299331168fdd3e0361e262"
+    },
+    {
+      "metric": "background_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/models/ensemble_lora/adapter_config.json",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/ensemble_lora/adapter_config.json",
+      "bytes": 687,
+      "verification": "DreamSim ensemble offline component inference passed",
+      "sha256": "188f2c0640295f91a4375efd0a1594e5985bb38c90a9040cec8c5f4b9f8f0e20"
+    },
+    {
+      "metric": "background_consistency",
+      "source": "/mnt/data/shy/hzj/AniMaker/models/ensemble_lora/adapter_model.safetensors",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/ensemble_lora/adapter_model.safetensors",
+      "bytes": 7088032,
+      "verification": "DreamSim ensemble offline component inference passed",
+      "sha256": "a33ba2cbfc52a96f1fa220d7d036fd17e00d5fc9b467be2f97a5482e8a2b09c1"
+    },
+    {
+      "metric": "DreamSim DINO backbone source",
+      "source": "/mnt/data/shy/hzj/AniMaker/models/facebookresearch_dino_main",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/facebookresearch_dino_main",
+      "bytes": 25955007,
+      "verification": "DreamSim ensemble offline component inference passed"
+    },
+    {
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/EvalCrafter/checkpoints/bert-base-uncased",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Tools/Segment-and-Track-Anything/ckpt/bert-base-uncased",
+      "metric": "tracking",
+      "bytes": 441170320,
+      "verification": "GroundingDINO text encoder loaded in actual tracking",
+      "metadata_hashes": {
+        "config.json": "7160e1553ad2ca51d8c1cb066be533db31826e12d173824c1bb0cb1a4f187d20"
+      }
+    },
+    {
+      "source": "/mnt/data/share/Qwen2.5-VL-7B-Instruct",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/VideoConsistency/tools/Step1X-Edit/weights/Step1X-Edit/Qwen2.5-VL-7B-Instruct",
+      "metric": "background_consistency",
+      "bytes": 33184853301,
+      "verification": "Matching Qwen2.5-VL source linked; full background inference pending",
+      "metadata_hashes": {
+        "model.safetensors.index.json": "73b333b0b16e5286ddba615d2caebcd495cf7e616f52eb217a81781393d79de9",
+        "config.json": "77d9ec7321cc572e3579e2c84799c9cadaded63c49ce93b101733349fc330c43"
+      }
+    },
+    {
+      "source": "/mnt/data/shy/hzj/AniMaker/models/checkpoints/dino_vitbase16_pretrain.pth",
+      "reference": "/mnt/data/bts/repos/LongVideoMemory/.cache/msvbench/dreamsim/checkpoints/dino_vitbase16_pretrain.pth",
+      "metric": "background_consistency",
+      "bytes": 343241894,
+      "verification": "DreamSim actual offline component inference passed"
+    }
+  ],
+  "total_referenced_bytes": 39368466987,
+  "not_interchangeable": [
+    {
+      "source": "/mnt/data/shy/hzj/AniMaker/Benchmark/MusIQ/musiq.pth",
+      "variant": "SPAQ, sha256 starts358bb6af",
+      "current_variant": "KonIQ, sha256 startse95806b9"
+    },
+    {
+      "source": "/mnt/data/share/KaLM-v2d5, KaLM-embedding-multilingual-mini-instruct-v1, v1.5",
+      "reason": "Do not substitute for required multilingual-mini-instruct-v2 without verifying provenance"
+    }
+  ],
+  "not_found_in_readable_scanned_paths": [
+    "CLIP-FlanT5-XXL",
+    "Step1X-Edit DiT/VAE weights",
+    "MonST3R weights",
+    "ShareCaptioner-Video weights",
+    "Exact KaLM-mini-instruct-v2 weights"
+  ],
+  "search_scope": "Readable /mnt/data and /home/xzr, depth up to9; targeted AniMaker checkpoints and caches inspected separately; permission errors skipped",
+  "reference_items": 17
+}

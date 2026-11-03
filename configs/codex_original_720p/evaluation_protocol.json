@@ -1,0 +1,274 @@
+{
+  "generation": {
+    "model": "wan3.0-video",
+    "resolution": "720P",
+    "ratio": "16:9",
+    "audio": true,
+    "duration_sec": 469,
+    "shots": 22,
+    "cases": [
+      "action_006",
+      "cinematic_008",
+      "educational_008",
+      "music_004",
+      "narrative_074"
+    ]
+  },
+  "dataset_scope": {
+    "source": "DirectorBench dataset_original.jsonl",
+    "case_count": 5,
+    "is_full_paper_benchmark": false,
+    "note": "Five user-selected DirectorBench prompts; transfer of Short-Drama-Bench metrics, not a reproduction of its 50-prompt dataset."
+  },
+  "short_drama": {
+    "paper": "https://arxiv.org/html/2605.22144v1",
+    "paper_sections": [
+      "3.2",
+      "J.5/Table 7",
+      "M.1/Figure 10"
+    ],
+    "metrics": [
+      "opening_hook",
+      "end_hook",
+      "escalation_effect",
+      "narrative_coherence",
+      "character_spatial_continuity",
+      "environment_layout_continuity",
+      "bgm_emotion_alignment",
+      "transition_naturalness"
+    ],
+    "score_range": [
+      1,
+      5
+    ],
+    "paper_judges": [
+      "Gemini 3 Pro Preview",
+      "Qwen3.5-Omni-Plus",
+      "Seed 2.0 Pro"
+    ],
+    "available_original_judge": "qwen3.5-omni-plus",
+    "missing_original_judges": [
+      "Gemini 3 Pro Preview",
+      "Seed 2.0 Pro"
+    ],
+    "aggregation": "mean over valid evaluation units, then equal-weight mean over prompts; one unified judge as explicitly requested",
+    "rubrics": {
+      "opening_hook": {
+        "scope": "drama",
+        "rubric": "Evaluate whether the first 10 seconds quickly attract viewers, establish stakes, and create immediate curiosity."
+      },
+      "end_hook": {
+        "scope": "scene",
+        "rubric": "Evaluate whether the scene ending creates sufficient motivation to continue watching."
+      },
+      "escalation_effect": {
+        "scope": "scene",
+        "rubric": "Evaluate whether the middle portion contains effective conflict escalation, rising pressure, or power reversal."
+      },
+      "narrative_coherence": {
+        "scope": "drama",
+        "rubric": "Evaluate whether the story logic remains clear, non-confusing, and internally consistent."
+      },
+      "character_spatial_continuity": {
+        "scope": "clip_pair",
+        "rubric": "Evaluate adjacent clip continuity, including character identity, screen position, body orientation, and spatial relationship continuity."
+      },
+      "environment_layout_continuity": {
+        "scope": "clip_pair",
+        "rubric": "Evaluate adjacent clip continuity, including background layout, room geometry, object placement, and camera-direction consistency."
+      },
+      "bgm_emotion_alignment": {
+        "scope": "scene",
+        "rubric": "Evaluate whether the background music emotion aligns with scene mood, tension, pacing, and dramatic intent."
+      },
+      "transition_naturalness": {
+        "scope": "scene_pair",
+        "rubric": "Evaluate whether the previous scene tail, transition clip, and next scene head connect naturally in action, camera, mood, and story logic."
+      }
+    },
+    "video_sampling_fps": 1,
+    "sampling_status": "1 FPS for scene/drama audiovisual judging is an explicit implementation choice: paper does not specify this rate for these metrics.",
+    "continuity_sampling": "last 3 consecutive decoded frames from preceding clip + first 3 consecutive frames from next clip, before final assembly",
+    "continuity_spacing_status": "paper specifies 3+3 frames, not their temporal spacing; consecutive-frame choice is recorded",
+    "scope_conflict": "Section 3.2 describes scene-level hooks/coherence; Figure 10 explicitly defines opening_hook as first 10 seconds of drama and narrative_coherence as drama. Primary follows explicit Figure 10; scene-level versions are supplemental and must be labeled.",
+    "active_judges": [
+      "qwen3.5-omni-plus"
+    ],
+    "not_applicable_by_case": {
+      "educational_008": {
+        "character_spatial_continuity": "NO_CHARACTERS"
+      }
+    },
+    "applicability_adaptation": "The educational diagram has no characters. Preserve its six original judge responses but exclude the character spatial-continuity score from primary cross-dataset aggregation. This is an explicit adaptation, not a stated original-paper rule.",
+    "alignment_version": "figure10_aligned_v2",
+    "alignment_settings": {
+      "opening_seconds": 10.0,
+      "scene_ending_seconds": 10.0,
+      "middle_fraction": [
+        0.3333333333333333,
+        0.6666666666666666
+      ],
+      "transition_tail_seconds": 5.0,
+      "transition_head_seconds": 5.0,
+      "video_sampling_fps": 1.0,
+      "frame_max_width": 448,
+      "continuity_frame_max_width": 768,
+      "continuity_frames_per_side": 3,
+      "continuity_spacing": "consecutive_decoded_frames",
+      "audio": "original aligned audio; mono 16 kHz PCM16, no BGM separation",
+      "temperature": 0.1,
+      "max_tokens": 2048
+    },
+    "output_family": "short_drama_figure10_aligned_v2",
+    "paper_protocol_disclosures": {
+      "source": "https://arxiv.org/html/2605.22144v1#A13.F10",
+      "scope_choice": "Figure 10 primary; Section 3.2 describes scene-level opening/coherence differently. No claim of author-resolved equivalence.",
+      "paper_specified": [
+        "8 metrics and native rubrics",
+        "integer 1-5 score plus evidence-based analysis",
+        "Figure 10 drama opening first 10 seconds",
+        "adjacent pre-assembly clip tail 3 + head 3 frames"
+      ],
+      "implementation_choices_not_paper_requirements": [
+        "last 10 seconds of each scene for end_hook",
+        "middle third of each scene for escalation_effect",
+        "5 seconds either side of scene transitions",
+        "1 FPS for audiovisual units",
+        "consecutive spacing of the 3+3 continuity frames",
+        "frame resize/JPEG and audio encoding",
+        "temperature, token cap, retries",
+        "unit mean within case, then equal weight across cases"
+      ],
+      "judge_variant": "Qwen3.5-Omni-Plus only, user selected; not original three-judge ensemble",
+      "dataset_variant": "Metrics transferred to existing project samples, not paper 50-prompt reproduction",
+      "scene_boundary_limit": "Uses declared input scene boundaries; actual semantic cuts require separately verified annotation",
+      "transitions": "Includes entire explicitly annotated transition if provided. No invented bridge clip."
+    },
+    "legacy_results_status": "HISTORICAL_DIFFERENT_EVIDENCE_WINDOWS; do not reuse as aligned scores"
+  },
+  "vbench": {
+    "metrics": [
+      "subject_consistency",
+      "background_consistency",
+      "motion_smoothness"
+    ],
+    "judge": "native automatic modules",
+    "source": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/vbench",
+    "commit": "fd18b3d055cb0fc6f066ca90fe2c3c8cbb698490",
+    "sampling": "all decoded frames, native transforms and weights; streamed execution verified against native implementation",
+    "frame_cap": null,
+    "temporal_downsampling": false,
+    "aggregation": "native frame weighting for subject/background; mean over videos for motion",
+    "runner": "baselines/codex/evaluation/vbench_full.py"
+  },
+  "vistorybench": {
+    "metrics": [
+      "scene_alignment",
+      "cross_character_consistency",
+      "global_character_action",
+      "single_character_action"
+    ],
+    "paper_judge": "ChatGPT 5.0",
+    "available_paper_judge": false,
+    "sampling_fps": 1,
+    "source": "/mnt/data/bts/repos/vistorybench",
+    "commit": "b44ec9108668cc2bcc8c5280886b235e9fb8bea9",
+    "supplementary_judge": "qwen3.5-omni-plus",
+    "replication_gaps": [
+      "Paper does not release its exact video adaptation or frame-to-scene annotation conversion.",
+      "Cross-character consistency must use a specified native identity/embedding criterion; do not substitute an invented 1-5 rating for the published consistency score.",
+      "Qwen-scored scene/action alignment uses native ViStoryBench prompt templates and must be labeled as a changed-judge supplementary result."
+    ],
+    "scene_action_scale": [
+      0,
+      4
+    ],
+    "active_judge": "qwen3.5-omni-plus",
+    "execution_source": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/vistorybench",
+    "adaface_commit": "c60eaa786a42c03444f3df7096dbaf9d57ae010d",
+    "cross_character_criterion": "Native CIDS cids_cross_mean; Hungarian character matching; native face ensemble/CLIP encoders and thresholds",
+    "reference_adaptation": "No external identity references were provided with these five prompts. Deterministic portraits from first generated appearance clips anchor the metric; this assesses stability against generated anchors, not external identity fidelity.",
+    "caption_adaptation": "Each 1FPS frame receives its containing planned clip caption; no published per-frame labels are available.",
+    "native_single_action_aggregation": "Preserves native integer rounding; retains detailed per-character/per-frame scores.",
+    "groundingdino_device": "cpu",
+    "arcface_provider": "CPU ONNX; identical antelopev2 weights; native feature mathematics preserved",
+    "rate_control": "Shared process-safe request pacing and retry cooldown; errors cannot be accepted as zero scores"
+  },
+  "directorbench": {
+    "paper": "https://arxiv.org/pdf/2605.30090",
+    "paper_section": "3 Evaluation Settings and Appendices B-D",
+    "paper_judge": "GPT-5.4",
+    "available_paper_judge": false,
+    "supplementary_judge": "qwen3.5-omni-plus",
+    "source": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/directorbench",
+    "commit": "63174ef2a00df2ae839d74a9af7f91883c790f8b",
+    "checkpoint_count": 40,
+    "submetrics": 9,
+    "dimensions": 5,
+    "profiles": 7,
+    "frames_per_shot": 8,
+    "shot_detection_threshold": 27.0,
+    "min_shot_duration_sec": 0.5,
+    "temperature": 0.1,
+    "max_tokens": 4096,
+    "registry": "directorbench_registry.json",
+    "applicability": "native dynamic activation; inactive checkpoints are NA, never zero-filled",
+    "aggregation": "native confidence-aware aggregation and profile-weighted score; retain individual checkpoints and tool fallback traces",
+    "active_judge": "qwen3.5-omni-plus",
+    "asr": {
+      "backend": "faster-whisper",
+      "model": "large-v3",
+      "beam_size": 5,
+      "compute_type": "float16",
+      "device": "cuda",
+      "pinned_revision": "edaa852ec7e145841d8ffdb056a99866b5f0a478",
+      "startup_guard": "Local SHA256-validated weights required; ASR FAILED is fatal, not a fallback score",
+      "superseded_runs": "runs/original_720p/evaluation/directorbench_pre_asr_failure_20261016"
+    },
+    "evidence_limitations": [
+      "MobileViCLIP missing in earlier profiles; affected native scores remain provisional until re-evaluated with model evidence.",
+      "ASR success does not establish waveform silence; music and low-confidence transcription can hallucinate."
+    ],
+    "excluded_metrics": {
+      "bgm_consistency": {
+        "status": "SKIPPED_BY_USER",
+        "score": null,
+        "checkpoint_ids": [
+          "bgm_mood_match",
+          "bgm_transition_smoothness",
+          "bgm_tempo_pacing",
+          "bgm_volume_balance"
+        ],
+        "aggregation": "Remove metric before native confidence-weighted dimension aggregation and profile-weighted overall normalization."
+      }
+    },
+    "requires_audioshake": false,
+    "included_metric_count": 8,
+    "included_checkpoint_maximum": 36,
+    "excluded_metric_policy_authorized_by_user": true,
+    "reaggregation_script": "/mnt/data/bts/repos/LongVideoMemory/baselines/codex/evaluation/director_metric_policy.py"
+  },
+  "human_evaluation": {
+    "short_drama_raters": 20,
+    "directorbench_raters": 14,
+    "status": "PREPARED_AWAITING_REAL_ANNOTATORS",
+    "requirement": "anonymous randomized units, original Likert rubrics, real human scores; no simulated ratings",
+    "package": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/human_annotation",
+    "completed_ratings": 0,
+    "directorbench_criteria": 16
+  },
+  "reproducibility": {
+    "freeze_generation_before_judging": true,
+    "keep_original_api_responses": true,
+    "record_frame_timestamps": true,
+    "never_claim_missing_metrics_complete": true,
+    "validity_audit": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/evaluation/validity.json"
+  },
+  "judge_override": {
+    "authorized_by_user": true,
+    "model": "qwen3.5-omni-plus",
+    "scope": "all LLM/VLM judges; native automatic feature metrics keep original encoders",
+    "paper_comparison_label": "unified Qwen3.5-Omni protocol variant",
+    "short_drama_judge_count": 1
+  }
+}

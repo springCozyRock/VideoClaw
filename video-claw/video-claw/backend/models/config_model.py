@@ -673,7 +673,7 @@ def list_api_models(
     if verified_only:
         records = [record for record in records if record.get("api_contract_verified", True)]
     if required:
-        records = [record for record in records if required.intersection(model_ability_tags(record))]
+        records = [record for record in records if required.issubset(set(record.get("adapter_ability_types") or []))]
     return records
 
 

@@ -1,0 +1,46 @@
+{
+  "source": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/directorbench/data/metadata/dataset_original.jsonl",
+  "source_sha256": "1b552f62fd27efd5c42e2928ba5bb4324fbb0530787d452a96e64d8ffd8c9528",
+  "cases": [
+    {
+      "case_id": "action_006",
+      "duration_sec": 67.0,
+      "shots": 3,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/inputs/action_006"
+    },
+    {
+      "case_id": "cinematic_008",
+      "duration_sec": 62.0,
+      "shots": 4,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/inputs/cinematic_008"
+    },
+    {
+      "case_id": "educational_008",
+      "duration_sec": 210,
+      "shots": 7,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/inputs/educational_008"
+    },
+    {
+      "case_id": "music_004",
+      "duration_sec": 70.0,
+      "shots": 3,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/inputs/music_004"
+    },
+    {
+      "case_id": "narrative_074",
+      "duration_sec": 60,
+      "shots": 5,
+      "sample_path": "/mnt/data/bts/repos/LongVideoMemory/experiments/codex_original_720p/inputs/narrative_074"
+    }
+  ],
+  "total_duration_sec": 469.0,
+  "total_shots": 22,
+  "estimated_generation_cny": 281.4,
+  "evaluation": {
+    "judge": "qwen3.5-omni-plus",
+    "judge_override_authorized": true,
+    "vbench_frame_cap": null,
+    "vbench_temporal_downsampling": false,
+    "protocol": "/mnt/data/bts/repos/LongVideoMemory/configs/codex_original_720p/evaluation_protocol.json"
+  }
+}

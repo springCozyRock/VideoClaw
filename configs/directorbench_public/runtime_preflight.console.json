@@ -1,0 +1,84 @@
+{
+  "status": "CODE_DATA_ALIGNED",
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "prefix": "/mnt/data/bts/repos/LongVideoMemory/.venvs/directorbench_public",
+  "base_prefix": "/mnt/data/bts/envs/vbench",
+  "source_module": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/directorbench_public/directorbench/__init__.py",
+  "dependencies": {
+    "pydantic": {
+      "available": true,
+      "version": "2.13.5",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/pydantic/__init__.py"
+    },
+    "openai": {
+      "available": true,
+      "version": "3.8.0",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/openai/__init__.py"
+    },
+    "langgraph": {
+      "available": true,
+      "version": "1.2.11",
+      "module_origin": null
+    },
+    "langchain_core": {
+      "available": true,
+      "version": "1.6.2",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/langchain_core/__init__.py"
+    },
+    "requests": {
+      "available": true,
+      "version": "2.34.2",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/requests/__init__.py"
+    },
+    "cv2": {
+      "available": true,
+      "version": "5.0.0.93",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/cv2/__init__.py"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.2.6",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/numpy/__init__.py"
+    },
+    "torch": {
+      "available": true,
+      "version": "2.5.1+cu121",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/torch/__init__.py"
+    },
+    "sentence_transformers": {
+      "available": true,
+      "version": "6.0.1",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/sentence_transformers/__init__.py"
+    },
+    "scenedetect": {
+      "available": true,
+      "version": "0.7.1",
+      "module_origin": "/mnt/data/bts/envs/directorbench/lib/python3.10/site-packages/scenedetect/__init__.py"
+    }
+  },
+  "tools": {
+    "ffmpeg": "/usr/bin/ffmpeg",
+    "ffprobe": "/usr/bin/ffprobe"
+  },
+  "assets": {
+    "whisper_large_v3": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/.cache/faster-whisper-large-v3",
+      "ready": true
+    },
+    "sentence_bert": {
+      "path": "/mnt/data/bts/models/hf/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "ready": true
+    },
+    "mobileviclip_repo": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/third_party/mobileviclip",
+      "ready": true
+    },
+    "mobileviclip_weights": {
+      "path": "/mnt/data/bts/repos/LongVideoMemory/.cache/directorbench_public/models/mobileviclip_small.pt",
+      "ready": false
+    }
+  },
+  "all_optional_models_ready": false,
+  "no_api_calls": true,
+  "no_actual_metric_inference": true
+}

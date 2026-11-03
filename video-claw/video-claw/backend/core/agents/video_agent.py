@@ -101,6 +101,8 @@ class VideoDirectorAgent(AgentInterface):
             logger.info(f"VideoDirectorAgent: {segment_id} 跳过（用户取消）")
             return segment_id, None, None
 
+        if video_generation_mode == 'start_end_frame' and (not last_image_path or not os.path.isfile(last_image_path)):
+            raise ValueError('First/last-frame generation requires the current segment end frame')
         reference_image_paths = reference_image_paths or []
         if video_generation_mode == "reference":
             missing_refs = [path for path in reference_image_paths if not os.path.exists(path)]
@@ -265,16 +267,6 @@ class VideoDirectorAgent(AgentInterface):
         # 3. 默认路径
         return os.path.abspath(os.path.join('code/result/image', str(sid), 'Scenes', f"{segment_id}.jpg"))
 
-    def _get_next_reference_image(self, sid: str, segment_index: int, segments: list, scene_map: dict) -> Optional[str]:
-        """首尾帧模式下，优先用下一个片段参考图作为尾帧。"""
-        if segment_index + 1 >= len(segments):
-            return None
-        next_segment_id = segments[segment_index + 1].get("segment_id")
-        if not next_segment_id:
-            return None
-        path = self._get_reference_image(sid, next_segment_id, scene_map)
-        return path if path and os.path.exists(path) else None
-
     @staticmethod
     def _asset_selected_path(asset: dict) -> str:
         selected = asset.get("selected") or ""
@@ -342,17 +334,29 @@ class VideoDirectorAgent(AgentInterface):
         return reference_paths
 
     @staticmethod
+    def _conditioning_for_segment(segment, scene_map, character_art, paradigm, legacy=False):
+        from core.generation_paradigms import conditioning
+        record = scene_map.get(segment['segment_id'], {})
+        if legacy and paradigm == 'keyframe2v':
+            # Read older first-frame sessions without demanding a new manifest.
+            record = {**record, 'generation_paradigm': paradigm, 'unit_id': segment['segment_id']}
+        if legacy and paradigm == 'multiref2v':
+            from core.generation_paradigms import selected_references
+            record = {'generation_paradigm': paradigm, 'unit_id': segment['segment_id'],
+                      'references': selected_references(segment, character_art)}
+        if not legacy:
+            from core.generation_paradigms import fingerprint, file_identity
+            if record.get('segment_hash') != fingerprint(segment):
+                raise ValueError('Storyboard changed; rerun reference_generation')
+            if any(file_identity(item['path']) != item for item in record.get('reference_identity', [])):
+                raise ValueError('Entity reference changed; rerun reference_generation')
+        return conditioning(record, paradigm)
+
+    @staticmethod
     def _select_video_model(input_data: dict, session_meta: dict) -> tuple[str, str]:
-        mode = (
-            input_data.get("video_generation_mode")
-            or session_meta.get("video_generation_mode")
-            or "first_frame"
-        )
-        model_key = {
-            "first_frame": "video_first_frame_model",
-            "start_end_frame": "video_start_end_model",
-            "reference": "video_reference_model",
-        }.get(mode, "video_first_frame_model")
+        from core.generation_paradigms import resolve_paradigm, MODES, MODEL_KEYS
+        mode = MODES[resolve_paradigm(input_data, session_meta)]
+        model_key = MODEL_KEYS[mode]
         model = input_data.get(model_key) or session_meta.get(model_key)
         if not model:
             # Legacy session compatibility: sessions created before mode-specific video models only have video_model.
@@ -371,6 +375,18 @@ class VideoDirectorAgent(AgentInterface):
                 results[clip["id"]] = clip["rewrite_result"]
         return results
 
+    def _current_versions(self, sid, unit_id):
+        import json
+        from pathlib import Path
+        receipt = Path(self._video_base(sid)) / (unit_id + '.generation.json')
+        if not receipt.is_file():
+            return []
+        record = json.loads(receipt.read_text())
+        expected = getattr(self, '_generation_request_hashes', {}).get(unit_id)
+        if expected and record.get('request_hash') != expected:
+            return []
+        return [p for p in record.get('versions', [record.get('selected')]) if p and Path(p).is_file()]
+
     def _build_preview(self, sid: str, segments: list, scene_map: dict,
                        video_clips: Optional[list] = None) -> list:
         preview = []
@@ -378,7 +394,7 @@ class VideoDirectorAgent(AgentInterface):
         existing_rewrite_results = self._collect_rewrite_results(video_clips)
         for idx, seg in enumerate(segments, 1):
             segment_id = seg["segment_id"]
-            versions = self._list_versions(sid, segment_id)
+            versions = self._current_versions(sid, segment_id)
             ep_n = seg.get('episode_number', 1)
             seg_n = seg.get('segment_number', idx)
             item = {
@@ -405,7 +421,7 @@ class VideoDirectorAgent(AgentInterface):
         rewrite_results = rewrite_results or {}
         for idx, seg in enumerate(segments, 1):
             segment_id = seg["segment_id"]
-            versions = self._list_versions(sid, segment_id)
+            versions = self._current_versions(sid, segment_id)
             ep_n = seg.get('episode_number', 1)
             seg_n = seg.get('segment_number', idx)
             item = {
@@ -422,6 +438,12 @@ class VideoDirectorAgent(AgentInterface):
             rewrite_result = rewrite_results.get(segment_id) or existing_rewrite_results.get(segment_id)
             if rewrite_result:
                 item["rewrite_result"] = rewrite_result
+            import json
+            from pathlib import Path
+            receipt = Path(self._video_base(sid)) / (segment_id + '.generation.json')
+            if receipt.exists() and versions:
+                metadata = json.loads(receipt.read_text())
+                item.update({k: metadata[k] for k in ('generation_paradigm', 'conditioning_mode', 'request_hash', 'inputs')})
             clips.append(item)
         return {
             "payload": {
@@ -459,11 +481,17 @@ class VideoDirectorAgent(AgentInterface):
             for clip in payload.get("payload", {}).get("clips", []):
                 clip_id = clip.get("id")
                 if clip_id in selected_clips:
+                    if selected_clips[clip_id] not in clip['versions']:
+                        raise ValueError('Selected clip is not a current generation version')
                     clip["selected"] = selected_clips[clip_id]
             return payload
 
         session_meta = self._session_meta(input_data)
         video_generation_mode, video_model = self._select_video_model(input_data, session_meta)
+        from core.generation_paradigms import resolve_paradigm, validate_model, fingerprint, file_identity
+        paradigm = resolve_paradigm(input_data, session_meta)
+        legacy = not (input_data.get("generation_paradigm") or input_data.get("video_generation_mode") in ('fflf2v', 'grid2v', 'multiref2v', 'keyframe2v'))
+        validate_model(video_model, video_generation_mode)
         llm_model = input_data.get("llm_model") or session_meta.get("llm_model") or ""
         enable_concurrency = input_data.get("enable_concurrency", True)
         from models.config_model import get_max_concurrency
@@ -493,6 +521,46 @@ class VideoDirectorAgent(AgentInterface):
         scene_map = {s['id']: s for s in scene_list if 'id' in s}
         character_art = artifacts.get('character_design', {})
         
+        targets = set(intervention.get('regenerate_clips', [])) if intervention else set()
+        conditioning_inputs = {}
+        request_hashes = {}
+        for seg in segments:
+            key = seg['segment_id']
+            if targets and key not in targets:
+                continue
+            validate_model(video_model, video_generation_mode, int(seg.get('total_duration', 10)))
+            inputs = self._conditioning_for_segment(seg, scene_map, character_art, paradigm, legacy)
+            conditioning_inputs[key] = inputs
+            files = [p for p in (inputs[0], inputs[1]) if p] + inputs[2]
+            request_hashes[key] = fingerprint({'segment': seg, 'paradigm': paradigm,
+                'model': video_model, 'ratio': video_ratio, 'resolution': video_resolution,
+                'style': input_data.get('style') or session_meta.get('style'),
+                'files': [file_identity(path) for path in files]})
+
+        self._generation_request_hashes = request_hashes
+
+        def receipt_path(key):
+            from pathlib import Path
+            return Path(self._video_base(sid)) / (key + '.generation.json')
+
+        def reusable(key):
+            import json
+            path = receipt_path(key)
+            return path.is_file() and json.loads(path.read_text()).get('request_hash') == request_hashes[key]
+
+        def record_generation(key, video_path):
+            import json
+            path = receipt_path(key)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            previous = json.loads(path.read_text()) if path.exists() else {}
+            versions = previous.get('versions', []) if previous.get('request_hash') == request_hashes[key] else []
+            versions = list(dict.fromkeys(versions + [video_path]))
+            temporary = path.with_suffix('.tmp')
+            temporary.write_text(json.dumps({'generation_paradigm': paradigm,
+                'conditioning_mode': video_generation_mode, 'request_hash': request_hashes[key],
+                'selected': video_path, 'versions': versions, 'inputs': conditioning_inputs[key]}, ensure_ascii=False, indent=2))
+            temporary.replace(path)
+
         style_zh = input_data.get('style') or session_meta.get('style') or 'realistic'
         # 简单映射为中文显示名
         style_map_zh = {
@@ -526,19 +594,8 @@ class VideoDirectorAgent(AgentInterface):
                             if not seg: continue
                             prompt = self._assemble_prompt(seg, style_prompt, character_art, video_data=clip)
 
-                            reference_image_paths = None
-                            if video_generation_mode == "reference":
-                                img_path = None
-                                reference_image_paths = self._get_segment_reference_assets(seg, character_art)
-                                if not reference_image_paths:
-                                    logger.warning("VideoDirectorAgent: %s 参考图模式未匹配到第二阶段人物/场景图", seg_id)
-                            else:
-                                img_path = self._get_reference_image(sid, seg_id, scene_map)
+                            img_path, last_img_path, reference_image_paths = conditioning_inputs[seg_id]
                             duration = seg.get("total_duration", 10)
-                            seg_index = segments.index(seg)
-                            last_img_path = self._get_next_reference_image(sid, seg_index, segments, scene_map)
-                            if video_generation_mode == "start_end_frame" and not last_img_path:
-                                logger.warning("VideoDirectorAgent: %s 首尾帧模式缺少尾帧，回退为首帧生视频入参", seg_id)
                             existing_versions = self._list_versions(sid, seg_id)
                             self._report_progress("视频生成", f"启动生成: {seg_id}", 5, data={
                                 "asset_complete": {
@@ -566,6 +623,7 @@ class VideoDirectorAgent(AgentInterface):
                             done += 1
                             pct = 5 + int(90 * done / max(1, len(regen_ids)))
                             if res_path:
+                                record_generation(sid_done, res_path)
                                 versions = self._list_versions(sid, sid_done)
                                 asset_complete = {
                                     "type": "clips", "id": sid_done,
@@ -607,20 +665,10 @@ class VideoDirectorAgent(AgentInterface):
             for seg_index, seg in enumerate(segments):
                 seg_id = seg["segment_id"]
                 existing = self._list_versions(sid, seg_id)
-                if existing: continue
+                if existing and reusable(seg_id): continue
                 prompt = self._assemble_prompt(seg, style_prompt, character_art)
-                reference_image_paths = None
-                if video_generation_mode == "reference":
-                    img_path = None
-                    reference_image_paths = self._get_segment_reference_assets(seg, character_art)
-                    if not reference_image_paths:
-                        logger.warning("VideoDirectorAgent: %s 参考图模式未匹配到第二阶段人物/场景图", seg_id)
-                else:
-                    img_path = self._get_reference_image(sid, seg_id, scene_map)
+                img_path, last_img_path, reference_image_paths = conditioning_inputs[seg_id]
                 duration = seg.get("total_duration", 10)
-                last_img_path = self._get_next_reference_image(sid, seg_index, segments, scene_map)
-                if video_generation_mode == "start_end_frame" and not last_img_path:
-                    logger.warning("VideoDirectorAgent: %s 首尾帧模式缺少尾帧，回退为首帧生视频入参", seg_id)
                 tasks.append((seg_id, prompt, img_path, duration, last_img_path, reference_image_paths))
             if not tasks:
                 self._report_progress("视频生成", "所有视频片段已存在", 95)
@@ -655,6 +703,7 @@ class VideoDirectorAgent(AgentInterface):
                     done += 1
                     pct = 5 + int(90 * done / max(1, len(tasks)))
                     if res_path:
+                        record_generation(sid_done, res_path)
                         versions = self._list_versions(sid, sid_done)
                         asset_complete = {
                             "type": "clips", "id": sid_done,

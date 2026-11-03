@@ -1,0 +1,12 @@
+{
+  "id": "lvm_qwen",
+  "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  "wire_api": "responses",
+  "env_key": "LVM_QWEN_API_KEY",
+  "requires_openai_auth": false,
+  "supports_websockets": false,
+  "catalog": "/mnt/data/bts/repos/LongVideoMemory/configs/codex_composition_wan3/qwen_model_catalog.json",
+  "upstream_cli": "/home/xzr/.local/bin/codex",
+  "source": "https://help.aliyun.com/zh/model-studio/codex",
+  "credential_source": "Project .env, read internally; not copied into config"
+}

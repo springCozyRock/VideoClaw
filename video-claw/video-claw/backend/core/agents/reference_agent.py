@@ -621,6 +621,11 @@ class ReferenceGeneratorAgent(AgentInterface):
         # 从编排器注入的 session 快照补齐缺失参数，避免各阶段直接读取 session JSON。
         input_data = self._merge_session_params(input_data)
 
+        from core.generation_paradigms import PARADIGMS
+        if input_data.get("generation_paradigm") or input_data.get("video_generation_mode") in PARADIGMS:
+            from .paradigm_reference import prepare_references
+            return await prepare_references(self, input_data, intervention)
+
         sid = input_data["session_id"]
         
         style = input_data.get("style", "anime")

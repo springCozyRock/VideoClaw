@@ -1,0 +1,10 @@
+{
+  "model": "stepfun-ai/Step1X-Edit",
+  "target": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/VideoConsistency/tools/Step1X-Edit/weights/Step1X-Edit",
+  "status": "DOWNLOADED_NOT_INFERENCE_VERIFIED",
+  "revision": "752c0bc28a43f56249f588432a5964f1878c01ff",
+  "attempt": 2,
+  "updated": 1792295298.5321167,
+  "error": "('Connection broken: IncompleteRead(4852932582 bytes read, 13176530236 more expected)', IncompleteRead(4852932582 bytes read, 13176530236 more expected))",
+  "path": "/mnt/data/bts/repos/LongVideoMemory/benchmarks/msvbench/Metrics/VideoConsistency/tools/Step1X-Edit/weights/Step1X-Edit"
+}

@@ -1,0 +1,176 @@
+{
+  "cinematic_008": {
+    "cast": [
+      [
+        "woman",
+        "风衣女子",
+        "woman in her early thirties, shoulder-length dark straight hair, beige double-breasted trench coat belted at the waist, dark red wool scarf, dark trousers, black leather ankle boots, small brown leather satchel",
+        "realistic_human",
+        1
+      ]
+    ],
+    "appearances": [
+      [],
+      [
+        "woman"
+      ],
+      [
+        "woman"
+      ],
+      [
+        "woman"
+      ],
+      [
+        "woman"
+      ]
+    ]
+  },
+  "narrative_074": {
+    "cast": [
+      [
+        "girl",
+        "企鹅女孩（咕咕，含赛博战士形态）",
+        "chibi three-head-tall girl with black bob hair and bangs wearing a black-and-white penguin onesie with orange beak hood and pink heart apron; later the same girl in a black-blue cyber suit with glowing blue visor and blue plasma energy blade",
+        "unrealistic_human",
+        0
+      ],
+      [
+        "giant_cat",
+        "巨型奶牛猫",
+        "giant black-and-white cow-patterned cat bigger than apartment buildings, yellow-green eyes and pink nose",
+        "non_human",
+        1
+      ],
+      [
+        "kitten",
+        "奶牛花色小奶猫",
+        "tiny palm-sized black-and-white cow-patterned kitten with yellow-green eyes",
+        "non_human",
+        4
+      ]
+    ],
+    "appearances": [
+      [
+        "girl"
+      ],
+      [
+        "girl",
+        "giant_cat"
+      ],
+      [
+        "girl"
+      ],
+      [
+        "girl",
+        "giant_cat"
+      ],
+      [
+        "girl",
+        "giant_cat",
+        "kitten"
+      ]
+    ]
+  },
+  "educational_008": {
+    "cast": [],
+    "appearances": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ]
+  },
+  "music_004": {
+    "cast": [
+      [
+        "nova",
+        "NOVA（电子音乐女歌手）",
+        "young East-Asian female EDM singer with chin-length platinum-silver bob and neon-cyan inner highlights, cyan winged graphic eyeliner, silver nose stud, black cropped techwear bomber jacket with reflective silver panels and glowing cyan LED piping, black high-waist cargo pants with magenta straps, chunky silver chain, black fingerless gloves, singing into a chrome microphone",
+        "realistic_human",
+        0
+      ]
+    ],
+    "appearances": [
+      [
+        "nova"
+      ],
+      [
+        "nova"
+      ],
+      [
+        "nova"
+      ],
+      [
+        "nova"
+      ],
+      [
+        "nova"
+      ],
+      [
+        "nova"
+      ],
+      [
+        "nova"
+      ]
+    ]
+  },
+  "action_006": {
+    "cast": [
+      [
+        "lin_xiao",
+        "林骁（追捕者/英雄）",
+        "athletic Chinese man in his late twenties, short black undercut hair, sharp angular jawline, dark navy blue tactical zip-up jacket with a small badge pin on the left chest, black cargo pants, black fingerless gloves, black running shoes",
+        "realistic_human",
+        0
+      ],
+      [
+        "lao_k",
+        "老K（逃犯/被追目标）",
+        "lean wiry Chinese man in his early forties, very short buzz-cut black hair, stubble beard, small scar above the right eyebrow, heather grey hooded sweatshirt with the hood down, faded dark blue jeans, worn brown sneakers, carrying a rectangular black canvas duffel travel bag in his right hand",
+        "realistic_human",
+        0
+      ]
+    ],
+    "appearances": [
+      [
+        "lin_xiao",
+        "lao_k"
+      ],
+      [
+        "lin_xiao",
+        "lao_k"
+      ],
+      [
+        "lin_xiao",
+        "lao_k"
+      ],
+      [
+        "lin_xiao",
+        "lao_k"
+      ],
+      [
+        "lin_xiao",
+        "lao_k"
+      ],
+      [
+        "lin_xiao",
+        "lao_k"
+      ],
+      [
+        "lin_xiao",
+        "lao_k"
+      ]
+    ]
+  }
+}
